@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 
-const AddParticipants = ({ participants, setParticipants }) => {
+const capitalize = string => {
+  return string[0].toUpperCase() + string.slice(1);
+};
+
+const AddParticipants = ({
+  participants,
+  setParticipants,
+  setDisplayMessage
+}) => {
   const [nameInput, setNameInput] = useState("");
   const [chancesInput, setChancesInput] = useState(0);
 
   const handleInput = event => {
     if (event.target.name === "name-input") {
-      setNameInput(event.target.value);
+      setNameInput(capitalize(event.target.value));
     } else {
       setChancesInput(parseInt(event.target.value));
     }
@@ -18,6 +26,7 @@ const AddParticipants = ({ participants, setParticipants }) => {
       ...participants,
       { name: nameInput, chances: chancesInput }
     ]);
+    setDisplayMessage(`${nameInput} is ready!`);
     setNameInput("");
     setChancesInput(0);
   };

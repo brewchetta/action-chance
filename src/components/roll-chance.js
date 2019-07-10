@@ -13,11 +13,13 @@ const RollChance = ({
         availableParticipants[
           Math.floor(Math.random() * availableParticipants.length)
         ];
-      setDisplayMessage(`${activeParticipant.name} was chosen!`);
+      setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
       setChances(activeParticipant, activeParticipant.chances - 1);
-    } else {
-      setDisplayMessage("No more participants with rolls, refilling chances");
+    } else if (participants.length) {
+      setDisplayMessage("Starting a new round...");
       resetRound();
+    } else {
+      setDisplayMessage("Add participants to start a new round!");
     }
   };
 
