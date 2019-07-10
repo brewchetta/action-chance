@@ -2,7 +2,7 @@ import React from "react";
 
 const RollChance = ({
   participants,
-  lowerChances,
+  setChances,
   resetRound,
   setDisplayMessage
 }) => {
@@ -14,7 +14,7 @@ const RollChance = ({
           Math.floor(Math.random() * availableParticipants.length)
         ];
       setDisplayMessage(`${activeParticipant.name} was chosen!`);
-      lowerChances(activeParticipant);
+      setChances(activeParticipant, activeParticipant.chances - 1);
     } else {
       setDisplayMessage("No more participants with rolls, refilling chances");
       resetRound();

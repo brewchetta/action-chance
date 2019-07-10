@@ -1,7 +1,7 @@
 import React from "react";
 import ParticipantCard from "./participant-card";
 
-const ParticipantList = ({ participants, removeParticipant }) => {
+const ParticipantList = ({ participants, removeParticipant, setChances }) => {
   const renderParticipantList = () => {
     return participants.map(par => {
       return (
@@ -9,6 +9,7 @@ const ParticipantList = ({ participants, removeParticipant }) => {
           key={par.name}
           participant={par}
           removeParticipant={removeParticipant}
+          setChances={setChances}
         />
       );
     });

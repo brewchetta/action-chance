@@ -8,7 +8,7 @@ const AddParticipants = ({ participants, setParticipants }) => {
     if (event.target.name === "name-input") {
       setNameInput(event.target.value);
     } else {
-      setChancesInput(event.target.value);
+      setChancesInput(parseInt(event.target.value));
     }
   };
 
@@ -32,15 +32,18 @@ const AddParticipants = ({ participants, setParticipants }) => {
           onChange={handleInput}
           placeholder="name"
         />
-        <input
-          type="number"
+        <select
           name="chances-input"
-          min="0"
-          max="5"
           value={chancesInput}
           onChange={handleInput}
-          placeholder="action chances"
-        />
+        >
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
         <input type="submit" value="Add" />
       </form>
     </>

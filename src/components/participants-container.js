@@ -19,10 +19,10 @@ const ParticipantsContainer = props => {
     );
   };
 
-  const lowerChances = participant => {
+  const setChances = (participant, newChances) => {
     setParticipants([
       ...participants.filter(p => p !== participant),
-      { ...participant, chances: participant.chances - 1 }
+      { ...participant, chances: newChances }
     ]);
   };
 
@@ -33,12 +33,13 @@ const ParticipantsContainer = props => {
         setParticipants={setParticipants}
       />
       <ParticipantList
+        setChances={setChances}
         participants={participants}
         removeParticipant={removeParticipant}
       />
       <RollChance
         participants={participants}
-        lowerChances={lowerChances}
+        setChances={setChances}
         resetRound={resetRound}
         setDisplayMessage={setDisplayMessage}
       />
