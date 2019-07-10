@@ -6,7 +6,7 @@ const ParticipantList = ({ participants, removeParticipant }) => {
     return participants.map(par => {
       return (
         <ParticipantCard
-          key="par.name"
+          key={par.name}
           participant={par}
           removeParticipant={removeParticipant}
         />

@@ -1,10 +1,11 @@
 import React from "react";
 
 const ParticipantCard = ({ participant, removeParticipant }) => {
-  debugger;
   return (
     <div>
-      <p>{participant.name}</p>
+      <p>
+        {participant.name} | Chances: {participant.chances}
+      </p>
       <button onClick={() => removeParticipant(participant)}>x</button>
     </div>
   );
