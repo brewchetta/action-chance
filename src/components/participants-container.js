@@ -5,6 +5,7 @@ import RollChance from "./roll-chance";
 
 const ParticipantsContainer = props => {
   const [participants, setParticipants] = useState([]);
+  const [displayMessage, setDisplayMessage] = useState("");
 
   const removeParticipant = participant => {
     setParticipants([...participants].filter(item => item !== participant));
@@ -39,7 +40,9 @@ const ParticipantsContainer = props => {
         participants={participants}
         lowerChances={lowerChances}
         resetRound={resetRound}
+        setDisplayMessage={setDisplayMessage}
       />
+      <h3>{displayMessage}</h3>
     </div>
   );
 };
