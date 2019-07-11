@@ -1,23 +1,22 @@
 import React from "react";
 import ParticipantCard from "./participant-card";
-// import { compareAlphabetical } from "brews-toolboxjs";
+import { compareAlphabetical } from "brews-toolboxjs";
 
 const ParticipantList = ({ participants, removeParticipant, setChances }) => {
+  // console.log(isALetter("a"));
   const renderParticipantList = () => {
-    return (
-      [...participants]
-        // .sort((a, b) => compareAlphabetical(b.name, a.name))
-        .map(par => {
-          return (
-            <ParticipantCard
-              key={par.name}
-              participant={par}
-              removeParticipant={removeParticipant}
-              setChances={setChances}
-            />
-          );
-        })
-    );
+    return [...participants]
+      .sort((a, b) => compareAlphabetical(a.name, b.name))
+      .map(par => {
+        return (
+          <ParticipantCard
+            key={par.name}
+            participant={par}
+            removeParticipant={removeParticipant}
+            setChances={setChances}
+          />
+        );
+      });
   };
 
   if (participants.length) {

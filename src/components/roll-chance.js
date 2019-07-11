@@ -1,4 +1,5 @@
 import React from "react";
+import { random } from "brews-toolboxjs";
 
 const RollChance = ({
   participants,
@@ -9,10 +10,7 @@ const RollChance = ({
   const rollForChance = () => {
     const availableParticipants = participants.filter(p => p.chances > 0);
     if (availableParticipants.length) {
-      const activeParticipant =
-        availableParticipants[
-          Math.floor(Math.random() * availableParticipants.length)
-        ];
+      const activeParticipant = random(availableParticipants);
       setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
       setChances(activeParticipant, activeParticipant.chances - 1);
     } else if (participants.length) {
