@@ -10,25 +10,16 @@ const AddParticipants = ({
   setDisplayMessage
 }) => {
   const [nameInput, setNameInput] = useState("");
-  const [chancesInput, setChancesInput] = useState(0);
 
   const handleInput = event => {
-    if (event.target.name === "name-input") {
-      setNameInput(capitalize(event.target.value));
-    } else {
-      setChancesInput(parseInt(event.target.value));
-    }
+    setNameInput(capitalize(event.target.value));
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    setParticipants([
-      ...participants,
-      { name: nameInput, chances: chancesInput }
-    ]);
+    setParticipants([...participants, { name: nameInput, chances: 1 }]);
     setDisplayMessage(`${nameInput} is ready!`);
     setNameInput("");
-    setChancesInput(0);
   };
 
   return (
@@ -41,18 +32,6 @@ const AddParticipants = ({
           onChange={handleInput}
           placeholder="name"
         />
-        <select
-          name="chances-input"
-          value={chancesInput}
-          onChange={handleInput}
-        >
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
         <input type="submit" value="Add" />
       </form>
     </>
