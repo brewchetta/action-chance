@@ -19,6 +19,11 @@ const ParticipantsContainer = props => {
     );
   };
 
+  const reset = () => {
+    setParticipants([]);
+    setDisplayMessage("|||");
+  };
+
   const setChances = (participant, newChances) => {
     setParticipants([
       ...participants.filter(p => p !== participant),
@@ -45,6 +50,7 @@ const ParticipantsContainer = props => {
         resetRound={resetRound}
         setDisplayMessage={setDisplayMessage}
       />
+      <button onClick={reset}>Reset</button>
     </div>
   );
 };
