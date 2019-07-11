@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddParticipant from "./participants-add";
 import ParticipantList from "./participant-list";
 import RollChance from "./roll-chance";
+import { whatever } from "./participant-list";
 
 const ParticipantsContainer = props => {
   const [participants, setParticipants] = useState([]);
