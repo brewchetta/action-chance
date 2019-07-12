@@ -6,6 +6,7 @@ import RollChance from "./roll-chance";
 const ParticipantsContainer = props => {
   const [participants, setParticipants] = useState([]);
   const [displayMessage, setDisplayMessage] = useState("|||");
+  const [activeParticipant, setActiveParticipant] = useState(null);
 
   const removeParticipant = participant => {
     setParticipants([...participants].filter(item => item !== participant));
@@ -17,11 +18,13 @@ const ParticipantsContainer = props => {
         return { ...p, chances: 1 };
       })
     );
+    setActiveParticipant(null);
   };
 
   const reset = () => {
     setParticipants([]);
     setDisplayMessage("|||");
+    setActiveParticipant(null);
   };
 
   const setChances = (participant, newChances) => {
@@ -51,12 +54,14 @@ const ParticipantsContainer = props => {
         participants={participants}
         removeParticipant={removeParticipant}
         changeParticipantAttributes={changeParticipantAttributes}
+        activeParticipant={activeParticipant}
       />
       <RollChance
         participants={participants}
         setChances={setChances}
         resetRound={resetRound}
         setDisplayMessage={setDisplayMessage}
+        setActiveParticipant={setActiveParticipant}
       />
       <button onClick={reset}>Reset</button>
     </div>

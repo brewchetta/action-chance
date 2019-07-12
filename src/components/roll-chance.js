@@ -5,7 +5,8 @@ const RollChance = ({
   participants,
   setChances,
   resetRound,
-  setDisplayMessage
+  setDisplayMessage,
+  setActiveParticipant
 }) => {
   const rollForChance = () => {
     const availableParticipants = participants.filter(p => p.chances > 0);
@@ -13,9 +14,11 @@ const RollChance = ({
       const activeParticipant = random(availableParticipants);
       setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
       setChances(activeParticipant, activeParticipant.chances - 1);
+      setActiveParticipant(activeParticipant);
     } else if (participants.length) {
       setDisplayMessage("Starting a new round...");
       resetRound();
+      setActiveParticipant(null);
     } else {
       setDisplayMessage("Add participants to start a new round!");
     }

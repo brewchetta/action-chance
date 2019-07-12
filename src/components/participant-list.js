@@ -6,7 +6,8 @@ const ParticipantList = ({
   participants,
   removeParticipant,
   setChances,
-  changeParticipantAttributes
+  changeParticipantAttributes,
+  activeParticipant
 }) => {
   // console.log(isALetter("a"));
   const renderParticipantList = () => {
@@ -20,6 +21,9 @@ const ParticipantList = ({
             removeParticipant={removeParticipant}
             setChances={setChances}
             changeParticipantAttributes={changeParticipantAttributes}
+            activeParticipant={
+              activeParticipant ? par.name === activeParticipant.name : null
+            }
           />
         );
       });

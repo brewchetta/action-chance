@@ -5,8 +5,10 @@ const ParticipantCard = ({
   participant,
   changeParticipantAttributes,
   removeParticipant,
-  setChances
+  setChances,
+  activeParticipant
 }) => {
+  console.log(participant, activeParticipant);
   const [attributeInput, setAttributeInput] = useState("");
 
   const handleAttributeInput = event => {
@@ -16,11 +18,21 @@ const ParticipantCard = ({
   const handleAttributeSubmit = event => {
     event.preventDefault();
     if (participant.attributes) {
+      console.log(
+        "adding to existing:",
+        participant.attributes,
+        attributeInput
+      );
       changeParticipantAttributes(participant, [
         ...participant.attributes,
         attributeInput
       ]);
     } else {
+      console.log(
+        "creating attributes:",
+        participant.attributes,
+        attributeInput
+      );
       changeParticipantAttributes(participant, [attributeInput]);
     }
     setAttributeInput("");
@@ -33,10 +45,21 @@ const ParticipantCard = ({
     );
   };
 
+  const useActiveBorder = () => {
+    if (activeParticipant) {
+      return { border: "solid green 6px", borderRadius: "5px", margin: "3%" };
+    } else {
+      return {
+        border: "solid black 2px",
+        borderRadius: "5px",
+        margin: "3%",
+        padding: "4px"
+      };
+    }
+  };
+
   return (
-    <div
-      style={{ border: "solid black 2px", borderRadius: "5px", margin: "3%" }}
-    >
+    <div style={useActiveBorder()}>
       <p>
         {participant.name} | Chances: {participant.chances} |
         <button
@@ -44,14 +67,15 @@ const ParticipantCard = ({
         >
           Add Chance
         </button>
+        <button onClick={() => removeParticipant(participant)}>x</button>
       </p>
+      {participant.attributes ? (
+        <ParticipantAttributes
+          attributes={participant.attributes}
+          removeAttribute={removeAttribute}
+        />
+      ) : null}
       <form onSubmit={handleAttributeSubmit}>
-        {participant.attributes ? (
-          <ParticipantAttributes
-            attributes={participant.attributes}
-            removeAttribute={removeAttribute}
-          />
-        ) : null}
         <input
           name="attribute-input"
           placeholder="Add a note"
@@ -60,7 +84,6 @@ const ParticipantCard = ({
         />
         <input type="submit" value="Add" />
       </form>
-      <button onClick={() => removeParticipant(participant)}>x</button>
     </div>
   );
 };
