@@ -23,6 +23,7 @@ const ParticipantCard = ({
     } else {
       changeParticipantAttributes(participant, [attributeInput]);
     }
+    setAttributeInput("");
   };
 
   const removeAttribute = attribute => {
@@ -33,21 +34,24 @@ const ParticipantCard = ({
   };
 
   return (
-    <div>
+    <div
+      style={{ border: "solid black 2px", borderRadius: "5px", margin: "3%" }}
+    >
       <p>
-        {participant.name} | Chances: {participant.chances}
+        {participant.name} | Chances: {participant.chances} |
+        <button
+          onClick={() => setChances(participant, participant.chances + 1)}
+        >
+          Add Chance
+        </button>
       </p>
-      <button onClick={() => setChances(participant, participant.chances + 1)}>
-        Add Chance
-      </button>
-      <br />
-      {participant.attributes ? (
-        <ParticipantAttributes
-          attributes={participant.attributes}
-          removeAttribute={removeAttribute}
-        />
-      ) : null}
       <form onSubmit={handleAttributeSubmit}>
+        {participant.attributes ? (
+          <ParticipantAttributes
+            attributes={participant.attributes}
+            removeAttribute={removeAttribute}
+          />
+        ) : null}
         <input
           name="attribute-input"
           placeholder="Add a note"
