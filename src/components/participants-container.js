@@ -42,7 +42,7 @@ const ParticipantsContainer = props => {
   };
 
   return (
-    <div>
+    <div id="participant-container">
       <h3>{displayMessage}</h3>
       <AddParticipant
         participants={participants}

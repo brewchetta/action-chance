@@ -8,7 +8,6 @@ const ParticipantCard = ({
   setChances,
   activeParticipant
 }) => {
-  console.log(participant, activeParticipant);
   const [attributeInput, setAttributeInput] = useState("");
 
   const handleAttributeInput = event => {
@@ -17,23 +16,13 @@ const ParticipantCard = ({
 
   const handleAttributeSubmit = event => {
     event.preventDefault();
-    if (participant.attributes) {
-      console.log(
-        "adding to existing:",
-        participant.attributes,
-        attributeInput
-      );
+    if (participant.attributes && attributeInput.length) {
       changeParticipantAttributes(participant, [
         ...participant.attributes,
-        attributeInput
+        attributeInput.toUpperCase()
       ]);
-    } else {
-      console.log(
-        "creating attributes:",
-        participant.attributes,
-        attributeInput
-      );
-      changeParticipantAttributes(participant, [attributeInput]);
+    } else if (attributeInput.length) {
+      changeParticipantAttributes(participant, [attributeInput.toUpperCase()]);
     }
     setAttributeInput("");
   };
