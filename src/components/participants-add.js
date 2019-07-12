@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 const capitalize = string => {
-  return string[0].toUpperCase() + string.slice(1);
+  if (string[0]) {
+    return string[0].toUpperCase() + string.slice(1);
+  } else {
+    return "";
+  }
 };
 
 const AddParticipants = ({
