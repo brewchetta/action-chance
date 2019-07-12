@@ -2,7 +2,12 @@ import React from "react";
 import ParticipantCard from "./participant-card";
 import { compareAlphabetical } from "brews-toolboxjs";
 
-const ParticipantList = ({ participants, removeParticipant, setChances }) => {
+const ParticipantList = ({
+  participants,
+  removeParticipant,
+  setChances,
+  changeParticipantAttributes
+}) => {
   // console.log(isALetter("a"));
   const renderParticipantList = () => {
     return [...participants]
@@ -14,6 +19,7 @@ const ParticipantList = ({ participants, removeParticipant, setChances }) => {
             participant={par}
             removeParticipant={removeParticipant}
             setChances={setChances}
+            changeParticipantAttributes={changeParticipantAttributes}
           />
         );
       });

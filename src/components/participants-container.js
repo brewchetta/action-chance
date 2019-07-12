@@ -31,6 +31,13 @@ const ParticipantsContainer = props => {
     ]);
   };
 
+  const changeParticipantAttributes = (participant, newAttributes) => {
+    setParticipants([
+      ...participants.filter(p => p !== participant),
+      { ...participant, attributes: newAttributes }
+    ]);
+  };
+
   return (
     <div>
       <h3>{displayMessage}</h3>
@@ -43,6 +50,7 @@ const ParticipantsContainer = props => {
         setChances={setChances}
         participants={participants}
         removeParticipant={removeParticipant}
+        changeParticipantAttributes={changeParticipantAttributes}
       />
       <RollChance
         participants={participants}
