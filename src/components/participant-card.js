@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import ParticipantAttributes from "./participant-attributes";
+import ParticipantAttrsAdd from "./participant-attributes-add.js";
 
 const ParticipantCard = ({
   participant,
@@ -8,23 +9,15 @@ const ParticipantCard = ({
   setChances,
   activeParticipant
 }) => {
-  const [attributeInput, setAttributeInput] = useState("");
-
-  const handleAttributeInput = event => {
-    setAttributeInput(event.target.value);
-  };
-
-  const handleAttributeSubmit = event => {
-    event.preventDefault();
-    if (participant.attributes && attributeInput.length) {
+  const handleAttributeAdd = attr => {
+    if (participant.attributes) {
       changeParticipantAttributes(participant, [
         ...participant.attributes,
-        attributeInput.toUpperCase()
+        attr
       ]);
-    } else if (attributeInput.length) {
-      changeParticipantAttributes(participant, [attributeInput.toUpperCase()]);
+    } else {
+      changeParticipantAttributes(participant, [attr]);
     }
-    setAttributeInput("");
   };
 
   const removeAttribute = attribute => {
@@ -64,15 +57,10 @@ const ParticipantCard = ({
           removeAttribute={removeAttribute}
         />
       ) : null}
-      <form onSubmit={handleAttributeSubmit}>
-        <input
-          name="attribute-input"
-          placeholder="Add a note"
-          value={attributeInput}
-          onChange={handleAttributeInput}
-        />
-        <input type="submit" value="Add" />
-      </form>
+      <ParticipantAttrsAdd
+        participantAttributes={participant.attributes}
+        handleAttributeAdd={handleAttributeAdd}
+      />
     </div>
   );
 };
