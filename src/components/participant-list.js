@@ -35,7 +35,7 @@ const ParticipantList = ({
     return (
       <>
         <p>Participants</p>
-        <ol>{renderParticipantList()}</ol>
+        <div id="participant-list">{renderParticipantList()}</div>
       </>
     );
   } else {

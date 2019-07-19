@@ -1,7 +1,5 @@
 .App {
-  padding: 10%;
   text-align: center;
-  background: grey;
   min-height: 70vh;
 }
 
@@ -12,9 +10,52 @@
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: 5;
+}
+
+#bg {
+  position: fixed;
+  background: aliceblue;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 4;
 }
 
 #participant-container {
+  padding: 3%;
   z-index: 10;
   position: relative;
+  display: grid;
+  grid-auto-rows: 50px 1fr 50px;
+}
+
+#participant-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 1200px) {
+  #participant-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 930px) {
+  #participant-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 570px) {
+  #participant-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.participant-card {
 }

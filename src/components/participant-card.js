@@ -48,17 +48,16 @@ const ParticipantCard = ({
   return (
     <div style={useActiveBorder()}>
       <p>
-        {participant.name} | Chances: {participant.chances} |
-        <button
-          onClick={() => setChances(participant, participant.chances + 1)}
-        >
-          Add Chance
-        </button>
-        {!participant.delayed && participant.chances ? (
-          <button onClick={delayParticipant}>Delay Turn</button>
-        ) : null}
-        <button onClick={() => removeParticipant(participant)}>x</button>
+        {participant.name} | Chances: {participant.chances}
       </p>
+      <button onClick={() => setChances(participant, participant.chances + 1)}>
+        Add Chance
+      </button>
+      {!participant.delayed && participant.chances ? (
+        <button onClick={delayParticipant}>Delay Turn</button>
+      ) : null}
+      <button onClick={() => removeParticipant(participant)}>x</button>
+      <br />
       {participant.attributes ? (
         <ParticipantAttributes
           attributes={participant.attributes}

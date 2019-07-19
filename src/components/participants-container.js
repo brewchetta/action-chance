@@ -52,11 +52,6 @@ const ParticipantsContainer = props => {
   return (
     <div id="participant-container">
       <h3>{displayMessage}</h3>
-      <AddParticipant
-        participants={participants}
-        setParticipants={setParticipants}
-        setDisplayMessage={setDisplayMessage}
-      />
       <ParticipantList
         setChances={setChances}
         participants={participants}
@@ -65,14 +60,21 @@ const ParticipantsContainer = props => {
         activeParticipant={activeParticipant}
         changeParticipantDelayed={changeParticipantDelayed}
       />
-      <RollChance
-        participants={participants}
-        setChances={setChances}
-        resetRound={resetRound}
-        setDisplayMessage={setDisplayMessage}
-        setActiveParticipant={setActiveParticipant}
-      />
-      <button onClick={reset}>Reset</button>
+      <div>
+        <AddParticipant
+          participants={participants}
+          setParticipants={setParticipants}
+          setDisplayMessage={setDisplayMessage}
+        />
+        <RollChance
+          participants={participants}
+          setChances={setChances}
+          resetRound={resetRound}
+          setDisplayMessage={setDisplayMessage}
+          setActiveParticipant={setActiveParticipant}
+        />
+        <button onClick={reset}>Reset</button>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <div id="bg-mask" />
+      <div id="bg" />
       <div id="bg-container" />
       <ParticipantsContainer />
     </div>
