@@ -5,6 +5,8 @@
 
 /* ------Background------ */
 
+/* The background should be selected in some sort of options tab to allow for several different backgrounds dependant on setting / etc */
+
 #bg-mask {
   position: fixed;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1));
