@@ -15,12 +15,15 @@ const RollChance = ({
       setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
       setChances(activeParticipant, activeParticipant.chances - 1);
       setActiveParticipant(activeParticipant);
+      document.title = `${activeParticipant.name}'s Turn`;
     } else if (participants.length) {
       setDisplayMessage("Starting a new round...");
       resetRound();
       setActiveParticipant(null);
+      document.title = `New Round`;
     } else {
       setDisplayMessage("Add participants to start a new round!");
+      document.title = `Action Chance!`;
     }
   };
 
