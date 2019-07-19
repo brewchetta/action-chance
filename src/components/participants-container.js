@@ -15,7 +15,8 @@ const ParticipantsContainer = props => {
   const resetRound = () => {
     setParticipants(
       [...participants].map(p => {
-        return { ...p, chances: 1 };
+        const pChances = p.delayed ? 2 : 1;
+        return { ...p, chances: pChances, delayed: false };
       })
     );
     setActiveParticipant(null);
@@ -41,6 +42,13 @@ const ParticipantsContainer = props => {
     ]);
   };
 
+  const changeParticipantDelayed = (participant, isDelayed) => {
+    setParticipants([
+      ...participants.filter(p => p !== participant),
+      { ...participant, delayed: isDelayed, chances: participant.chances - 1 }
+    ]);
+  };
+
   return (
     <div id="participant-container">
       <h3>{displayMessage}</h3>
@@ -55,6 +63,7 @@ const ParticipantsContainer = props => {
         removeParticipant={removeParticipant}
         changeParticipantAttributes={changeParticipantAttributes}
         activeParticipant={activeParticipant}
+        changeParticipantDelayed={changeParticipantDelayed}
       />
       <RollChance
         participants={participants}

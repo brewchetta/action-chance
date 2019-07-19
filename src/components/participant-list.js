@@ -7,7 +7,8 @@ const ParticipantList = ({
   removeParticipant,
   setChances,
   changeParticipantAttributes,
-  activeParticipant
+  activeParticipant,
+  changeParticipantDelayed
 }) => {
   // console.log(isALetter("a"));
   const renderParticipantList = () => {
@@ -24,6 +25,7 @@ const ParticipantList = ({
             activeParticipant={
               activeParticipant ? par.name === activeParticipant.name : null
             }
+            changeParticipantDelayed={changeParticipantDelayed}
           />
         );
       });

@@ -7,7 +7,8 @@ const ParticipantCard = ({
   changeParticipantAttributes,
   removeParticipant,
   setChances,
-  activeParticipant
+  activeParticipant,
+  changeParticipantDelayed
 }) => {
   const handleAttributeAdd = attr => {
     if (participant.attributes) {
@@ -40,6 +41,10 @@ const ParticipantCard = ({
     }
   };
 
+  const delayParticipant = () => {
+    changeParticipantDelayed(participant, true);
+  };
+
   return (
     <div style={useActiveBorder()}>
       <p>
@@ -49,6 +54,9 @@ const ParticipantCard = ({
         >
           Add Chance
         </button>
+        {!participant.delayed && participant.chances ? (
+          <button onClick={delayParticipant}>Delay Turn</button>
+        ) : null}
         <button onClick={() => removeParticipant(participant)}>x</button>
       </p>
       {participant.attributes ? (
