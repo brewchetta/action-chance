@@ -3,6 +3,8 @@
   min-height: 70vh;
 }
 
+/* ------Background------ */
+
 #bg-mask {
   position: fixed;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1));
@@ -14,14 +16,27 @@
 }
 
 #bg {
+  animation: bg-sway 20s infinite alternate;
   position: fixed;
-  background: aliceblue;
+  /* background: url("https://i.pinimg.com/originals/a1/26/66/a12666d9f1539b13e7139d8d7d8389e7.jpg"); */
+  background-size: cover;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 120vw;
   height: 100vh;
   z-index: 4;
 }
+
+@keyframes bg-sway {
+  from {
+    left: 0;
+  }
+  to {
+    left: -20%;
+  }
+}
+
+/* ------Participant Container------ */
 
 #participant-container {
   padding: 3%;
@@ -30,6 +45,8 @@
   display: grid;
   grid-auto-rows: 50px 1fr 50px;
 }
+
+/* ------Participant List------ */
 
 #participant-list {
   display: grid;
@@ -57,5 +74,19 @@
   }
 }
 
+/* ------Participant Card------ */
+
 .participant-card {
+  border: solid black 2px;
+  border-radius: 10px;
+  margin: 3%;
+  padding: 4px;
+  background-color: white;
+}
+
+.participant-card-active {
+  border: solid green 6px;
+  border-radius: 10px;
+  margin: 3%;
+  background-color: white;
 }

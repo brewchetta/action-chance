@@ -30,14 +30,9 @@ const ParticipantCard = ({
 
   const useActiveBorder = () => {
     if (activeParticipant) {
-      return { border: "solid green 6px", borderRadius: "5px", margin: "3%" };
+      return "participant-card-active";
     } else {
-      return {
-        border: "solid black 2px",
-        borderRadius: "5px",
-        margin: "3%",
-        padding: "4px"
-      };
+      return "participant-card";
     }
   };
 
@@ -46,7 +41,7 @@ const ParticipantCard = ({
   };
 
   return (
-    <div style={useActiveBorder()}>
+    <div className={useActiveBorder()}>
       <p>
         {participant.name} | Chances: {participant.chances}
       </p>
