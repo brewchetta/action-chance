@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import ParticipantsContainer from "./components/participants-container";
+import Options from "./components/options";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div id="bg" />
       <div id="bg-container" />
       <ParticipantsContainer />
+      <Options />
     </div>
   );
 }

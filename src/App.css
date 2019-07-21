@@ -100,3 +100,17 @@
   color: white;
   padding: 5px
 }
+
+/* ------Options------ */
+#options-container {
+  z-index: 10;
+  position: fixed;
+  top: 5px;
+  right: 3%;
+  text-align: right;
+  background: white;
+}
+
+#options-bg {
+  padding: 5px;
+}
