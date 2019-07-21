@@ -51,7 +51,7 @@ const ParticipantsContainer = props => {
 
   return (
     <div id="participant-container">
-      <h3>{displayMessage}</h3>
+      <h3 id="display-message">{displayMessage}</h3>
       <ParticipantList
         setChances={setChances}
         participants={participants}

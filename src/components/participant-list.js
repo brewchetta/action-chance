@@ -10,7 +10,6 @@ const ParticipantList = ({
   activeParticipant,
   changeParticipantDelayed
 }) => {
-  // console.log(isALetter("a"));
   const renderParticipantList = () => {
     return [...participants]
       .sort((a, b) => compareAlphabetical(a.name, b.name))
@@ -32,12 +31,7 @@ const ParticipantList = ({
   };
 
   if (participants.length) {
-    return (
-      <>
-        <p>Participants</p>
-        <div id="participant-list">{renderParticipantList()}</div>
-      </>
-    );
+    return <div id="participant-list">{renderParticipantList()}</div>;
   } else {
     return <p>Add a participant</p>;
   }

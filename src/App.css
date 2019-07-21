@@ -20,7 +20,7 @@
 #bg {
   animation: bg-sway 20s infinite alternate;
   position: fixed;
-  /* background: url("https://i.pinimg.com/originals/a1/26/66/a12666d9f1539b13e7139d8d7d8389e7.jpg"); */
+  background: url("https://i.pinimg.com/originals/a1/26/66/a12666d9f1539b13e7139d8d7d8389e7.jpg");
   background-size: cover;
   top: 0;
   left: 0;
@@ -91,4 +91,12 @@
   border-radius: 10px;
   margin: 3%;
   background-color: white;
+}
+
+/* ------Display Message------ */
+
+#display-message {
+  background: black;
+  color: white;
+  padding: 5px
 }
