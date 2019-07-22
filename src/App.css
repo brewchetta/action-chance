@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 .App {
   text-align: center;
   min-height: 70vh;
@@ -53,6 +57,7 @@ h1 {
   position: fixed;
   background-size: 100%;
   background-position: center;
+  background-repeat: no-repeat;
   top: 0;
   left: 0;
   width: 120vw;
