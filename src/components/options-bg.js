@@ -4,18 +4,33 @@
 
 import React, { useState } from "react";
 
-const OptionsBG = props => {
+const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
   const [bgInput, setBGInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [bgMaskColor, setBGMaskColor] = useState(bgMask);
+  const [bgMaskIntensity, setBGMaskIntensity] = useState("50");
 
-  const handleBGInput = event => {
-    setBGInput(event.target.value);
+  const handleInput = event => {
+    if (event.target.id === "bg-image-input") {
+      setBGInput(event.target.value);
+    } else if (event.target.id === "bg-color-input") {
+      console.log(event.target.value);
+      setBGMaskColor(event.target.value);
+    } else if (event.target.id === "bg-intensity-input") {
+      console.log(event.target.value);
+      setBGMaskIntensity(event.target.value);
+    }
   };
 
-  const handleBGSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    console.log(bgInput);
-    setBGInput("");
+    if (event.target.id === "options-bg") {
+      setBG(bgInput);
+      setBGInput("");
+    } else if (event.target.id === "options-bg-mask") {
+      setBGMask(bgMaskColor);
+      // TODO: Make bg mask properly take in a color value / validate color as proper choice
+    }
   };
 
   const handleToggleOpen = () => {
@@ -25,18 +40,38 @@ const OptionsBG = props => {
   if (isOpen) {
     return (
       <>
-        <button onClick={handleToggleOpen}>Change Background</button>
-        <form id="options-bg" onSubmit={handleBGSubmit}>
+        <button onClick={handleToggleOpen}>Change Background ▲</button>
+        <form id="options-bg" onSubmit={handleSubmit}>
           <label>Add a new background</label>
           <br />
-          <input value={bgInput} onChange={handleBGInput} />
+          <input id="bg-image-input" value={bgInput} onChange={handleInput} />
           <br />
           <input type="submit" value="Submit" />
+        </form>
+        <form id="options-bg-mask" onSubmit={handleSubmit}>
+          <label>Add a background filter</label>
+          <br />
+          <input
+            type="range"
+            min="1"
+            max="100"
+            id="bg-color-input"
+            onChange={handleInput}
+          />
+          <br />
+          <input
+            id="bg-intensity-input"
+            name="Color Picker"
+            type="color"
+            onChange={handleInput}
+          />
+          <br />
+          <input type="submit" value="Add" />
         </form>
       </>
     );
   } else {
-    return <button onClick={handleToggleOpen}>Change Background</button>;
+    return <button onClick={handleToggleOpen}>Change Background ▼</button>;
   }
 };
 

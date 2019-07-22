@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OptionsBG from "./options-bg";
 
-const Options = props => {
+const Options = ({ bg, setBG, bgMask, setBGMask }) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
 
   const handleToggleOpen = () => {
@@ -12,7 +12,12 @@ const Options = props => {
     if (optionsOpen) {
       return (
         <div>
-          <OptionsBG />
+          <OptionsBG
+            bg={bg}
+            setBG={setBG}
+            bgMask={bgMask}
+            setBGMask={setBGMask}
+          />
         </div>
       );
     } else {
@@ -22,7 +27,7 @@ const Options = props => {
 
   return (
     <div id="options-container">
-      <button onClick={handleToggleOpen}>Options</button>
+      <button onClick={handleToggleOpen}>◀ Options ▶</button>
       {renderOptions()}
     </div>
   );
