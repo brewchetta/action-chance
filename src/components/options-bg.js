@@ -1,6 +1,5 @@
 // https://stackoverflow.com/questions/5633264/javascript-get-image-dimensions
 // ^ change the background class depending on the size of a linked image
-// TODO: the idea here is a user will be able to link / temporarily upload an image to be used as a background image
 
 import React, { useState } from "react";
 
@@ -40,6 +39,7 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
     return (
       <>
         <button onClick={handleToggleOpen}>Change Background ▲</button>
+        {/* Change background image */}
         <form id="options-bg" onSubmit={handleSubmit}>
           <label>Add a new background</label>
           <br />
@@ -49,15 +49,16 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
         </form>
         <label>Add a background filter</label>
         <br />
+        {/* Change background color intensity */}
         <input
           id="bg-intensity-input"
           type="range"
           min="1"
-          max="50"
+          max="75"
           defaultValue="25"
           onChange={handleInput}
         />
-        <br />
+        {/* Change background color */}
         <input
           id="bg-color-input"
           name="Color Picker"
@@ -65,8 +66,6 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
           defaultValue="#7D7D7D"
           onChange={handleInput}
         />
-        <br />
-        <input type="submit" value="Add" />
       </>
     );
   } else {
