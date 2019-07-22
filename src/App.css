@@ -5,7 +5,10 @@
 
 /* ------General------ */
 
-p, h3, h2, h1 {
+p,
+h3,
+h2,
+h1 {
   cursor: default;
 }
 
@@ -20,7 +23,7 @@ p, h3, h2, h1 {
 
 /* ------Background------ */
 
-/* The background should be selected in some sort of options tab to allow for several different backgrounds dependant on setting / etc */
+/* The background should be selected in some sort of options tab to allow for several different backgrounds dependent on setting / etc */
 
 #bg-mask {
   position: fixed;
@@ -32,12 +35,11 @@ p, h3, h2, h1 {
   opacity: 0.2;
 }
 
-/* Ideally there should be some way to get rgb values and apply them to the background mask */
-
 #bg {
   animation: bg-sway 20s infinite alternate;
   position: fixed;
-  background-size: cover;
+  background-size: 100%;
+  background-position: center;
   top: 0;
   left: 0;
   width: 120vw;
@@ -114,7 +116,7 @@ p, h3, h2, h1 {
 #display-message {
   background: black;
   color: white;
-  padding: 5px
+  padding: 5px;
 }
 
 /* ------Options------ */

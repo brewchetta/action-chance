@@ -10,19 +10,6 @@ function App() {
 
   const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });
 
-  // TODO: Use the below to find and properly dimension a background
-  // const setBGDimensions = () => {
-  //   var img = new Image();
-  //   img.onload = function() {
-  //     var height = img.height;
-  //     var width = img.width;
-  //     console.log(height, width);
-  //   };
-  //   img.src = bg;
-  // };
-
-  // setBGDimensions();
-
   return (
     <div className="App">
       <div
