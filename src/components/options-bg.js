@@ -25,7 +25,7 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (event.target.id === "options-bg") {
+    if (event.target.id === "options-bg-image") {
       setBG(bgInput);
       setBGInput("");
     }
@@ -38,38 +38,46 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
   if (isOpen) {
     return (
       <>
-        <button onClick={handleToggleOpen}>Change Background ▲</button>
-        {/* Change background image */}
-        <form id="options-bg" onSubmit={handleSubmit}>
-          <label>Add a new background</label>
+        <button onClick={handleToggleOpen} id="options-button">
+          Change Background ▲
+        </button>
+        <div id="options-bg">
+          {/* Change background image */}
+          <form id="options-bg-image" onSubmit={handleSubmit}>
+            <label>Add a new background</label>
+            <br />
+            <input id="bg-image-input" value={bgInput} onChange={handleInput} />
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+          <label>Add a background filter</label>
           <br />
-          <input id="bg-image-input" value={bgInput} onChange={handleInput} />
-          <br />
-          <input type="submit" value="Submit" />
-        </form>
-        <label>Add a background filter</label>
-        <br />
-        {/* Change background color intensity */}
-        <input
-          id="bg-intensity-input"
-          type="range"
-          min="1"
-          max="75"
-          defaultValue={bgMask.intensity}
-          onChange={handleInput}
-        />
-        {/* Change background color */}
-        <input
-          id="bg-color-input"
-          name="Color Picker"
-          type="color"
-          defaultValue={bgMask.color}
-          onChange={handleInput}
-        />
+          {/* Change background color intensity */}
+          <input
+            id="bg-intensity-input"
+            type="range"
+            min="1"
+            max="75"
+            defaultValue={bgMask.intensity}
+            onChange={handleInput}
+          />
+          {/* Change background color */}
+          <input
+            id="bg-color-input"
+            name="Color Picker"
+            type="color"
+            defaultValue={bgMask.color}
+            onChange={handleInput}
+          />
+        </div>
       </>
     );
   } else {
-    return <button onClick={handleToggleOpen}>Change Background ▼</button>;
+    return (
+      <button onClick={handleToggleOpen} id="options-button">
+        Change Background ▼
+      </button>
+    );
   }
 };
 

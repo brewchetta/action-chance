@@ -3,9 +3,13 @@
   min-height: 70vh;
 }
 
-/* ------Fillscreen------ */
-/* Used for elements that should fill the entirety of the screen */
+/* ------General------ */
 
+p, h3, h2, h1 {
+  cursor: default;
+}
+
+/* Used for elements that should fill the entirety of the screen */
 .fillscreen {
   position: fixed;
   top: 0;
@@ -125,4 +129,8 @@
 
 #options-bg {
   padding: 5px;
+}
+
+#options-button {
+  width: 100%;
 }
