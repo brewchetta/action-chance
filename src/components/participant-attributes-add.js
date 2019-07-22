@@ -29,6 +29,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
   const attrButton = attr => {
     return (
       <button
+        className="attribute-button"
         key={attr}
         onClick={() => {
           setIsOpen(!isOpen);

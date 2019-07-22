@@ -12,6 +12,19 @@ h1 {
   cursor: default;
 }
 
+.attribute-button {
+  background: none;
+  border: none;
+  padding: 2px;
+  font-size: 2em;
+}
+
+.attribute-button:hover {
+  border: solid black 2px;
+  padding: 0;
+  border-radius: 3px;
+}
+
 /* Used for elements that should fill the entirety of the screen */
 .fillscreen {
   position: fixed;

@@ -21,9 +21,11 @@ const AddParticipants = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    setParticipants([...participants, { name: nameInput, chances: 1 }]);
-    setDisplayMessage(`${nameInput} is ready!`);
-    setNameInput("");
+    if (nameInput.length) {
+      setParticipants([...participants, { name: nameInput, chances: 1 }]);
+      setDisplayMessage(`${nameInput} is ready!`);
+      setNameInput("");
+    }
   };
 
   return (
