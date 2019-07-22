@@ -54,6 +54,7 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
           type="range"
           min="1"
           max="50"
+          defaultValue="25"
           onChange={handleInput}
         />
         <br />
@@ -61,6 +62,7 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
           id="bg-color-input"
           name="Color Picker"
           type="color"
+          defaultValue="#7D7D7D"
           onChange={handleInput}
         />
         <br />
