@@ -69,8 +69,11 @@ h1 {
 /* ------Participant List------ */
 
 #participant-list {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 1200px) {
@@ -97,10 +100,10 @@ h1 {
 /* ------Participant Card------ */
 
 .participant-card {
-  border: solid black 2px;
+  border: solid black 4px;
   border-radius: 10px;
   margin: 3%;
-  padding: 4px;
+  padding: 2px;
   background-color: white;
 }
 
