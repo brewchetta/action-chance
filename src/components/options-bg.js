@@ -7,18 +7,20 @@ import React, { useState } from "react";
 const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
   const [bgInput, setBGInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [bgMaskColor, setBGMaskColor] = useState(bgMask);
-  const [bgMaskIntensity, setBGMaskIntensity] = useState("50");
 
   const handleInput = event => {
-    if (event.target.id === "bg-image-input") {
-      setBGInput(event.target.value);
-    } else if (event.target.id === "bg-color-input") {
-      console.log(event.target.value);
-      setBGMaskColor(event.target.value);
-    } else if (event.target.id === "bg-intensity-input") {
-      console.log(event.target.value);
-      setBGMaskIntensity(event.target.value);
+    switch (event.target.id) {
+      case "bg-image-input":
+        setBGInput(event.target.value);
+        break;
+      case "bg-color-input":
+        setBGMask({ color: event.target.value, intensity: bgMask.intensity });
+        break;
+      case "bg-intensity-input":
+        setBGMask({ color: bgMask.color, intensity: event.target.value });
+        break;
+      default:
+        console.warning("Improper handle input");
     }
   };
 
@@ -27,9 +29,6 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
     if (event.target.id === "options-bg") {
       setBG(bgInput);
       setBGInput("");
-    } else if (event.target.id === "options-bg-mask") {
-      setBGMask(bgMaskColor);
-      // TODO: Make bg mask properly take in a color value / validate color as proper choice
     }
   };
 
@@ -48,26 +47,24 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask }) => {
           <br />
           <input type="submit" value="Submit" />
         </form>
-        <form id="options-bg-mask" onSubmit={handleSubmit}>
-          <label>Add a background filter</label>
-          <br />
-          <input
-            type="range"
-            min="1"
-            max="100"
-            id="bg-color-input"
-            onChange={handleInput}
-          />
-          <br />
-          <input
-            id="bg-intensity-input"
-            name="Color Picker"
-            type="color"
-            onChange={handleInput}
-          />
-          <br />
-          <input type="submit" value="Add" />
-        </form>
+        <label>Add a background filter</label>
+        <br />
+        <input
+          id="bg-intensity-input"
+          type="range"
+          min="1"
+          max="50"
+          onChange={handleInput}
+        />
+        <br />
+        <input
+          id="bg-color-input"
+          name="Color Picker"
+          type="color"
+          onChange={handleInput}
+        />
+        <br />
+        <input type="submit" value="Add" />
       </>
     );
   } else {

@@ -12,6 +12,11 @@ const Options = ({ bg, setBG, bgMask, setBGMask }) => {
     if (optionsOpen) {
       return (
         <div>
+          <div
+            className="fillscreen"
+            onClick={handleToggleOpen}
+            style={{ zIndex: "-1" }}
+          />
           <OptionsBG
             bg={bg}
             setBG={setBG}

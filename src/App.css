@@ -3,6 +3,17 @@
   min-height: 70vh;
 }
 
+/* ------Fillscreen------ */
+/* Used for elements that should fill the entirety of the screen */
+
+.fillscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
 /* ------Background------ */
 
 /* The background should be selected in some sort of options tab to allow for several different backgrounds dependant on setting / etc */
