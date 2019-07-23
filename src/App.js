@@ -15,7 +15,9 @@ function App() {
       <div
         id="bg-mask"
         style={{
-          backgroundColor: `${bgMask.color}`,
+          background: `linear-gradient(${bgMask.color + "90"}, ${
+            bgMask.color
+          })`,
           opacity: `${bgMask.intensity * 0.01}`
         }}
         class="fillscreen"

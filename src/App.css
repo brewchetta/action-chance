@@ -58,7 +58,7 @@ input:active {
 
 /* ------Background------ */
 
-/* The background should be selected in some sort of options tab to allow for several different backgrounds dependent on setting / etc */
+/* Bg should change size depending on portrait vs landscape */
 
 #bg-mask {
   z-index: 5;
@@ -91,6 +91,7 @@ input:active {
 
 #participant-container {
   padding: 3%;
+  padding-top: 0;
   z-index: 10;
   position: relative;
   display: grid;
@@ -155,9 +156,7 @@ input:active {
   margin-bottom: 10px;
   width: 50%;
   min-width: 300px;
-  border: solid white;
-  border-width: 0 2px 0 2px;
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
 }
 
 /* ------Options------ */
@@ -180,6 +179,10 @@ input:active {
 #options-container:hover {
   background: white;
 }
+
+/* TODO: */
+/* Add new container for buttons so they exist on a grid */
+/* Style buttons so they're like so:  ( Something | x ) */
 
 #options-bg {
   padding: 5px;
