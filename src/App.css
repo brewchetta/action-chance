@@ -34,19 +34,6 @@ input:active {
   padding: 2px;
 }
 
-.attribute-button {
-  background: none;
-  border: none;
-  padding: 2px;
-  font-size: 2em;
-}
-
-.attribute-button:hover {
-  border: solid black 2px;
-  padding: 0;
-  border-radius: 3px;
-}
-
 /* Used for elements that should fill the entirety of the screen */
 .fillscreen {
   position: fixed;
@@ -62,6 +49,14 @@ button {
   border-radius: 3px;
   margin: 2px;
   padding: 3px;
+}
+
+button:hover {
+  color: green;
+}
+
+button:active {
+  color: grey;
 }
 
 /* ------Background------ */
@@ -161,6 +156,19 @@ button {
   margin: 3%;
   padding: 2px;
   background-color: white;
+  position: relative;
+  animation: participant-card-appear 0.5s;
+}
+
+@keyframes participant-card-appear {
+  from {
+    opacity: 0;
+    top: -50px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
 }
 
 .participant-card-active {
@@ -181,6 +189,30 @@ button {
 
 .participant-image {
   position: relative;
+}
+
+/* ------Participant Attribute Tag Buttons------ */
+
+.participant-card-buttons {
+  border: solid black 2px;
+  border-radius: 10px;
+  margin: 0 5px 0 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.attribute-button {
+  background: none;
+  border: none;
+  padding: 2px;
+  font-size: 2em;
+}
+
+.attribute-button:hover {
+  border: solid black 2px;
+  padding: 0;
+  border-radius: 3px;
+  color: black;
 }
 
 /* ------Display Message------ */
