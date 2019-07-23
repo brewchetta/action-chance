@@ -25,7 +25,7 @@ const Options = ({ bg, setBG, bgMask, setBGMask }) => {
             setBGMask={setBGMask}
             setOptionsMessage={setOptionsMessage}
           />
-          {optionsMessage ? <span>{optionsMessage}</span> : null}
+          {optionsMessage ? <p id="options-message">{optionsMessage}</p> : null}
           {/* TODO: Style the message so it's smaller and more out of the way */}
         </div>
       );
@@ -36,7 +36,12 @@ const Options = ({ bg, setBG, bgMask, setBGMask }) => {
 
   return (
     <div id="options-container">
-      <button onClick={handleToggleOpen}>◀ Options ▶</button>
+      <img
+        src="https://www.shareicon.net/data/32x32/2017/01/17/872814_gear_512x512.png"
+        alt="Options"
+        onClick={handleToggleOpen}
+        id="options-toggle-open-button"
+      />
       {renderOptions()}
     </div>
   );

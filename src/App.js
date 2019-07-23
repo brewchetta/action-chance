@@ -5,7 +5,7 @@ import Options from "./components/options";
 
 function App() {
   const [bg, setBG] = useState(
-    "https://i.pinimg.com/originals/a1/26/66/a12666d9f1539b13e7139d8d7d8389e7.jpg"
+    "https://clipart.wpblink.com/sites/default/files/wallpaper/drawn-forest/372214/drawn-forest-adobe-illustrator-372214-239163.jpg"
   );
 
   const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });

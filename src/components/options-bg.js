@@ -1,8 +1,5 @@
-// https://clipart.wpblink.com/sites/default/files/wallpaper/drawn-forest/372214/drawn-forest-adobe-illustrator-372214-239163.jpg <-- pine forest vector art
-
-// https://pre11.deviantart.net/e360/th/pre/f/2008/049/9/3/forest_never_sleeps_by_zalas.jpg <-- figure in forest
-
 import React, { useState } from "react";
+import OptionsBGButtons from "./options-bg-buttons";
 
 const OptionsBG = ({ bg, setBG, bgMask, setBGMask, setOptionsMessage }) => {
   const [bgNameInput, setBGNameInput] = useState("");
@@ -65,46 +62,6 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask, setOptionsMessage }) => {
     }
   };
 
-  const renderLocalImgButtons = () => {
-    const json = JSON.parse(localStorage.bgImages);
-    return Object.keys(json).map(item => {
-      return (
-        <>
-          <button
-            key={item}
-            className="saved-bg-button"
-            data-image={json[item]}
-            onClick={handleSubmit}
-          >
-            {item}
-          </button>
-          <button
-            key={`${item}-remove`}
-            className="saved-bg-button-remove"
-            data-id={item}
-            onClick={handleSubmit}
-          >
-            X
-          </button>
-        </>
-      );
-    });
-  };
-
-  const renderLocalBGButtons = () => {
-    if (localStorage.bgImages) {
-      return (
-        <>
-          <label>Saved Backgrounds:</label>
-          <br />
-          {renderLocalImgButtons()}
-        </>
-      );
-    } else {
-      return null;
-    }
-  };
-
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -117,7 +74,7 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask, setOptionsMessage }) => {
         </button>
         <div id="options-bg">
           {/* Use local background image */}
-          {renderLocalBGButtons()}
+          <OptionsBGButtons handleSubmit={handleSubmit} />
           {/* Add background image */}
           <form id="options-bg-image" onSubmit={handleSubmit}>
             <label>Add a new background</label>
