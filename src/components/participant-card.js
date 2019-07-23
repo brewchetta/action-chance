@@ -1,6 +1,7 @@
 import React from "react";
 import ParticipantAttributes from "./participant-attributes";
-import ParticipantAttrsAdd from "./participant-attributes-add.js";
+import ParticipantAttrsAdd from "./participant-attributes-add";
+import ParticipantImage from "./participant-image";
 
 const ParticipantCard = ({
   participant,
@@ -40,8 +41,13 @@ const ParticipantCard = ({
     changeParticipantDelayed(participant, true);
   };
 
+  // https://img.purch.com/h/1000/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA2OC8wOTUvb3JpZ2luYWwvZ2lyYWZmZS5qcGc= tall
+  // https://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg wide
+  // https://pathfinderwiki.com/mediawiki/images/thumb/1/1b/Fumbus.jpg/250px-Fumbus.jpg <-- tall goblin
+
   return (
     <div className={useActiveBorder()}>
+      <ParticipantImage imageURL="https://pathfinderwiki.com/mediawiki/images/thumb/1/1b/Fumbus.jpg/250px-Fumbus.jpg" />
       <p>
         {participant.name} | Chances: {participant.chances}
       </p>

@@ -61,6 +61,7 @@ button {
   background: white;
   border-radius: 3px;
   margin: 2px;
+  padding: 3px;
 }
 
 /* ------Background------ */
@@ -169,6 +170,19 @@ button {
   background-color: white;
 }
 
+.participant-image-frame {
+  border-radius: 100%;
+  height: 100px;
+  width: 100px;
+  border: inset 10px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.participant-image {
+  position: relative;
+}
+
 /* ------Display Message------ */
 
 #display-message {
@@ -196,7 +210,7 @@ button {
   text-align: right;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
-  transition: background 1s;
+  transition: background 0.5s;
 }
 
 #options-container:hover {
