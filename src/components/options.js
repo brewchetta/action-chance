@@ -7,6 +7,7 @@ const Options = ({ bg, setBG, bgMask, setBGMask }) => {
 
   const handleToggleOpen = () => {
     setOptionsOpen(!optionsOpen);
+    setOptionsMessage("");
   };
 
   const renderOptions = () => {
