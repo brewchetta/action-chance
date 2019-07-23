@@ -18,6 +18,7 @@ function App() {
           backgroundColor: `${bgMask.color}`,
           opacity: `${bgMask.intensity * 0.01}`
         }}
+        class="fillscreen"
       />
       <div id="bg" style={{ backgroundImage: `url(${bg})` }} />
       <div id="bg-container" />
