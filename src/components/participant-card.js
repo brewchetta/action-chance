@@ -50,6 +50,7 @@ const ParticipantCard = ({
       <ParticipantImage
         imageURL={participant.image ? participant.image : defaultImage}
         isActive={activeParticipant}
+        participantName={participant.name}
       />
       <p>
         {participant.name} | Chances: {participant.chances}

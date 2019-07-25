@@ -1,18 +1,13 @@
 import React, { useState } from "react";
+import stringToColor from "../toolbox/string-to-color";
 
-const ParticipantImage = ({ imageURL, isActive }) => {
+const ParticipantImage = ({ imageURL, isActive, participantName }) => {
   const [isPortrait, setIsPortrait] = useState(true);
   const [imagePlacement, setImagePlacement] = useState(0);
   const [borderColor, setBorderColor] = useState(null);
 
-  // Set border color
-  const randomColor = () => {
-    return `rgb(${Math.random() * 255}, ${Math.random() *
-      255}, ${Math.random() * 255})`;
-  };
-
   if (!borderColor) {
-    setBorderColor(randomColor());
+    setBorderColor(stringToColor(participantName));
   }
 
   // Set the image placement and decide whether it's portrait or not
@@ -60,9 +55,3 @@ const ParticipantImage = ({ imageURL, isActive }) => {
 };
 
 export default ParticipantImage;
-
-// var img = new Image();
-// img.onload = function() {
-//   alert(this.width + 'x' + this.height);
-// }
-// img.src = 'http://www.google.com/intl/en_ALL/images/logo.gif';
