@@ -32,7 +32,7 @@ const OptionsBGButtons = ({ handleSubmit }) => {
       <>
         <label>Saved Backgrounds:</label>
         <br />
-        {renderLocalImgButtons()}
+        <div id="saved-bg-button-container">{renderLocalImgButtons()}</div>
       </>
     );
   } else {

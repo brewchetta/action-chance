@@ -59,7 +59,9 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
     <div className="attr-add">
       {isOpen ? renderAttrButtons() : null}
       <br />
-      <button onClick={toggleIsOpen}>Tags</button>
+      <button onClick={toggleIsOpen} style={{ background: "none" }}>
+        Tags
+      </button>
     </div>
   );
 };

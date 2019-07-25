@@ -14,17 +14,26 @@ const AddParticipants = ({
   setDisplayMessage
 }) => {
   const [nameInput, setNameInput] = useState("");
+  const [imageInput, setImageInput] = useState("");
 
   const handleInput = event => {
-    setNameInput(capitalize(event.target.value));
+    if (event.target.id === "name-input") {
+      setNameInput(capitalize(event.target.value));
+    } else if (event.target.id === "image-input") {
+      setImageInput(event.target.value);
+    }
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     if (nameInput.length) {
-      setParticipants([...participants, { name: nameInput, chances: 1 }]);
+      setParticipants([
+        ...participants,
+        { name: nameInput, chances: 1, image: imageInput }
+      ]);
       setDisplayMessage(`${nameInput} is ready!`);
       setNameInput("");
+      setImageInput("");
     }
   };
 
@@ -32,11 +41,20 @@ const AddParticipants = ({
     <>
       <form onSubmit={handleSubmit}>
         <input
+          id="name-input"
           type="text"
           name="name-input"
           value={nameInput}
           onChange={handleInput}
           placeholder="name"
+        />
+        <input
+          id="image-input"
+          type="text"
+          name="image-input"
+          value={imageInput}
+          onChange={handleInput}
+          placeholder="image url"
         />
         <input type="submit" value="Add" />
       </form>
