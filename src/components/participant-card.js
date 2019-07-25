@@ -2,7 +2,6 @@ import React from "react";
 import ParticipantAttributes from "./participant-attributes";
 import ParticipantAttrsAdd from "./participant-attributes-add";
 import ParticipantImage from "./participant-image";
-import { random } from "brews-toolboxjs";
 
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";

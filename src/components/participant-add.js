@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ParticipantImageList from "./participant-image-list";
 
 const capitalize = string => {
   if (string[0]) {
@@ -58,6 +59,7 @@ const AddParticipants = ({
         />
         <input type="submit" value="Add" />
       </form>
+      <ParticipantImageList setMainImageInput={setImageInput} />
     </>
   );
 };
