@@ -47,7 +47,10 @@ const ParticipantCard = ({
 
   return (
     <div className={useActiveBorder()}>
-      <ParticipantImage imageURL="https://pathfinderwiki.com/mediawiki/images/thumb/1/1b/Fumbus.jpg/250px-Fumbus.jpg" />
+      <ParticipantImage
+        imageURL="https://pathfinderwiki.com/mediawiki/images/thumb/1/1b/Fumbus.jpg/250px-Fumbus.jpg"
+        isActive={activeParticipant}
+      />
       <p>
         {participant.name} | Chances: {participant.chances}
       </p>
@@ -59,7 +62,9 @@ const ParticipantCard = ({
         </button>
         {!participant.delayed && participant.chances ? (
           <button onClick={delayParticipant}>Delay Turn</button>
-        ) : null}
+        ) : (
+          <div />
+        )}
         <button onClick={() => removeParticipant(participant)}>X</button>
       </div>
       <br />

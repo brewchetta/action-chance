@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ParticipantImage = ({ imageURL }) => {
+const ParticipantImage = ({ imageURL, isActive }) => {
   const [isPortrait, setIsPortrait] = useState(true);
   const [imagePlacement, setImagePlacement] = useState(0);
   const [borderColor, setBorderColor] = useState(null);
@@ -35,9 +35,18 @@ const ParticipantImage = ({ imageURL }) => {
   img.src = imageURL;
 
   return (
-    <div className="participant-image-frame" style={{ borderColor }}>
+    <div
+      className={
+        isActive
+          ? "participant-image-frame rotating"
+          : "participant-image-frame"
+      }
+      style={{ borderColor }}
+    >
       <img
-        className="participant-image"
+        className={
+          isActive ? "participant-image rotating-counter" : "participant-image"
+        }
         alt=""
         src={imageURL}
         style={

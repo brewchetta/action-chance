@@ -99,6 +99,14 @@ button:active {
   }
 }
 
+.rotating {
+  animation: rotate 2s infinite linear;
+}
+
+.rotating-counter {
+  animation: rotate 2s infinite linear reverse;
+}
+
 /* ------Background------ */
 
 /* Bg should change size depending on portrait vs landscape */
