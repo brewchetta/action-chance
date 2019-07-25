@@ -59,6 +59,46 @@ button:active {
   color: grey;
 }
 
+/* ------Animations------ */
+
+@keyframes bg-sway {
+  from {
+    left: 0;
+  }
+  to {
+    left: -20%;
+  }
+}
+
+@keyframes bg-sway-portrait {
+  from {
+    left: -40vw;
+  }
+  to {
+    left: -180vw;
+  }
+}
+
+@keyframes participant-card-appear {
+  from {
+    opacity: 0;
+    top: -50px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* ------Background------ */
 
 /* Bg should change size depending on portrait vs landscape */
@@ -85,24 +125,6 @@ button:active {
   #bg {
     animation: bg-sway-portrait 40s infinite alternate;
     width: 320vw;
-  }
-}
-
-@keyframes bg-sway {
-  from {
-    left: 0;
-  }
-  to {
-    left: -20%;
-  }
-}
-
-@keyframes bg-sway-portrait {
-  from {
-    left: -40vw;
-  }
-  to {
-    left: -180vw;
   }
 }
 
@@ -160,19 +182,8 @@ button:active {
   animation: participant-card-appear 0.5s;
 }
 
-@keyframes participant-card-appear {
-  from {
-    opacity: 0;
-    top: -50px;
-  }
-  to {
-    opacity: 1;
-    top: 0;
-  }
-}
-
 .participant-card-active {
-  border: solid green 6px;
+  border: solid red 6px;
   border-radius: 10px;
   margin: 3%;
   background-color: white;

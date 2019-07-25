@@ -31,7 +31,7 @@ const ParticipantCard = ({
 
   const useActiveBorder = () => {
     if (activeParticipant) {
-      return "participant-card-active";
+      return "participant-card participant-card-active";
     } else {
       return "participant-card";
     }
