@@ -4,12 +4,8 @@ import ParticipantAttrsAdd from "./participant-attributes-add";
 import ParticipantImage from "./participant-image";
 import { random } from "brews-toolboxjs";
 
-const randomImages = [
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5hL_ZuDEH4GXsm8iPrXXAnH6_Te0QXq6hjoRS7gwxBbvPD2XQ",
-  "https://pathfinderwiki.com/mediawiki/images/thumb/1/1b/Fumbus.jpg/250px-Fumbus.jpg <-- tall goblin",
-  "https://i.pinimg.com/originals/11/95/77/119577ce8dda216bb2ef5c8b0bc81739.png",
-  "https://secure.meetupstatic.com/photos/event/7/7/3/1/highres_456690513.jpeg"
-];
+const defaultImage =
+  "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
 const ParticipantCard = ({
   participant,
@@ -52,7 +48,7 @@ const ParticipantCard = ({
   return (
     <div className={useActiveBorder()}>
       <ParticipantImage
-        imageURL={participant.image ? participant.image : random(randomImages)}
+        imageURL={participant.image ? participant.image : defaultImage}
         isActive={activeParticipant}
       />
       <p>
