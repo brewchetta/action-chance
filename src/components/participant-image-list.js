@@ -4,7 +4,8 @@ import ParticipantImage from "./participant-image";
 const ParticipantImageList = ({ setMainImageInput }) => {
   const [imageInput, setImageInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  // const [imagePage, setImagePage] = useState(0);
+  const [imagePage, setImagePage] = useState(0);
+  const pageCap = () => Math.ceil(getImages().length / 12);
   // TODO: 12 per page PLZ since it's easily formatted for grid with 6, 4, 3, 2
 
   const getImages = () => {
@@ -18,15 +19,17 @@ const ParticipantImageList = ({ setMainImageInput }) => {
 
   const renderImages = () => {
     if (localStorage.images) {
-      return getImages().map(image => (
-        <div key={image} onClick={() => handleClick(image)}>
-          <ParticipantImage
-            imageURL={image}
-            isActive={false}
-            participantName=""
-          />
-        </div>
-      ));
+      return getImages()
+        .slice(imagePage * 12, (imagePage + 1) * 12)
+        .map(image => (
+          <div key={image} onClick={() => handleClick(image)}>
+            <ParticipantImage
+              imageURL={image}
+              isActive={false}
+              participantName=""
+            />
+          </div>
+        ));
     }
   };
 
@@ -44,6 +47,14 @@ const ParticipantImageList = ({ setMainImageInput }) => {
     setIsOpen(!isOpen);
   };
 
+  const handlePaginate = event => {
+    if (event.target.id === "page-previous" && imagePage > 0) {
+      setImagePage(imagePage - 1);
+    } else if (event.target.id === "page-next" && pageCap() > imagePage + 1) {
+      setImagePage(imagePage + 1);
+    }
+  };
+
   if (isOpen) {
     return (
       <>
@@ -54,7 +65,13 @@ const ParticipantImageList = ({ setMainImageInput }) => {
         />
         <button onClick={toggleIsOpen}>Add Image</button>
         <div id="add-images-container">{renderImages()}</div>
-        <button>Previous</button>
+        <button id="page-previous" onClick={handlePaginate}>
+          Previous
+        </button>
+        <button id="page-next" onClick={handlePaginate}>
+          Next
+        </button>
+        <p style={{ color: "white" }}>{`Page ${imagePage + 1}`}</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
