@@ -8,6 +8,7 @@ const ParticipantsContainer = props => {
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [activeParticipant, setActiveParticipant] = useState(null);
   const [addPartOpen, setAddPartOpen] = useState(false);
+  const [imageListIsOpen, setImageListIsOpen] = useState(false);
 
   const removeParticipant = participant => {
     setParticipants([...participants].filter(item => item !== participant));
@@ -60,25 +61,40 @@ const ParticipantsContainer = props => {
         changeParticipantAttributes={changeParticipantAttributes}
         activeParticipant={activeParticipant}
         changeParticipantDelayed={changeParticipantDelayed}
+        addPartOpen={addPartOpen}
       />
-      <div>
-        <RollChance
-          participants={participants}
-          setChances={setChances}
-          resetRound={resetRound}
-          setDisplayMessage={setDisplayMessage}
-          setActiveParticipant={setActiveParticipant}
-        />
-        <button onClick={reset}>Reset</button>
-      </div>
+
+      {!imageListIsOpen ? (
+        <div>
+          <RollChance
+            participants={participants}
+            setChances={setChances}
+            resetRound={resetRound}
+            setDisplayMessage={setDisplayMessage}
+            setActiveParticipant={setActiveParticipant}
+            addPartOpen={addPartOpen}
+          />
+          <button
+            onClick={reset}
+            className={
+              addPartOpen || participants.length === 0 ? "display-none" : null
+            }
+          >
+            Reset
+          </button>
+        </div>
+      ) : null}
       <button
         id="add-participant-button"
+        className="parentheses-border"
         onClick={() => setAddPartOpen(!addPartOpen)}
       >
-        Add a participant
+        {!addPartOpen ? "Add a participant" : "Back"}
       </button>
       {addPartOpen ? (
         <AddParticipant
+          imageListIsOpen={imageListIsOpen}
+          setImageListIsOpen={setImageListIsOpen}
           participants={participants}
           setParticipants={setParticipants}
           setDisplayMessage={setDisplayMessage}

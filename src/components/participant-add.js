@@ -13,10 +13,14 @@ const capitalize = string => {
 const AddParticipants = ({
   participants,
   setParticipants,
-  setDisplayMessage
+  setDisplayMessage,
+  imageListIsOpen,
+  setImageListIsOpen
 }) => {
   const [nameInput, setNameInput] = useState("");
-  const [imageInput, setImageInput] = useState("");
+  const [imageInput, setImageInput] = useState(
+    "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg"
+  );
 
   const handleInput = event => {
     setNameInput(capitalize(event.target.value));
@@ -37,14 +41,22 @@ const AddParticipants = ({
 
   return (
     <div id="participant-add-container">
-      {imageInput ? (
+      {!imageListIsOpen ? (
         <ParticipantImage
           imageURL={imageInput}
           isActive={true}
           participantName={nameInput}
         />
       ) : null}
-      <form onSubmit={handleSubmit}>
+      <ParticipantImageList
+        setMainImageInput={setImageInput}
+        isOpen={imageListIsOpen}
+        setIsOpen={setImageListIsOpen}
+      />
+      <form
+        onSubmit={handleSubmit}
+        className={imageListIsOpen ? "display-none" : null}
+      >
         <input
           id="name-input"
           type="text"
@@ -55,7 +67,6 @@ const AddParticipants = ({
         />
         <input type="submit" value="Add" />
       </form>
-      <ParticipantImageList setMainImageInput={setImageInput} />
     </div>
   );
 };

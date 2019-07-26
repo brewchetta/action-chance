@@ -34,6 +34,14 @@ input:active {
   padding: 2px;
 }
 
+.display-none {
+  display: none;
+}
+
+.display-hidden {
+  visibility: hidden;
+}
+
 /* Used for elements that should fill the entirety of the screen */
 .fillscreen {
   position: fixed;
@@ -49,14 +57,40 @@ button {
   border-radius: 3px;
   margin: 2px;
   padding: 3px;
+  cursor: pointer;
+  transition: background 0.25s;
 }
 
 button:hover {
-  color: green;
+  background: #ccc;
+}
+
+.inactive-button {
+  color: #aaa;
+  background: #333;
+}
+
+.inactive-button:hover {
+  color: #aaa;
+  cursor: default;
+}
+
+.parentheses-border {
+  margin: auto;
+  margin-top: 1em;
+  font-size: 1em;
+  background: #000a;
+  width: 30%;
+  min-width: 200px;
+  margin-bottom: 5px;
+  color: white;
+  border-radius: 10px;
+  border: solid white;
+  border-width: 0 2px 0 2px;
 }
 
 button:active {
-  color: grey;
+  background: #999;
 }
 
 /* ------Animations------ */
@@ -242,17 +276,6 @@ button:active {
 
 #add-participant-button {
   cursor: pointer;
-  margin: auto;
-  margin-top: 1em;
-  font-size: 1em;
-  background: rgba(0, 0, 0, 0.5);
-  width: 30%;
-  min-width: 200px;
-  margin-bottom: 5px;
-  color: white;
-  border-radius: 10px;
-  border: solid white;
-  border-width: 0 2px 0 2px;
 }
 
 #add-images-container {
@@ -268,6 +291,16 @@ button:active {
 
 #close-add-images-container {
   z-index: -1;
+}
+
+.add-image-div {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.add-image-div:hover {
+  opacity: 1;
 }
 
 @media (max-width: 780px) {

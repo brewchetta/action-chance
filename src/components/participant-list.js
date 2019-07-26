@@ -8,7 +8,8 @@ const ParticipantList = ({
   setChances,
   changeParticipantAttributes,
   activeParticipant,
-  changeParticipantDelayed
+  changeParticipantDelayed,
+  addPartOpen
 }) => {
   const renderParticipantList = () => {
     return [...participants]
@@ -31,7 +32,14 @@ const ParticipantList = ({
   };
 
   if (participants.length) {
-    return <div id="participant-list">{renderParticipantList()}</div>;
+    return (
+      <div
+        id="participant-list"
+        style={!addPartOpen ? null : { display: "none" }}
+      >
+        {renderParticipantList()}
+      </div>
+    );
   } else {
     return <div />;
   }

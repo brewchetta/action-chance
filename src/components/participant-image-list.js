@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import ParticipantImage from "./participant-image";
 
-const ParticipantImageList = ({ setMainImageInput }) => {
+const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
   const [imageInput, setImageInput] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
   const [imagePage, setImagePage] = useState(0);
   const pageCap = () => Math.ceil(getImages().length / 12);
   // TODO: 12 per page PLZ since it's easily formatted for grid with 6, 4, 3, 2
@@ -22,7 +21,11 @@ const ParticipantImageList = ({ setMainImageInput }) => {
       return getImages()
         .slice(imagePage * 12, (imagePage + 1) * 12)
         .map(image => (
-          <div key={image} onClick={() => handleClick(image)}>
+          <div
+            key={image}
+            onClick={() => handleClick(image)}
+            className="add-image-div"
+          >
             <ParticipantImage
               imageURL={image}
               isActive={false}
@@ -63,15 +66,23 @@ const ParticipantImageList = ({ setMainImageInput }) => {
           className="fillscreen"
           onClick={toggleIsOpen}
         />
-        <button onClick={toggleIsOpen}>Add Image</button>
+        {!isOpen ? <button onClick={toggleIsOpen}>Add Image</button> : null}
         <div id="add-images-container">{renderImages()}</div>
-        <button id="page-previous" onClick={handlePaginate}>
+        <button
+          id="page-previous"
+          className={imagePage > 0 ? null : "inactive-button"}
+          onClick={handlePaginate}
+        >
           Previous
         </button>
-        <button id="page-next" onClick={handlePaginate}>
+        <button
+          id="page-next"
+          onClick={handlePaginate}
+          className={pageCap() > imagePage + 1 ? null : "inactive-button"}
+        >
           Next
         </button>
-        <p style={{ color: "white" }}>{`Page ${imagePage + 1}`}</p>
+        <p className="parentheses-border">{`Page ${imagePage + 1}`}</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -84,7 +95,7 @@ const ParticipantImageList = ({ setMainImageInput }) => {
       </>
     );
   } else {
-    return <button onClick={toggleIsOpen}>Add Image</button>;
+    return <button onClick={toggleIsOpen}>Change Image</button>;
   }
 };
 

@@ -6,7 +6,8 @@ const RollChance = ({
   setChances,
   resetRound,
   setDisplayMessage,
-  setActiveParticipant
+  setActiveParticipant,
+  addPartOpen
 }) => {
   const nextChance = availableParticipants => {
     const activeParticipant = random(availableParticipants);
@@ -35,7 +36,16 @@ const RollChance = ({
     }
   };
 
-  return <button onClick={rollForChance}>Draw a person to act</button>;
+  return (
+    <button
+      onClick={rollForChance}
+      className={
+        addPartOpen || participants.length === 0 ? "display-hidden" : null
+      }
+    >
+      Draw a person to act
+    </button>
+  );
 };
 
 export default RollChance;
