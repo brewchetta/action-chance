@@ -95,7 +95,7 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
       </>
     );
   } else {
-    return <button onClick={toggleIsOpen}>Change Image</button>;
+    return <div />;
   }
 };
 

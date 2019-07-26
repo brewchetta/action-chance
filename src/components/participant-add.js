@@ -42,11 +42,16 @@ const AddParticipants = ({
   return (
     <div id="participant-add-container">
       {!imageListIsOpen ? (
-        <ParticipantImage
-          imageURL={imageInput}
-          isActive={true}
-          participantName={nameInput}
-        />
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => setImageListIsOpen(!imageListIsOpen)}
+        >
+          <ParticipantImage
+            imageURL={imageInput}
+            isActive={true}
+            participantName={nameInput}
+          />
+        </div>
       ) : null}
       <ParticipantImageList
         setMainImageInput={setImageInput}
