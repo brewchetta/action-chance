@@ -89,6 +89,10 @@ button:hover {
   border-width: 0 2px 0 2px;
 }
 
+.parentheses-border:hover {
+  background: #000c;
+}
+
 button:active {
   background: #999;
 }

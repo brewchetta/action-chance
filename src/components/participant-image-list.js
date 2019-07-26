@@ -53,7 +53,10 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
   const handlePaginate = event => {
     if (event.target.id === "page-previous" && imagePage > 0) {
       setImagePage(imagePage - 1);
-    } else if (event.target.id === "page-next" && pageCap() > imagePage + 1) {
+    } else if (
+      (event.target.id === "page-next" || event.target.id === "page-next-2") &&
+      pageCap() > imagePage + 1
+    ) {
       setImagePage(imagePage + 1);
     }
   };
@@ -82,7 +85,12 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
         >
           Next
         </button>
-        <p className="parentheses-border">{`Page ${imagePage + 1}`}</p>
+        <br />
+        <button
+          id="page-next-2"
+          className="parentheses-border"
+          onClick={handlePaginate}
+        >{`Page ${imagePage + 1}`}</button>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
