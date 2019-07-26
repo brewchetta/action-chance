@@ -5,6 +5,7 @@ const ParticipantImageList = ({ setMainImageInput }) => {
   const [imageInput, setImageInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   // const [imagePage, setImagePage] = useState(0);
+  // TODO: 12 per page PLZ since it's easily formatted for grid with 6, 4, 3, 2
 
   const getImages = () => {
     return JSON.parse(localStorage.images);

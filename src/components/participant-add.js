@@ -19,11 +19,7 @@ const AddParticipants = ({
   const [imageInput, setImageInput] = useState("");
 
   const handleInput = event => {
-    if (event.target.id === "name-input") {
-      setNameInput(capitalize(event.target.value));
-    } else if (event.target.id === "image-input") {
-      setImageInput(event.target.value);
-    }
+    setNameInput(capitalize(event.target.value));
   };
 
   const handleSubmit = event => {
@@ -56,14 +52,6 @@ const AddParticipants = ({
           value={nameInput}
           onChange={handleInput}
           placeholder="name"
-        />
-        <input
-          id="image-input"
-          type="text"
-          name="image-input"
-          value={imageInput}
-          onChange={handleInput}
-          placeholder="image url"
         />
         <input type="submit" value="Add" />
       </form>
