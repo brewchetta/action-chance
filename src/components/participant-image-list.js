@@ -47,15 +47,16 @@ const ParticipantImageList = ({ setMainImageInput }) => {
     return (
       <>
         <button onClick={toggleIsOpen}>Add Image</button>
-        <div>{renderImages()}</div>
+        <div id="add-images-container">{renderImages()}</div>
         <button>Previous</button>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             value={imageInput}
             onChange={handleInput}
-            placeholder="add new image"
+            placeholder="add new image url"
           />
+          <input type="submit" value="save" />
         </form>
         <button>Next</button>
       </>

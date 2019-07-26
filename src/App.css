@@ -241,6 +241,7 @@ button:active {
 /* ------Add Participant------ */
 
 #add-participant-button {
+  cursor: pointer;
   margin: auto;
   margin-top: 1em;
   font-size: 1em;
@@ -252,6 +253,40 @@ button:active {
   border-radius: 10px;
   border: solid white;
   border-width: 0 2px 0 2px;
+}
+
+#add-images-container {
+  border: solid white;
+  border-width: 0 3px 0 3px;
+  border-radius: 10px;
+  background: #000a;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 15px 0 15px 0;
+}
+
+@media (max-width: 780px) {
+  #add-images-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  #add-images-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  #add-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  #add-images-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ------Display Message------ */

@@ -40,7 +40,7 @@ const AddParticipants = ({
   };
 
   return (
-    <>
+    <div id="participant-add-container">
       {imageInput ? (
         <ParticipantImage
           imageURL={imageInput}
@@ -68,7 +68,7 @@ const AddParticipants = ({
         <input type="submit" value="Add" />
       </form>
       <ParticipantImageList setMainImageInput={setImageInput} />
-    </>
+    </div>
   );
 };
 
