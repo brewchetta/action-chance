@@ -72,17 +72,7 @@ const ParticipantsContainer = props => {
         <button onClick={reset}>Reset</button>
       </div>
       <button
-        style={{
-          margin: "auto",
-          background: "rgba(0, 0, 0, 0.5)",
-          width: "30%",
-          minWidth: "200px",
-          marginBottom: "5px",
-          color: "white",
-          borderRadius: "10px",
-          border: "solid white",
-          borderWidth: "0 2px 0 2px"
-        }}
+        id="add-participant-button"
         onClick={() => setAddPartOpen(!addPartOpen)}
       >
         Add a participant

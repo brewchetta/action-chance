@@ -238,6 +238,22 @@ button:active {
   color: black;
 }
 
+/* ------Add Participant------ */
+
+#add-participant-button {
+  margin: auto;
+  margin-top: 1em;
+  font-size: 1em;
+  background: rgba(0, 0, 0, 0.5);
+  width: 30%;
+  min-width: 200px;
+  margin-bottom: 5px;
+  color: white;
+  border-radius: 10px;
+  border: solid white;
+  border-width: 0 2px 0 2px;
+}
+
 /* ------Display Message------ */
 
 #display-message {
