@@ -256,13 +256,17 @@ button:active {
 }
 
 #add-images-container {
+  background: #000a;
   border: solid white;
   border-width: 0 3px 0 3px;
   border-radius: 10px;
-  background: #000a;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   padding: 15px 0 15px 0;
+  position: relative;
+}
+
+#close-add-images-container {
 }
 
 @media (max-width: 780px) {

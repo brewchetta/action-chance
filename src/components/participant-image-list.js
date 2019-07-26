@@ -47,6 +47,11 @@ const ParticipantImageList = ({ setMainImageInput }) => {
   if (isOpen) {
     return (
       <>
+        <div
+          id="close-add-images-container"
+          className="fillscreen"
+          onClick={toggleIsOpen}
+        />
         <button onClick={toggleIsOpen}>Add Image</button>
         <div id="add-images-container">{renderImages()}</div>
         <button>Previous</button>
@@ -59,7 +64,6 @@ const ParticipantImageList = ({ setMainImageInput }) => {
           />
           <input type="submit" value="save" />
         </form>
-        <button>Next</button>
       </>
     );
   } else {
