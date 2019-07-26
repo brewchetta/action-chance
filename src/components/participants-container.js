@@ -7,6 +7,7 @@ const ParticipantsContainer = props => {
   const [participants, setParticipants] = useState([]);
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [activeParticipant, setActiveParticipant] = useState(null);
+  const [addPartOpen, setAddPartOpen] = useState(false);
 
   const removeParticipant = participant => {
     setParticipants([...participants].filter(item => item !== participant));
@@ -61,11 +62,6 @@ const ParticipantsContainer = props => {
         changeParticipantDelayed={changeParticipantDelayed}
       />
       <div>
-        <AddParticipant
-          participants={participants}
-          setParticipants={setParticipants}
-          setDisplayMessage={setDisplayMessage}
-        />
         <RollChance
           participants={participants}
           setChances={setChances}
@@ -75,6 +71,29 @@ const ParticipantsContainer = props => {
         />
         <button onClick={reset}>Reset</button>
       </div>
+      <button
+        style={{
+          margin: "auto",
+          background: "rgba(0, 0, 0, 0.5)",
+          width: "30%",
+          minWidth: "200px",
+          marginBottom: "5px",
+          color: "white",
+          borderRadius: "10px",
+          border: "solid white",
+          borderWidth: "0 2px 0 2px"
+        }}
+        onClick={() => setAddPartOpen(!addPartOpen)}
+      >
+        Add a participant
+      </button>
+      {addPartOpen ? (
+        <AddParticipant
+          participants={participants}
+          setParticipants={setParticipants}
+          setDisplayMessage={setDisplayMessage}
+        />
+      ) : null}
     </div>
   );
 };

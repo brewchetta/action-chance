@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ParticipantImageList from "./participant-image-list";
+import ParticipantImage from "./participant-image";
 
 const capitalize = string => {
   if (string[0]) {
@@ -40,6 +41,13 @@ const AddParticipants = ({
 
   return (
     <>
+      {imageInput ? (
+        <ParticipantImage
+          imageURL={imageInput}
+          isActive={true}
+          participantName={nameInput}
+        />
+      ) : null}
       <form onSubmit={handleSubmit}>
         <input
           id="name-input"
