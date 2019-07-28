@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import stringToColor from "../toolbox/string-to-color";
+import { stringToColor } from "brews-toolboxjs";
 
 const ParticipantImage = ({ imageURL, isActive, participantName }) => {
   const [isPortrait, setIsPortrait] = useState(true);
