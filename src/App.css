@@ -72,6 +72,7 @@ button:hover {
 
 .inactive-button:hover {
   color: #aaa;
+  background: #333;
   cursor: default;
 }
 
