@@ -1,11 +1,15 @@
+// React
 import React from "react";
+// Components
 import ParticipantCard from "./participant-card";
 import ParticipantImage from "./participant-image";
+// Toolbox
 import { compareAlphabetical } from "brews-toolboxjs";
-
+// Images
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
+//*------Component------*//
 const ParticipantList = ({
   participants,
   removeParticipant,
@@ -15,7 +19,9 @@ const ParticipantList = ({
   changeParticipantDelayed,
   addPartOpen
 }) => {
+  //
   //*------Utilities------*//
+
   // Checks to see whether it's the participant's turn
   const isActive = participant =>
     activeParticipant ? participant.name === activeParticipant.name : false;

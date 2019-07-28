@@ -1,11 +1,14 @@
+// React
 import React from "react";
+// Components
 import ParticipantAttributes from "./participant-attributes";
 import ParticipantAttrsAdd from "./participant-attributes-add";
 import ParticipantImage from "./participant-image";
-
+// Images
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
+//*------Component------*//
 const ParticipantCard = ({
   participant,
   changeParticipantAttributes,
@@ -14,17 +17,20 @@ const ParticipantCard = ({
   activeParticipant,
   changeParticipantDelayed
 }) => {
+  //
+  //*------Utilities------*//
+
+  // Adds attribute to participant
   const handleAttributeAdd = attr => {
-    if (participant.attributes) {
-      changeParticipantAttributes(participant, [
-        ...participant.attributes,
-        attr
-      ]);
-    } else {
-      changeParticipantAttributes(participant, [attr]);
-    }
+    participant.attributes
+      ? changeParticipantAttributes(participant, [
+          ...participant.attributes,
+          attr
+        ])
+      : changeParticipantAttributes(participant, [attr]);
   };
 
+  // Removes attribute from participant
   const removeAttribute = attribute => {
     changeParticipantAttributes(
       participant,
@@ -32,6 +38,7 @@ const ParticipantCard = ({
     );
   };
 
+  // Determines whether a participant uses the active border or not
   const useActiveBorder = () => {
     if (activeParticipant) {
       return "participant-card participant-card-active";
@@ -40,10 +47,12 @@ const ParticipantCard = ({
     }
   };
 
+  // Sets the participant to delayed
   const delayParticipant = () => {
     changeParticipantDelayed(participant, true);
   };
 
+  //*------Render------*//
   return (
     <div className={useActiveBorder()}>
       <ParticipantImage
