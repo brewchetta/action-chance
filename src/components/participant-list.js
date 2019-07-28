@@ -75,12 +75,12 @@ const ParticipantList = props => {
       .map(!addPartOpen ? renderParticipantCard : renderParticipantImage);
   };
 
+  const listClass = () => {
+    return !addPartOpen ? "participant-list" : "participant-list-reduced";
+  };
+
   //*------Render------*//
-  return participants.length ? (
-    <div id="participant-list">{renderParticipantList()}</div>
-  ) : (
-    <div />
-  );
+  return <div id={listClass()}>{renderParticipantList()}</div>;
 };
 
 export default ParticipantList;
