@@ -24,53 +24,54 @@ const ParticipantList = ({
   const setImage = participant =>
     participant.image ? participant.image : defaultImage;
 
+  // Renders a single card
+  const renderParticipantCard = par => (
+    <ParticipantCard
+      key={par.name}
+      participant={par}
+      removeParticipant={removeParticipant}
+      setChances={setChances}
+      changeParticipantAttributes={changeParticipantAttributes}
+      activeParticipant={isActive(par)}
+      changeParticipantDelayed={changeParticipantDelayed}
+    />
+  );
+
+  // Renders a single image
+  const renderParticipantImage = par => (
+    <div
+      key={Math.random() * 100}
+      style={{
+        animation: "participant-card-appear 0.5s",
+        margin: "5px"
+      }}
+    >
+      <ParticipantImage
+        imageURL={setImage(par)}
+        isActive={isActive(par)}
+        participantName={par.name}
+      />
+    </div>
+  );
+
   const renderParticipantList = () => {
     return [...participants]
       .sort((a, b) => compareAlphabetical(a.name, b.name))
-      .map(par => {
-        return (
-          <ParticipantCard
-            key={par.name}
-            participant={par}
-            removeParticipant={removeParticipant}
-            setChances={setChances}
-            changeParticipantAttributes={changeParticipantAttributes}
-            activeParticipant={isActive(par)}
-            changeParticipantDelayed={changeParticipantDelayed}
-          />
-        );
-      });
+      .map(!addPartOpen ? renderParticipantCard : renderParticipantImage);
   };
 
   const renderParticipantImages = () => {
     return [...participants]
       .sort((a, b) => compareAlphabetical(a.name, b.name))
-      .map(par => {
-        return (
-          <div
-            key={Math.random() * 100}
-            style={{
-              animation: "participant-card-appear 0.5s",
-              margin: "5px"
-            }}
-          >
-            <ParticipantImage
-              imageURL={setImage(par)}
-              isActive={isActive(par)}
-              participantName={par.name}
-            />
-          </div>
-        );
-      });
+      .map(renderParticipantImage);
   };
 
-  if (participants.length && !addPartOpen) {
-    return <div id="participant-list">{renderParticipantList()}</div>;
-  } else if (participants.length && addPartOpen) {
-    return <div id="participant-list">{renderParticipantImages()}</div>;
-  } else {
-    return <div />;
-  }
+  //*------Render------*//
+  return participants.length ? (
+    <div id="participant-list">{renderParticipantList()}</div>
+  ) : (
+    <div />
+  );
 };
 
 export default ParticipantList;
