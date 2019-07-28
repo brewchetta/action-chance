@@ -15,10 +15,12 @@ const ParticipantList = ({
   changeParticipantDelayed,
   addPartOpen
 }) => {
+  //*------Utilities------*//
   // Checks to see whether it's the participant's turn
   const isActive = participant =>
     activeParticipant ? participant.name === activeParticipant.name : false;
 
+  // Checks to see if a participant has an image and sets a default one if none exists
   const setImage = participant =>
     participant.image ? participant.image : defaultImage;
 
@@ -53,7 +55,7 @@ const ParticipantList = ({
             }}
           >
             <ParticipantImage
-              imageURL={par.image}
+              imageURL={setImage(par)}
               isActive={isActive(par)}
               participantName={par.name}
             />
