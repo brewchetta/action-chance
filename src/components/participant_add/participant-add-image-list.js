@@ -1,42 +1,21 @@
+// React
 import React, { useState } from "react";
+// Components
 import ParticipantImage from "../participant-image";
 
+/*------Component------*/
 const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
+  //
+
+  /*------State------*/
   const [imageInput, setImageInput] = useState("");
   const [imagePage, setImagePage] = useState(0);
-  const pageCap = () => Math.ceil(getImages().length / 12);
 
-  const getImages = () => {
-    if (localStorage.images) {
-      return JSON.parse(localStorage.images);
-    } else {
-      return [];
-    }
-  };
+  /*------Setters------*/
 
   const handleClick = image => {
     setMainImageInput(image);
     setIsOpen(!isOpen);
-  };
-
-  const renderImages = () => {
-    if (localStorage.images) {
-      return getImages()
-        .slice(imagePage * 12, (imagePage + 1) * 12)
-        .map(image => (
-          <div
-            key={image}
-            onClick={() => handleClick(image)}
-            className="add-image-div"
-          >
-            <ParticipantImage
-              imageURL={image}
-              isActive={false}
-              participantName=""
-            />
-          </div>
-        ));
-    }
   };
 
   const handleInput = event => {
@@ -53,6 +32,47 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
     setIsOpen(!isOpen);
   };
 
+  /*------Utilities------*/
+
+  // Returns a parsed array of all saved images
+  const getImages = () => {
+    if (localStorage.images) {
+      return JSON.parse(localStorage.images);
+    } else {
+      return [];
+    }
+  };
+
+  // Determines how many pages there can be dependant on number of saved images
+  const pageCap = () => Math.ceil(getImages().length / 12);
+
+  // Renders a single image
+  const renderImage = image => {
+    return (
+      <div
+        key={image}
+        onClick={() => handleClick(image)}
+        className="add-image-div"
+      >
+        <ParticipantImage
+          imageURL={image}
+          isActive={false}
+          participantName=""
+        />
+      </div>
+    );
+  };
+
+  // Renders each image in an array
+  const renderImages = () => {
+    if (localStorage.images) {
+      return getImages()
+        .slice(imagePage * 12, (imagePage + 1) * 12)
+        .map(renderImage);
+    }
+  };
+
+  // Handles movement through different pages of images
   const handlePaginate = event => {
     if (event.target.id === "page-previous" && imagePage > 0) {
       setImagePage(imagePage - 1);
@@ -64,16 +84,22 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
     }
   };
 
+  /*------Render------*/
+
   if (isOpen) {
     return (
       <>
+        {/* Background mask to close container */}
         <div
           id="close-add-images-container"
           className="fillscreen"
           onClick={toggleIsOpen}
         />
+        {/* Add image button */}
         {!isOpen ? <button onClick={toggleIsOpen}>Add Image</button> : null}
+        {/* Images container */}
         <div id="add-images-container">{renderImages()}</div>
+        {/* Previous Page */}
         <button
           id="page-previous"
           className={imagePage > 0 ? null : "inactive-button"}
@@ -81,6 +107,7 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
         >
           Previous
         </button>
+        {/* Next Page */}
         <button
           id="page-next"
           onClick={handlePaginate}
@@ -89,11 +116,13 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
           Next
         </button>
         <br />
+        {/* Page number display - also paginates on click */}
         <button
           id="page-next-2"
           className="parentheses-border"
           onClick={handlePaginate}
         >{`Page ${imagePage + 1}`}</button>
+        {/* Add new image form */}
         <form onSubmit={handleSubmit}>
           <input
             type="text"

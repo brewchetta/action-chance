@@ -1,6 +1,9 @@
+// React
 import React from "react";
 
+/*------Component------*/
 const OptionsBGButtons = ({ handleSubmit }) => {
+  /*------Utilities------*/
   const renderLocalImgButtons = () => {
     const json = JSON.parse(localStorage.bgImages);
     return Object.keys(json).map(item => {
@@ -26,6 +29,8 @@ const OptionsBGButtons = ({ handleSubmit }) => {
       );
     });
   };
+
+  /*------Render------*/
 
   if (localStorage.bgImages) {
     return (

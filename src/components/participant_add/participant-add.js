@@ -1,4 +1,6 @@
+// React
 import React, { useState } from "react";
+// Components
 import ParticipantImageList from "./participant-add-image-list";
 import ParticipantImage from "../participant-image";
 
@@ -10,17 +12,28 @@ const capitalize = string => {
   }
 };
 
-const AddParticipants = ({
-  participants,
-  setParticipants,
-  setDisplayMessage,
-  imageListIsOpen,
-  setImageListIsOpen
-}) => {
+/*------component------*/
+const AddParticipants = props => {
+  //
+
+  /*------Props------*/
+
+  const {
+    participants,
+    setParticipants,
+    setDisplayMessage,
+    imageListIsOpen,
+    setImageListIsOpen
+  } = props;
+
+  /*------State------*/
+
   const [nameInput, setNameInput] = useState("");
   const [imageInput, setImageInput] = useState(
     "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg"
   );
+
+  /*------Setters------*/
 
   const handleInput = event => {
     setNameInput(capitalize(event.target.value));
@@ -38,6 +51,8 @@ const AddParticipants = ({
       setImageInput("");
     }
   };
+
+  /*------Render------*/
 
   return (
     <div id="participant-add-container">

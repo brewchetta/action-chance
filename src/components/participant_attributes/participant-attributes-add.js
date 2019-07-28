@@ -1,8 +1,20 @@
+// React
 import React, { useState } from "react";
 
+/*------Component------*/
 const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
+  //
+
+  /*------State------*/
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleIsOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
+  /*------Utilities------*/
+
+  // The various attributes that will become buttons
   const attrs = [
     "Ω",
     "Χ",
@@ -26,6 +38,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
     "⚠"
   ];
 
+  // Renders an attribute button
   const attrButton = attr => {
     return (
       <button
@@ -41,6 +54,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
     );
   };
 
+  // Renders a list of attribute buttons
   const renderAttrButtons = () => {
     if (participantAttributes) {
       return attrs
@@ -51,9 +65,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
     }
   };
 
-  const toggleIsOpen = () => {
-    setIsOpen(!isOpen);
-  };
+  /*------Render------*/
 
   return (
     <div className="attr-add">

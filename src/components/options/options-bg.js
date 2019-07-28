@@ -1,11 +1,19 @@
+// React
 import React, { useState } from "react";
+// Components
 import OptionsBGButtons from "./options-bg-buttons";
 
+/*------Component------*/
 const OptionsBG = ({ bg, setBG, bgMask, setBGMask, setOptionsMessage }) => {
+  //
+
+  /*------State------*/
+
   const [bgNameInput, setBGNameInput] = useState("");
   const [bgImageInput, setBGImageInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  /*------Setters------*/
   const handleInput = event => {
     setOptionsMessage("");
     switch (event.target.id) {
@@ -65,6 +73,8 @@ const OptionsBG = ({ bg, setBG, bgMask, setBGMask, setOptionsMessage }) => {
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  /*------Render------*/
 
   if (isOpen) {
     return (

@@ -1,14 +1,24 @@
+// React
 import React from "react";
+// Toolbox
 import { random } from "brews-toolboxjs";
 
-const RollChance = ({
-  participants,
-  setChances,
-  resetRound,
-  setDisplayMessage,
-  setActiveParticipant,
-  addPartOpen
-}) => {
+/*------Component------*/
+const RollChance = props => {
+  //
+
+  /*------Props------*/
+  const {
+    participants,
+    setChances,
+    resetRound,
+    setDisplayMessage,
+    setActiveParticipant,
+    addPartOpen
+  } = props;
+
+  /*------Utilities------*/
+
   const nextChance = availableParticipants => {
     const activeParticipant = random(availableParticipants);
     setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
@@ -35,6 +45,8 @@ const RollChance = ({
       document.title = `Action Chance!`;
     }
   };
+
+  /*------Render------*/
 
   return (
     <button

@@ -1,19 +1,29 @@
+// React
 import React, { useState } from "react";
+// Components
 import AddParticipant from "./participant_add/participant-add";
 import ParticipantList from "./participant-list";
 import RollChance from "./roll-chance";
 
+/*------Component------*/
 const ParticipantsContainer = props => {
+  //
+
+  /*------State------*/
   const [participants, setParticipants] = useState([]);
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [activeParticipant, setActiveParticipant] = useState(null);
   const [addPartOpen, setAddPartOpen] = useState(false);
   const [imageListIsOpen, setImageListIsOpen] = useState(false);
 
+  /*------Setters------*/
+
+  // Removes participant from participants
   const removeParticipant = participant => {
     setParticipants([...participants].filter(item => item !== participant));
   };
 
+  // Resets the round and resets certain participant statuses
   const resetRound = () => {
     setParticipants(
       [...participants].map(p => {
@@ -24,12 +34,14 @@ const ParticipantsContainer = props => {
     setActiveParticipant(null);
   };
 
+  // Removes all participants
   const reset = () => {
     setParticipants([]);
     setDisplayMessage("|||");
     setActiveParticipant(null);
   };
 
+  // Sets a single participant's chances
   const setChances = (participant, newChances) => {
     setParticipants([
       ...participants.filter(p => p !== participant),
@@ -37,6 +49,7 @@ const ParticipantsContainer = props => {
     ]);
   };
 
+  // Sets a participant's attributes
   const changeParticipantAttributes = (participant, newAttributes) => {
     setParticipants([
       ...participants.filter(p => p !== participant),
@@ -44,12 +57,15 @@ const ParticipantsContainer = props => {
     ]);
   };
 
+  // Gives participant the delayed status
   const changeParticipantDelayed = (participant, isDelayed) => {
     setParticipants([
       ...participants.filter(p => p !== participant),
       { ...participant, delayed: isDelayed, chances: participant.chances - 1 }
     ]);
   };
+
+  /*------Render------*/
 
   return (
     <div id="participant-container">

@@ -1,14 +1,21 @@
+// React
 import React, { useState } from "react";
+// Components
 import OptionsBG from "./options-bg";
 
+/*------Component------*/
 const OptionsContainer = ({ bg, setBG, bgMask, setBGMask }) => {
+  /*------State------*/
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
 
+  /*------Setters------*/
   const handleToggleOpen = () => {
     setOptionsOpen(!optionsOpen);
     setOptionsMessage("");
   };
+
+  /*------Utilities------*/
 
   const renderOptions = () => {
     if (optionsOpen) {
@@ -34,6 +41,8 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask }) => {
       return null;
     }
   };
+
+  /*------Render------*/
 
   return (
     <div id="options-container">

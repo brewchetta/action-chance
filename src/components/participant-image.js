@@ -1,6 +1,9 @@
+// React
 import React, { useState } from "react";
+// Toolbox
 import { stringToColor } from "brews-toolboxjs";
 
+//*------Component------*//
 const ParticipantImage = ({ imageURL, isActive, participantName }) => {
   //
 
