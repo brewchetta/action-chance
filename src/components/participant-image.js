@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { stringToColor } from "brews-toolboxjs";
 
 const ParticipantImage = ({ imageURL, isActive, participantName }) => {
+  //
+
+  //*------State------*//
   const [isPortrait, setIsPortrait] = useState(true);
   const [imagePlacement, setImagePlacement] = useState(0);
   const [borderColor, setBorderColor] = useState(null);
 
+  // Set border color upon load
   if (!borderColor) {
     setBorderColor(stringToColor(participantName));
   }
+
+  //*------Utilities------*//
 
   // Set the image placement and decide whether it's portrait or not
   const img = new Image();
@@ -29,28 +35,37 @@ const ParticipantImage = ({ imageURL, isActive, participantName }) => {
 
   img.src = imageURL;
 
+  //*------Render------*//
+
   return (
-    <div
-      className={
-        isActive
-          ? "participant-image-frame rotating"
-          : "participant-image-frame"
-      }
-      style={{ borderColor }}
-    >
-      <img
+    <>
+      {/* Circular image frame */}
+      <div
         className={
-          isActive ? "participant-image rotating-counter" : "participant-image"
+          isActive
+            ? "participant-image-frame rotating"
+            : "participant-image-frame"
         }
-        alt=""
-        src={imageURL}
-        style={
-          isPortrait
-            ? { width: "100px", top: `-${imagePlacement}px` }
-            : { height: "100px", left: `-${imagePlacement}px` }
-        }
-      />
-    </div>
+        style={{ borderColor }}
+      >
+        {/* Inner image */}
+        <img
+          className={
+            isActive
+              ? "participant-image rotating-counter"
+              : "participant-image"
+          }
+          alt=""
+          src={imageURL}
+          style={
+            isPortrait
+              ? { width: "100px", top: `-${imagePlacement}px` }
+              : { height: "100px", left: `-${imagePlacement}px` }
+          }
+        />
+        {/* End frame */}
+      </div>
+    </>
   );
 };
 
