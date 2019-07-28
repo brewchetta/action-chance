@@ -10,16 +10,20 @@ const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
 //*------Component------*//
-const ParticipantList = ({
-  participants,
-  removeParticipant,
-  setChances,
-  changeParticipantAttributes,
-  activeParticipant,
-  changeParticipantDelayed,
-  addPartOpen
-}) => {
+const ParticipantList = props => {
   //
+
+  //*------Props------*//
+  const {
+    participants,
+    removeParticipant,
+    setChances,
+    changeParticipantAttributes,
+    activeParticipant,
+    changeParticipantDelayed,
+    addPartOpen
+  } = props;
+
   //*------Utilities------*//
 
   // Checks to see whether it's the participant's turn

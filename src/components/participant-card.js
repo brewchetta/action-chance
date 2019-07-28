@@ -9,15 +9,19 @@ const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
 //*------Component------*//
-const ParticipantCard = ({
-  participant,
-  changeParticipantAttributes,
-  removeParticipant,
-  setChances,
-  activeParticipant,
-  changeParticipantDelayed
-}) => {
+const ParticipantCard = props => {
   //
+
+  //*------Props------*//
+  const {
+    participant,
+    changeParticipantAttributes,
+    removeParticipant,
+    setChances,
+    activeParticipant,
+    changeParticipantDelayed
+  } = props;
+
   //*------Utilities------*//
 
   // Adds attribute to participant
