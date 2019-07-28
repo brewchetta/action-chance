@@ -1,6 +1,10 @@
 import React from "react";
 import ParticipantCard from "./participant-card";
+import ParticipantImage from "./participant-image";
 import { compareAlphabetical } from "brews-toolboxjs";
+
+const defaultImage =
+  "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
 const ParticipantList = ({
   participants,
@@ -11,6 +15,13 @@ const ParticipantList = ({
   changeParticipantDelayed,
   addPartOpen
 }) => {
+  // Checks to see whether it's the participant's turn
+  const isActive = participant =>
+    activeParticipant ? participant.name === activeParticipant.name : false;
+
+  const setImage = participant =>
+    participant.image ? participant.image : defaultImage;
+
   const renderParticipantList = () => {
     return [...participants]
       .sort((a, b) => compareAlphabetical(a.name, b.name))
@@ -22,24 +33,33 @@ const ParticipantList = ({
             removeParticipant={removeParticipant}
             setChances={setChances}
             changeParticipantAttributes={changeParticipantAttributes}
-            activeParticipant={
-              activeParticipant ? par.name === activeParticipant.name : null
-            }
+            activeParticipant={isActive(par)}
             changeParticipantDelayed={changeParticipantDelayed}
           />
         );
       });
   };
 
-  if (participants.length) {
-    return (
-      <div
-        id="participant-list"
-        style={!addPartOpen ? null : { display: "none" }}
-      >
-        {renderParticipantList()}
-      </div>
-    );
+  const renderParticipantImages = () => {
+    return [...participants]
+      .sort((a, b) => compareAlphabetical(a.name, b.name))
+      .map(par => {
+        return (
+          <div key={Math.random() * 100}>
+            <ParticipantImage
+              imageURL={par.image}
+              isActive={isActive(par)}
+              participantName={par.name}
+            />
+          </div>
+        );
+      });
+  };
+
+  if (participants.length && !addPartOpen) {
+    return <div id="participant-list">{renderParticipantList()}</div>;
+  } else if (participants.length && addPartOpen) {
+    return <div id="participant-list">{renderParticipantImages()}</div>;
   } else {
     return <div />;
   }
