@@ -1,8 +1,8 @@
 // React
 import React from "react";
 // Components
-import ParticipantAttributes from "./participant-attributes";
-import ParticipantAttrsAdd from "./participant-attributes-add";
+import ParticipantAttributes from "./participant_attributes/participant-attributes";
+import ParticipantAttrsAdd from "./participant_attributes/participant-attributes-add";
 import ParticipantImage from "./participant-image";
 // Images
 const defaultImage =

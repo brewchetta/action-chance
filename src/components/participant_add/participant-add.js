@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ParticipantImageList from "./participant-image-list";
-import ParticipantImage from "./participant-image";
+import ParticipantImageList from "./participant-add-image-list";
+import ParticipantImage from "../participant-image";
 
 const capitalize = string => {
   if (string[0]) {

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import ParticipantImage from "./participant-image";
+import ParticipantImage from "../participant-image";
 
 const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
   const [imageInput, setImageInput] = useState("");
   const [imagePage, setImagePage] = useState(0);
   const pageCap = () => Math.ceil(getImages().length / 12);
-  // TODO: 12 per page PLZ since it's easily formatted for grid with 6, 4, 3, 2
 
   const getImages = () => {
     if (localStorage.images) {

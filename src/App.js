@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import ParticipantsContainer from "./components/participants-container";
-import Options from "./components/options";
+import Options from "./components/options/options-container";
 
 function App() {
   const [bg, setBG] = useState(

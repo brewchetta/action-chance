@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OptionsBG from "./options-bg";
 
-const Options = ({ bg, setBG, bgMask, setBGMask }) => {
+const OptionsContainer = ({ bg, setBG, bgMask, setBGMask }) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
 
@@ -48,4 +48,4 @@ const Options = ({ bg, setBG, bgMask, setBGMask }) => {
   );
 };
 
-export default Options;
+export default OptionsContainer;

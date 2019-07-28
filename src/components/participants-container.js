@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddParticipant from "./participant-add";
+import AddParticipant from "./participant_add/participant-add";
 import ParticipantList from "./participant-list";
 import RollChance from "./roll-chance";
 
