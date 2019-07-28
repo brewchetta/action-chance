@@ -8,7 +8,11 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
   // TODO: 12 per page PLZ since it's easily formatted for grid with 6, 4, 3, 2
 
   const getImages = () => {
-    return JSON.parse(localStorage.images);
+    if (localStorage.images) {
+      return JSON.parse(localStorage.images);
+    } else {
+      return [];
+    }
   };
 
   const handleClick = image => {
