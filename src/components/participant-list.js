@@ -35,20 +35,22 @@ const ParticipantList = props => {
     participant.image ? participant.image : defaultImage;
 
   // Renders a single card
-  const renderParticipantCard = par => (
+  const renderParticipantCard = participant => (
     <ParticipantCard
-      key={par.name}
-      participant={par}
-      removeParticipant={removeParticipant}
-      setChances={setChances}
-      changeParticipantAttributes={changeParticipantAttributes}
-      activeParticipant={isActive(par)}
-      changeParticipantDelayed={changeParticipantDelayed}
+      {...{
+        key: participant.name,
+        participant,
+        removeParticipant,
+        setChances,
+        changeParticipantAttributes,
+        activeParticipant: isActive(participant),
+        changeParticipantDelayed
+      }}
     />
   );
 
   // Renders a single image
-  const renderParticipantImage = par => (
+  const renderParticipantImage = participant => (
     <div
       key={Math.random() * 100}
       style={{
@@ -57,23 +59,20 @@ const ParticipantList = props => {
       }}
     >
       <ParticipantImage
-        imageURL={setImage(par)}
-        isActive={isActive(par)}
-        participantName={par.name}
+        {...{
+          imageURL: setImage(participant),
+          isActive: isActive(participant),
+          participantName: participant.name
+        }}
       />
     </div>
   );
 
+  // Renders all participants in either full or image format depending on whether AddParticipant is open
   const renderParticipantList = () => {
     return [...participants]
       .sort((a, b) => compareAlphabetical(a.name, b.name))
       .map(!addPartOpen ? renderParticipantCard : renderParticipantImage);
-  };
-
-  const renderParticipantImages = () => {
-    return [...participants]
-      .sort((a, b) => compareAlphabetical(a.name, b.name))
-      .map(renderParticipantImage);
   };
 
   //*------Render------*//
