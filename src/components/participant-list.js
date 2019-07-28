@@ -45,7 +45,13 @@ const ParticipantList = ({
       .sort((a, b) => compareAlphabetical(a.name, b.name))
       .map(par => {
         return (
-          <div key={Math.random() * 100}>
+          <div
+            key={Math.random() * 100}
+            style={{
+              animation: "participant-card-appear 0.5s",
+              margin: "5px"
+            }}
+          >
             <ParticipantImage
               imageURL={par.image}
               isActive={isActive(par)}
