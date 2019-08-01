@@ -23,7 +23,8 @@ const AddParticipants = props => {
     setParticipants,
     setDisplayMessage,
     imageListIsOpen,
-    setImageListIsOpen
+    setImageListIsOpen,
+    setAddPartOpen
   } = props;
 
   /*------State------*/
@@ -52,10 +53,19 @@ const AddParticipants = props => {
     }
   };
 
+  const toggleIsOpen = () => {
+    setAddPartOpen(false)
+  }
+
   /*------Render------*/
 
   return (
     <div id="participant-add-container">
+      <div
+        id="close-add-participants-container"
+        className="fillscreen"
+        onClick={toggleIsOpen}
+      />
       {!imageListIsOpen ? (
         <div
           style={{ cursor: "pointer" }}

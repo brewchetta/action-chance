@@ -99,29 +99,30 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
         {!isOpen ? <button onClick={toggleIsOpen}>Add Image</button> : null}
         {/* Images container */}
         <div id="add-images-container">{renderImages()}</div>
-        {/* Previous Page */}
-        <button
-          id="page-previous"
-          className={imagePage > 0 ? null : "inactive-button"}
-          onClick={handlePaginate}
-        >
-          Previous
-        </button>
-        {/* Next Page */}
-        <button
-          id="page-next"
-          onClick={handlePaginate}
-          className={pageCap() > imagePage + 1 ? null : "inactive-button"}
-        >
-          Next
-        </button>
+        <div id="add-images-pagination-buttons">
+          <div/>
+          {/* Previous Page */}
+          <button
+            id="page-previous"
+            className={imagePage > 0 ? null : "inactive-button"}
+            onClick={handlePaginate}
+            style={{borderRadius: '0 0 0 10px'}}
+          >
+            Previous
+          </button>
+          {/* Page number display */}
+          <span style={{width: '7em', color: 'white', margin: 'auto'}}>{`Page ${imagePage + 1}`}</span>
+          {/* Next Page */}
+          <button
+            id="page-next"
+            onClick={handlePaginate}
+            className={pageCap() > imagePage + 1 ? null : "inactive-button"}
+            style={{borderRadius: '0 0 10px 0'}}
+          >
+            Next
+          </button>
+        </div>
         <br />
-        {/* Page number display - also paginates on click */}
-        <button
-          id="page-next-2"
-          className="parentheses-border"
-          onClick={handlePaginate}
-        >{`Page ${imagePage + 1}`}</button>
         {/* Add new image form */}
         <form onSubmit={handleSubmit}>
           <input

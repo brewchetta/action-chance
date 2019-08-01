@@ -15,28 +15,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
   /*------Utilities------*/
 
   // The various attributes that will become buttons
-  const attrs = [
-    "Ω",
-    "Χ",
-    "⇪",
-    "⋙",
-    "⇓",
-    "⊗",
-    "≈",
-    "☁",
-    "☘",
-    "☠",
-    "☢",
-    "☣",
-    "♥",
-    "♦",
-    "♣",
-    "♠",
-    "♨",
-    "♫",
-    "⚡",
-    "⚠"
-  ];
+  const attrs = ["Ω","Χ","⇪","⋙","⇓","⊗","≈","☁","☘","☠","☢","☣","♥","♦","♣","♠","♨","♫","⚡","⚠"];
 
   // Renders an attribute button
   const attrButton = attr => {

@@ -100,6 +100,16 @@ const ParticipantsContainer = props => {
           </button>
         </div>
       ) : null}
+      {addPartOpen ? (
+        <AddParticipant
+        imageListIsOpen={imageListIsOpen}
+        setImageListIsOpen={setImageListIsOpen}
+        participants={participants}
+        setParticipants={setParticipants}
+        setDisplayMessage={setDisplayMessage}
+        setAddPartOpen={setAddPartOpen}
+        />
+      ) : null}
       <button
         id="add-participant-button"
         className="parentheses-border"
@@ -107,15 +117,6 @@ const ParticipantsContainer = props => {
       >
         {!addPartOpen ? "Add a participant" : "Back"}
       </button>
-      {addPartOpen ? (
-        <AddParticipant
-          imageListIsOpen={imageListIsOpen}
-          setImageListIsOpen={setImageListIsOpen}
-          participants={participants}
-          setParticipants={setParticipants}
-          setDisplayMessage={setDisplayMessage}
-        />
-      ) : null}
     </div>
   );
 };

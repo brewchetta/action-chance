@@ -318,6 +318,10 @@ button:active {
   cursor: pointer;
 }
 
+#close-add-participants-container {
+  z-index: -1;
+}
+
 #add-images-container {
   background: #000a;
   border: solid white;
@@ -331,6 +335,17 @@ button:active {
 
 #close-add-images-container {
   z-index: -1;
+}
+
+#add-images-pagination-buttons {
+  border: solid white;
+  border-width: 0 2px;
+  background: #000a;
+  border-radius: 0 0 10px 10px;
+  width: 50%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
 }
 
 .add-image-div {
