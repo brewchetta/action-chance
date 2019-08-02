@@ -65,6 +65,14 @@ const ParticipantsContainer = props => {
     ]);
   };
 
+  // Either closes the add participant image, closes the add participant window,
+  // or opens the add participant window depending on state
+  const setAddPartAndImageOpen = () => {
+    imageListIsOpen ?
+    setImageListIsOpen(!imageListIsOpen) :
+    setAddPartOpen(!addPartOpen)
+  }
+
   /*------Render------*/
 
   return (
@@ -113,7 +121,7 @@ const ParticipantsContainer = props => {
       <button
         id="add-participant-button"
         className="parentheses-border"
-        onClick={() => setAddPartOpen(!addPartOpen)}
+        onClick={setAddPartAndImageOpen}
       >
         {!addPartOpen ? "Add a participant" : "Back"}
       </button>
