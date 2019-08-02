@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 // Components
 import OptionsBG from "./options-bg";
+// CSS
+import './style.css'
 
 /*------Component------*/
 const OptionsContainer = ({ bg, setBG, bgMask, setBGMask }) => {

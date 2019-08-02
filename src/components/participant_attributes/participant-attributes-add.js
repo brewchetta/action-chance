@@ -1,5 +1,7 @@
 // React
 import React, { useState } from "react";
+// Style
+import './style.css'
 
 /*------Component------*/
 const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {

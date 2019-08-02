@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 // Components
 import AddParticipant from "./participant_add/participant-add";
-import ParticipantList from "./participant-list";
+import ParticipantList from "./participant_list/participant-list";
 import RollChance from "./roll-chance";
 
 /*------Component------*/

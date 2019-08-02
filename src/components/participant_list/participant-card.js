@@ -1,9 +1,9 @@
 // React
 import React from "react";
 // Components
-import ParticipantAttributes from "./participant_attributes/participant-attributes";
-import ParticipantAttrsAdd from "./participant_attributes/participant-attributes-add";
-import ParticipantImage from "./participant-image";
+import ParticipantAttributes from "../participant_attributes/participant-attributes";
+import ParticipantAttrsAdd from "../participant_attributes/participant-attributes-add";
+import ParticipantImage from "../participant-image";
 // Images
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";

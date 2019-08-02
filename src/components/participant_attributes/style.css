@@ -1,0 +1,28 @@
+/* ------Participant Attribute Tag Buttons------ */
+
+.participant-card-buttons {
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 10px;
+  margin: 0 5px 0 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.participant-card-buttons button {
+  cursor: pointer;
+}
+
+.attribute-button {
+  background: none;
+  border: none;
+  padding: 2px;
+  font-size: 2em;
+}
+
+.attribute-button:hover {
+  border: solid black 2px;
+  padding: 0;
+  border-radius: 3px;
+  color: black;
+}

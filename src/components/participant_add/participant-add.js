@@ -3,6 +3,8 @@ import React, { useState } from "react";
 // Components
 import ParticipantImageList from "./participant-add-image-list";
 import ParticipantImage from "../participant-image";
+// CSS
+import './style.css'
 
 const capitalize = string => {
   if (string[0]) {

@@ -1,0 +1,71 @@
+/* ------Add Participant------ */
+
+#add-participant-button {
+  cursor: pointer;
+}
+
+#close-add-participants-container {
+  z-index: -1;
+}
+
+#add-images-container {
+  background: #000a;
+  border: solid white;
+  border-width: 0 3px 0 3px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 15px 0 15px 0;
+  position: relative;
+  min-height: 276px;
+}
+
+#close-add-images-container {
+  z-index: -1;
+}
+
+#add-images-pagination-buttons {
+  border: solid white;
+  border-width: 0 2px;
+  background: #000a;
+  border-radius: 0 0 10px 10px;
+  width: 50%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+}
+
+.add-image-div {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.add-image-div:hover {
+  opacity: 1;
+}
+
+@media (max-width: 780px) {
+  #add-images-container {
+    grid-template-columns: repeat(5, 1fr);
+    min-height: 390px;
+  }
+}
+
+@media (max-width: 780px) {
+  #add-images-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  #add-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  #add-images-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,5 +1,7 @@
 // React
 import React from "react";
+// Style
+import './style.css'
 
 /*------Component------*/
 const ParticipantAttributes = ({ attributes, removeAttribute }) => {

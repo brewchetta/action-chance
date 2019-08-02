@@ -2,9 +2,11 @@
 import React from "react";
 // Components
 import ParticipantCard from "./participant-card";
-import ParticipantImage from "./participant-image";
+import ParticipantImage from "../participant-image";
 // Toolbox
 import { compareAlphabetical } from "brews-toolboxjs";
+// CSS
+import "./style.css"
 // Images
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
