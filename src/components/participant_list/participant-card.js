@@ -78,7 +78,7 @@ const ParticipantCard = props => {
         ) : (
           <div />
         )}
-        <button onClick={() => removeParticipant(participant)}>X</button>
+        <button onClick={() => removeParticipant(participant)}>Remove</button>
       </div>
       <br />
       {participant.attributes ? (
