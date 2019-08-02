@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 // Toolbox
 import { stringToColor } from "brews-toolboxjs";
+// Default Image
+const defaultImgURL =
+  "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
 //*------Component------*//
 const ParticipantImage = ({ imageURL, isActive, participantName }) => {
@@ -36,7 +39,7 @@ const ParticipantImage = ({ imageURL, isActive, participantName }) => {
     }
   };
 
-  img.src = imageURL;
+  imageURL ?  img.src = imageURL : img.src = defaultImgURL
 
   //*------Render------*//
 
@@ -59,7 +62,7 @@ const ParticipantImage = ({ imageURL, isActive, participantName }) => {
               : "participant-image"
           }
           alt=""
-          src={imageURL}
+          src={imageURL ? imageURL : defaultImgURL}
           style={
             isPortrait
               ? { width: "100px", top: `-${imagePlacement}px` }
