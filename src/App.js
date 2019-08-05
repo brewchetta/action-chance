@@ -10,6 +10,7 @@ import socketIO from 'socket.io-client'
 // Constants
 import {defaultImage, reconnectionDelay, reconnectionAttempts} from './constants'
 
+
 /* Component */
 
 function App() {
@@ -17,16 +18,11 @@ function App() {
 
   /* State */
   const [participants, setParticipants] = useState([]);
-  const setParticipantsAndUseSocket = participants => {
-    setParticipants(participants)
-    socketChangeParticipants(participants)
-  }
+  const [activeParticipant, setActiveParticipant] = useState(null);
   const [bg, setBG] = useState(defaultImage);
   const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });
   const [socket, setSocket] = useState(null)
   const endpoint = 'http://localhost:3050'
-  // const [endpoint, setEndpoint] = useState('http://localhost:3050')
-  // const [response, setResponse] = useState(false)
 
   /* Socket IO */
 
@@ -48,6 +44,11 @@ function App() {
     socket.emit('change participants', newParticipants)
   }
 
+  // Sets the active participant
+  const socketChangeActiveParticipant = newActiveParticipant => {
+    socket.emit('change active participant', newActiveParticipant)
+  }
+
   // Main connection function
   const connectSocket = () => {
     console.log(`connecting to ${endpoint}`)
@@ -60,7 +61,8 @@ function App() {
     newSocket.on('user connect', onUsersConnect)
     newSocket.on('reconnecting', reconnectAttempt)
     newSocket.on('reconnect', () => console.log(`reconnected: ${endpoint}`))
-    newSocket.on('change participants', response => setParticipants(response))
+    newSocket.on('change participants', setParticipants)
+    newSocket.on('change active participant', setActiveParticipant)
     setSocket(newSocket)
   }
 
@@ -80,7 +82,7 @@ function App() {
       />
       <div id="bg" style={{ backgroundImage: `url(${bg})` }} />
       <div id="bg-container" />
-      <ParticipantsContainer {...{participants, setParticipants: setParticipantsAndUseSocket, socketChangeParticipants}} />
+      <ParticipantsContainer {...{participants, setParticipants: socketChangeParticipants, activeParticipant, setActiveParticipant: socketChangeActiveParticipant}} />
       <Options bg={bg} setBG={setBG} bgMask={bgMask} setBGMask={setBGMask} />
     </div>
   );
