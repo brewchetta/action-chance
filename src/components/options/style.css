@@ -10,13 +10,13 @@
   top: 1%;
   right: 0;
   text-align: right;
-  background: rgba(255, 255, 255, 0.7);
+  background: #fffa;
   border-radius: 10px 0 0 10px;
   transition: background 0.5s;
 }
 
 #options-container:hover {
-  background: white;
+  background: #fffe;
 }
 
 #options-bg {
@@ -38,6 +38,8 @@
 #saved-bg-button-container {
   display: grid;
   grid-template-columns: 2fr 1em 2fr 1em;
+  max-height:200px;
+  overflow-y: auto;
 }
 
 #saved-bg-button-container button {

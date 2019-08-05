@@ -7,11 +7,8 @@ import ParticipantsContainer from "./components/participants-container";
 import Options from "./components/options/options-container";
 // Socket.io
 import socketIO from 'socket.io-client'
-
 // Constants
-const defaultImage = "https://clipart.wpblink.com/sites/default/files/wallpaper/drawn-forest/372214/drawn-forest-adobe-illustrator-372214-239163.jpg"
-const reconnectionDelay = 2000
-const reconnectionAttempts = 5
+import {defaultImage, reconnectionDelay, reconnectionAttempts} from './constants'
 
 /* Component */
 
