@@ -6,11 +6,10 @@ import ParticipantList from "./participant_list/participant-list";
 import RollChance from "./roll-chance";
 
 /*------Component------*/
-const ParticipantsContainer = props => {
+const ParticipantsContainer = ({participants, setParticipants, socketChangeParticipants}) => {
   //
 
   /*------State------*/
-  const [participants, setParticipants] = useState([]);
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [activeParticipant, setActiveParticipant] = useState(null);
   const [addPartOpen, setAddPartOpen] = useState(false);
@@ -20,7 +19,9 @@ const ParticipantsContainer = props => {
 
   // Removes participant from participants
   const removeParticipant = participant => {
-    setParticipants([...participants].filter(item => item !== participant));
+    setParticipants(
+      [...participants].filter(item => item !== participant)
+    );
   };
 
   // Resets the round and resets certain participant statuses
