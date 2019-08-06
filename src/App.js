@@ -8,7 +8,7 @@ import Options from "./components/options/options-container";
 // Socket.io
 import socketIO from 'socket.io-client'
 // Constants
-import {defaultBGImage, reconnectionDelay, reconnectionAttempts, endpoint} from './constants'
+import {defaultBGImage, reconnectionDelay, reconnectionAttempts, endpoint, debugLog} from './constants'
 
 
 /* Component */
@@ -28,14 +28,18 @@ function App() {
 
   // When attempting a reconnect
   const reconnectAttempt = attempts => {
-    console.log(`could not connect to: ${endpoint}`)
-    console.log(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
+    if (debugLog) {
+      console.log(`could not connect to: ${endpoint}`)
+      console.log(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
+    }
   }
 
   // When a new user connects
   const onUsersConnect = response => {
-    console.log(response.message)
-    console.log(`current users: ${response.userCount}`)
+    if (debugLog) {
+      console.log(response.message)
+      console.log(`current users: ${response.userCount}`)
+    }
     setParticipants(response.participants)
   }
 
@@ -61,7 +65,7 @@ function App() {
 
   // Main connection function
   const connectSocket = () => {
-    console.log(`connecting to ${endpoint}`)
+    if (debugLog) console.log(`connecting to ${endpoint}`)
 
     const newSocket = socketIO(endpoint, {
       reconnectionAttempts,
