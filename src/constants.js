@@ -6,4 +6,4 @@ export const reconnectionAttempts = 5
 
 export const endpoint = 'http://localhost:3050'
 
-export const debugLog = false
+export const debugLog = true

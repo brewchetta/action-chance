@@ -37,7 +37,7 @@ function App() {
   // When a new user connects
   const onUsersConnect = response => {
     if (debugLog) {
-      console.log(response.message)
+      console.log(response)
       console.log(`current users: ${response.userCount}`)
     }
     setParticipants(response.participants)
