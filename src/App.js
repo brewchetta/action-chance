@@ -8,7 +8,7 @@ import Options from "./components/options/options-container";
 // Socket.io
 import socketIO from 'socket.io-client'
 // Constants
-import {defaultImage, reconnectionDelay, reconnectionAttempts} from './constants'
+import {defaultBGImage, reconnectionDelay, reconnectionAttempts} from './constants'
 
 
 /* Component */
