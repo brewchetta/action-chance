@@ -6,11 +6,10 @@ import ParticipantList from "./participant_list/participant-list";
 import RollChance from "./roll-chance";
 
 /*------Component------*/
-const ParticipantsContainer = ({participants, setParticipants, activeParticipant, setActiveParticipant}) => {
+const ParticipantsContainer = ({participants, setParticipants, activeParticipant, setActiveParticipant, displayMessage, setDisplayMessage}) => {
   //
 
   /*------State------*/
-  const [displayMessage, setDisplayMessage] = useState("|||");
   const [addPartOpen, setAddPartOpen] = useState(false);
   const [imageListIsOpen, setImageListIsOpen] = useState(false);
 
