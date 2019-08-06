@@ -6,7 +6,7 @@ import OptionsBG from "./options-bg";
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({ bg, setBG, bgMask, setBGMask }) => {
+const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG }) => {
   /*------State------*/
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
@@ -15,6 +15,7 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask }) => {
   const handleToggleOpen = () => {
     setOptionsOpen(!optionsOpen);
     setOptionsMessage("");
+    socketChangeBG(bg, bgMask)
   };
 
   /*------Utilities------*/

@@ -3,3 +3,5 @@ export const defaultBGImage = "https://clipart.wpblink.com/sites/default/files/w
 export const reconnectionDelay = 2000
 
 export const reconnectionAttempts = 5
+
+export const endpoint = 'http://localhost:3050'
