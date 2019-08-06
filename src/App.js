@@ -49,8 +49,14 @@ function App() {
     socket.emit('change active participant', newActiveParticipant)
   }
 
+  // Sets the background and background mask
   const socketChangeBG = (newBGImage, newBGMask) => {
     socket.emit('change background', {image: newBGImage, mask: newBGMask})
+  }
+
+  // Sets the main display message at the top of the screen
+  const socketChangeDisplayMessage = newMessage => {
+    socket.emit('change display message', newMessage)
   }
 
   // Main connection function
@@ -68,6 +74,7 @@ function App() {
     newSocket.on('change participants', setParticipants)
     newSocket.on('change active participant', setActiveParticipant)
     newSocket.on('change background', response => { setBG(response.image); setBGMask(response.mask)})
+    newSocket.on('change display message', setDisplayMessage)
     setSocket(newSocket)
   }
 
@@ -85,7 +92,7 @@ function App() {
       />
       <div id="bg" style={{ backgroundImage: `url(${bg})` }} />
       <div id="bg-container" />
-      <ParticipantsContainer {...{participants, setParticipants: socketChangeParticipants, activeParticipant, setActiveParticipant: socketChangeActiveParticipant, displayMessage, setDisplayMessage}} />
+      <ParticipantsContainer {...{participants, setParticipants: socketChangeParticipants, activeParticipant, setActiveParticipant: socketChangeActiveParticipant, displayMessage, setDisplayMessage: socketChangeDisplayMessage}} />
       <Options {...{bg, setBG,bgMask,setBGMask,socketChangeBG}}/>
     </div>
   );
