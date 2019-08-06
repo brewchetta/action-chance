@@ -40,7 +40,9 @@ function App() {
       console.log(response)
       console.log(`current users: ${response.userCount}`)
     }
+    // TODO: Remove the setWhatever stuff from here, make backend emit individually
     setParticipants(response.participants)
+    setActiveParticipant(response.activeParticipant)
   }
 
   // Adds or removes participants from all users
