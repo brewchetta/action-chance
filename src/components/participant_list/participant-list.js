@@ -73,7 +73,10 @@ const ParticipantList = props => {
   // Renders all participants in either full or image format depending on whether AddParticipant is open
   const renderParticipantList = () => {
     return [...participants]
-      .sort((a, b) => compareAlphabetical(a.name, b.name))
+      .sort((a, b) => {
+        if (a.initiative === b.initiative) return compareAlphabetical(a.name, b.name)
+        return b.initiative - a.initiative
+      })
       .map(!addPartOpen ? renderParticipantCard : renderParticipantImage);
   };
 
