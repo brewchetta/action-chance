@@ -56,6 +56,10 @@ const ParticipantCard = props => {
     changeParticipantDelayed(participant, true);
   };
 
+  const renderChances = (string,i) => {
+    return i > participant.chances ? string : string + "⚔" + renderChances(string, i + 1)
+  }
+
   //*------Render------*//
   return (
     <div className={useActiveBorder()}>
@@ -65,7 +69,7 @@ const ParticipantCard = props => {
         participantName={participant.name}
       />
       <p>
-        {participant.name} | Chances: {participant.chances}
+        {participant.name} | Initiative: {participant.initiative} | Chances: {renderChances('', 1)}
       </p>
       <div className="participant-card-buttons">
         <button
