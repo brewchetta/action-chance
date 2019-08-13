@@ -14,13 +14,22 @@ const RollChance = props => {
     resetRound,
     setDisplayMessage,
     setActiveParticipant,
-    addPartOpen
+    addPartOpen,
+    utilizeInitiative
   } = props;
 
   /*------Utilities------*/
 
+  const getActiveParticipant = availableParticipants => {
+    if (utilizeInitiative) {
+      return random(availableParticipants.filter(part => part.initiative === Math.max(...availableParticipants.map(p => p.initiative))))
+    } else {
+      return random(availableParticipants)
+    }
+  }
+
   const nextChance = availableParticipants => {
-    const activeParticipant = random(availableParticipants.filter(part => part.initiative === Math.max(...availableParticipants.map(p => p.initiative))))
+    const activeParticipant = getActiveParticipant(availableParticipants)
     setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
     setChances(activeParticipant, activeParticipant.chances - 1);
     setActiveParticipant(activeParticipant);

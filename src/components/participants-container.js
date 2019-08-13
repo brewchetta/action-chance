@@ -6,7 +6,7 @@ import ParticipantList from "./participant_list/participant-list";
 import RollChance from "./roll-chance";
 
 /*------Component------*/
-const ParticipantsContainer = ({participants, setParticipants, activeParticipant, setActiveParticipant, displayMessage, setDisplayMessage}) => {
+const ParticipantsContainer = ({participants, setParticipants, activeParticipant, setActiveParticipant, displayMessage, setDisplayMessage, utilizeInitiative}) => {
   //
 
   /*------State------*/
@@ -89,13 +89,14 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
 
       {!imageListIsOpen ? (
         <div>
-          <RollChance
-            participants={participants}
-            setChances={setChances}
-            resetRound={resetRound}
-            setDisplayMessage={setDisplayMessage}
-            setActiveParticipant={setActiveParticipant}
-            addPartOpen={addPartOpen}
+          <RollChance {...{
+              participants, 
+              setChances,
+              resetRound,
+              setDisplayMessage,
+              setActiveParticipant,
+              addPartOpen,
+              utilizeInitiative}}
           />
           <button
             onClick={reset}

@@ -96,7 +96,7 @@ function App() {
       />
       <div id="bg" style={{ backgroundImage: `url(${bg})` }} />
       <div id="bg-container" />
-      <ParticipantsContainer {...{participants, setParticipants: socketChangeParticipants, activeParticipant, setActiveParticipant: socketChangeActiveParticipant, displayMessage, setDisplayMessage: socketChangeDisplayMessage}} />
+      <ParticipantsContainer {...{participants, setParticipants: socketChangeParticipants, activeParticipant, setActiveParticipant: socketChangeActiveParticipant, displayMessage, setDisplayMessage: socketChangeDisplayMessage, utilizeInitiative}} />
       <Options {...{bg, setBG,bgMask,setBGMask,socketChangeBG, utilizeInitiative, setUtilizeInitiative}}/>
     </div>
   );
