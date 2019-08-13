@@ -63,6 +63,10 @@ function App() {
     socket.emit('change display message', newMessage)
   }
 
+  const socketChangeInitiativeUse = newInitiativeUse => {
+    socket.emit('change initiative use', newInitiativeUse)
+  }
+
   // Main connection function
   const connectSocket = () => {
     if (debugLog) console.log(`connecting to ${endpoint}`)
@@ -79,6 +83,7 @@ function App() {
     newSocket.on('change active participant', setActiveParticipant)
     newSocket.on('change background', response => { setBG(response.image); setBGMask(response.mask)})
     newSocket.on('change display message', setDisplayMessage)
+    newSocket.on('change initiative use', setUtilizeInitiative)
     setSocket(newSocket)
   }
 
@@ -86,6 +91,7 @@ function App() {
 
   return (
     <div className="App">
+
       <div
         id="bg-mask"
         style={{
@@ -94,9 +100,22 @@ function App() {
         }}
         className="fillscreen"
       />
+
       <div id="bg" style={{ backgroundImage: `url(${bg})` }} />
+
       <div id="bg-container" />
-      <ParticipantsContainer {...{participants, setParticipants: socketChangeParticipants, activeParticipant, setActiveParticipant: socketChangeActiveParticipant, displayMessage, setDisplayMessage: socketChangeDisplayMessage, utilizeInitiative}} />
+
+      <ParticipantsContainer {...{
+        participants,
+        setParticipants: socketChangeParticipants,
+        activeParticipant,
+        setActiveParticipant: socketChangeActiveParticipant,
+        displayMessage,
+        setDisplayMessage: socketChangeDisplayMessage,
+        utilizeInitiative,
+        setUtilizeInitiative: socketChangeInitiativeUse}
+      } />
+
       <Options {...{bg, setBG,bgMask,setBGMask,socketChangeBG, utilizeInitiative, setUtilizeInitiative}}/>
     </div>
   );
