@@ -35,11 +35,21 @@ const AddParticipants = props => {
   const [imageInput, setImageInput] = useState(
     "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg"
   );
+  const [initiativeInput, setInitiativeInput] = useState(0)
 
   /*------Setters------*/
 
   const handleInput = event => {
-    setNameInput(capitalize(event.target.value));
+    switch (event.target.name) {
+      case 'name-input':
+        setNameInput(capitalize(event.target.value));
+        break;
+      case 'initiative-input':
+        setInitiativeInput(capitalize(event.target.value));
+        break;
+      default:
+
+    }
   };
 
   const handleSubmit = event => {
@@ -47,7 +57,7 @@ const AddParticipants = props => {
     if (nameInput.length) {
       setParticipants([
         ...participants,
-        { name: nameInput, chances: 1, image: imageInput }
+        { name: nameInput, chances: 1, image: imageInput, initiative: initiativeInput }
       ]);
       setDisplayMessage(`${nameInput} is ready!`);
       setNameInput("");
@@ -96,6 +106,16 @@ const AddParticipants = props => {
           value={nameInput}
           onChange={handleInput}
           placeholder="name"
+        />
+        <input
+          id="initiative-input"
+          type="number"
+          name="initiative-input"
+          value={initiativeInput}
+          onChange={handleInput}
+          style={{width: '3em'}}
+          max='40'
+          min='0'
         />
         <input type="submit" value="Add" />
       </form>
