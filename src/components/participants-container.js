@@ -85,12 +85,13 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
         activeParticipant={activeParticipant}
         changeParticipantDelayed={changeParticipantDelayed}
         addPartOpen={addPartOpen}
+        utilizeInitiative={utilizeInitiative}
       />
 
       {!imageListIsOpen ? (
         <div>
           <RollChance {...{
-              participants, 
+              participants,
               setChances,
               resetRound,
               setDisplayMessage,

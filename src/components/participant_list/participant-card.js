@@ -19,7 +19,8 @@ const ParticipantCard = props => {
     removeParticipant,
     setChances,
     activeParticipant,
-    changeParticipantDelayed
+    changeParticipantDelayed,
+    utilizeInitiative
   } = props;
 
   //*------Utilities------*//
@@ -69,15 +70,13 @@ const ParticipantCard = props => {
         participantName={participant.name}
       />
       <p>
-        {participant.name} | Initiative: {participant.initiative} | Chances: {renderChances('', 1)}
+        {participant.name} {utilizeInitiative ? `| Initiative: ${participant.initiative}` : `| Chances: ${renderChances('', 1)}`}
       </p>
       <div className="participant-card-buttons">
-        <button
-          onClick={() => setChances(participant, participant.chances + 1)}
-        >
-          Add Chance
-        </button>
-        {!participant.delayed && participant.chances ? (
+        {!utilizeInitiative ?
+          <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
+          : <div/>}
+        {!utilizeInitiative && !participant.delayed && participant.chances ? (
           <button onClick={delayParticipant}>Delay Turn</button>
         ) : (
           <div />

@@ -23,7 +23,8 @@ const ParticipantList = props => {
     changeParticipantAttributes,
     activeParticipant,
     changeParticipantDelayed,
-    addPartOpen
+    addPartOpen,
+    utilizeInitiative
   } = props;
 
   //*------Utilities------*//
@@ -38,6 +39,7 @@ const ParticipantList = props => {
 
   // Renders a single card
   const renderParticipantCard = participant => (
+
     <ParticipantCard
       {...{
         key: participant.name,
@@ -46,9 +48,11 @@ const ParticipantList = props => {
         setChances,
         changeParticipantAttributes,
         activeParticipant: isActive(participant),
-        changeParticipantDelayed
+        changeParticipantDelayed,
+        utilizeInitiative
       }}
     />
+
   );
 
   // Renders a single image
