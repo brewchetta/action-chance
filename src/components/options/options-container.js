@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 // Components
 import OptionsBG from "./options-bg";
+import OptionsGameplay from './options-gameplay'
 // CSS
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG }) => {
+const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utilizeInitiative, setUtilizeInitiative }) => {
   /*------State------*/
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
@@ -24,11 +25,13 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG }) => {
     if (optionsOpen) {
       return (
         <div>
+
           <div
             className="fillscreen"
             onClick={handleToggleOpen}
             style={{ zIndex: "-1" }}
           />
+
           <OptionsBG
             bg={bg}
             setBG={setBG}
@@ -36,6 +39,10 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG }) => {
             setBGMask={setBGMask}
             setOptionsMessage={setOptionsMessage}
           />
+
+          <br/>
+
+          <OptionsGameplay {...{utilizeInitiative, setUtilizeInitiative}} />
           {optionsMessage ? <p id="options-message">{optionsMessage}</p> : null}
           {/* TODO: Style the message so it's smaller and more out of the way */}
         </div>
