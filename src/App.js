@@ -22,7 +22,7 @@ function App() {
   const [bg, setBG] = useState(defaultBGImage);
   const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });
   const [displayMessage, setDisplayMessage] = useState("|||");
-  const [utilizeInitiative, setUtilizeInitiative] = useState(true)
+  const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
 
   /* Socket IO */
@@ -112,11 +112,18 @@ function App() {
         setActiveParticipant: socketChangeActiveParticipant,
         displayMessage,
         setDisplayMessage: socketChangeDisplayMessage,
-        utilizeInitiative,
-        setUtilizeInitiative: socketChangeInitiativeUse}
-      } />
+        utilizeInitiative
+      }} />
 
-      <Options {...{bg, setBG,bgMask,setBGMask,socketChangeBG, utilizeInitiative, setUtilizeInitiative}}/>
+      <Options {...{
+        bg,
+        setBG,
+        bgMask,
+        setBGMask,
+        socketChangeBG,
+        utilizeInitiative,
+        setUtilizeInitiative: socketChangeInitiativeUse
+      }}/>
     </div>
   );
 }
