@@ -37,12 +37,9 @@ function App() {
   // When a new user connects
   const onUsersConnect = response => {
     if (debugLog) {
-      console.log(response)
+      console.log(response.message)
       console.log(`current users: ${response.userCount}`)
     }
-    // TODO: Remove the setWhatever stuff from here, make backend emit individually
-    setParticipants(response.participants)
-    setActiveParticipant(response.activeParticipant)
   }
 
   // Adds or removes participants from all users
