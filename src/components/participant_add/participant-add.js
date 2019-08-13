@@ -57,7 +57,7 @@ const AddParticipants = props => {
     if (nameInput.length) {
       setParticipants([
         ...participants,
-        { name: nameInput, chances: 1, image: imageInput, initiative: initiativeInput }
+        { name: nameInput, chances: 1, image: imageInput, initiative: parseInt(initiativeInput) }
       ]);
       setDisplayMessage(`${nameInput} is ready!`);
       setNameInput("");

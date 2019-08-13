@@ -20,7 +20,7 @@ const RollChance = props => {
   /*------Utilities------*/
 
   const nextChance = availableParticipants => {
-    const activeParticipant = random(availableParticipants);
+    const activeParticipant = random(availableParticipants.filter(part => part.initiative === Math.max(...availableParticipants.map(p => p.initiative))))
     setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
     setChances(activeParticipant, activeParticipant.chances - 1);
     setActiveParticipant(activeParticipant);
