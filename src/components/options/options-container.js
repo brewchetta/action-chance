@@ -3,11 +3,12 @@ import React, { useState } from "react";
 // Components
 import OptionsBG from "./options-bg";
 import OptionsGameplay from './options-gameplay'
+import OptionsRooms from './options-rooms'
 // CSS
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utilizeInitiative, setUtilizeInitiative }) => {
+const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utilizeInitiative, setUtilizeInitiative, socketRoom, setSocketRoom }) => {
   /*------State------*/
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
@@ -43,6 +44,11 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utiliz
           <br/>
 
           <OptionsGameplay {...{utilizeInitiative, setUtilizeInitiative}} />
+
+          <br/>
+
+          <OptionsRooms {...{socketRoom, setSocketRoom}} />
+
           {optionsMessage ? <p id="options-message">{optionsMessage}</p> : null}
           {/* TODO: Style the message so it's smaller and more out of the way */}
         </div>

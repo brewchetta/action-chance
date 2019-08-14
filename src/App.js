@@ -24,6 +24,7 @@ function App() {
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
+  const [socketRoom, setSocketRoom] = useState('room1')
 
   /* Socket IO */
 
@@ -122,7 +123,9 @@ function App() {
         setBGMask,
         socketChangeBG,
         utilizeInitiative,
-        setUtilizeInitiative: socketChangeInitiativeUse
+        setUtilizeInitiative: socketChangeInitiativeUse,
+        socketRoom,
+        setSocketRoom
       }}/>
     </div>
   );
