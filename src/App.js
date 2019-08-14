@@ -30,65 +30,102 @@ function App() {
 
   // When attempting a reconnect
   const reconnectAttempt = attempts => {
-    if (debugLog) {
-      console.log(`could not connect to: ${endpoint}`)
-      console.log(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
-    }
+      debugLog(`could not connect to: ${endpoint}`)
+      debugLog(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
   }
 
   // When a new user connects
   const onUsersConnect = response => {
-    if (debugLog) {
-      console.log(response.message)
-      console.log(`current users: ${response.userCount}`)
-    }
+      debugLog(response.message)
+      debugLog(`current users: ${response.userCount}`)
   }
 
   // Adds or removes participants from all users
   const socketChangeParticipants = newParticipants => {
-    socket.emit('change participants', newParticipants)
+    socket.emit('change participants', {data: newParticipants, room: socketRoom})
   }
 
   // Sets the active participant
   const socketChangeActiveParticipant = newActiveParticipant => {
-    socket.emit('change active participant', newActiveParticipant)
+    socket.emit('change active participant', {data: newActiveParticipant, room: socketRoom})
   }
 
   // Sets the background and background mask
   const socketChangeBG = (newBGImage, newBGMask) => {
-    socket.emit('change background', {image: newBGImage, mask: newBGMask})
+    socket.emit('change background', {data: {image: newBGImage, mask: newBGMask}, room: socketRoom})
   }
 
   // Sets the main display message at the top of the screen
   const socketChangeDisplayMessage = newMessage => {
-    socket.emit('change display message', newMessage)
+    socket.emit('change display message', {data: newMessage, room: socketRoom})
   }
 
   const socketChangeInitiativeUse = newInitiativeUse => {
-    socket.emit('change initiative use', newInitiativeUse)
+    socket.emit('change initiative use', {data: newInitiativeUse, room: socketRoom})
+  }
+
+  const socketRequestRoomInfo = socket => {
+    socket.emit('request room info', socketRoom)
   }
 
   // Main connection function
   const connectSocket = () => {
-    if (debugLog) console.log(`connecting to ${endpoint}`)
+    debugLog(`connecting to ${endpoint}`)
 
     const newSocket = socketIO(endpoint, {
       reconnectionAttempts,
       reconnectionDelay
     })
 
+    socketRequestRoomInfo(newSocket)
+
     newSocket.on('user connect', onUsersConnect)
     newSocket.on('reconnecting', reconnectAttempt)
-    newSocket.on('reconnect', () => console.log(`reconnected: ${endpoint}`))
-    newSocket.on('change participants', setParticipants)
-    newSocket.on('change active participant', setActiveParticipant)
-    newSocket.on('change background', response => { setBG(response.image); setBGMask(response.mask)})
-    newSocket.on('change display message', setDisplayMessage)
-    newSocket.on('change initiative use', setUtilizeInitiative)
+    newSocket.on('reconnect', () => debugLog(`reconnected: ${endpoint}`))
+
+    newSocket.on('change participants', response => {
+      if (response.room === socketRoom) {
+        setParticipants(response.data)
+      }
+    })
+
+    newSocket.on('change active participant', response => {
+      if (response.room === socketRoom) {
+        setActiveParticipant(response.data)
+      }
+    })
+
+    newSocket.on('change background', response => {
+      if (response.room === socketRoom) {
+        setBG(response.data.image)
+        setBGMask(response.data.mask)
+      }
+    })
+
+    newSocket.on('change display message', response => {
+      if (response.room === socketRoom) setDisplayMessage(response.data)
+    })
+    // TODO: change display messages to be room specific
+
+    newSocket.on('change initiative use', response => {
+      if (response.room === socketRoom) {
+        setUtilizeInitiative(response.data)
+      }
+    })
+
     setSocket(newSocket)
+
+    // Return socket for useEffect to utilize
+    return newSocket
   }
 
-  useEffect(connectSocket, [])
+  useEffect(() => {
+    // Connects the socket, disconnects the socket if socket gets updated
+    const socket = connectSocket()
+
+    // Cleanup
+    return () => socket.disconnect()
+  }, [socketRoom])
 
   return (
     <div className="App">
