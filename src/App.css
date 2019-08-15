@@ -1,5 +1,16 @@
 body {
   background-color: black;
+
+  /* Cute but doesn't give the sense of action */
+  /* font-family: 'Elsie', cursive; */
+
+  /* A little severe, very hand written */
+  /* font-family: 'Volkhov', serif; */
+
+  /* Good, has fantasy without being too fantasy */
+  /* font-family: 'Alegreya', serif; */
+  font-family: 'Overlock', cursive;
+  /* font-family: 'Magra', sans-serif; */
 }
 
 .App {
@@ -212,4 +223,18 @@ button:active {
   width: 50%;
   min-width: 300px;
   border-radius: 0 0 20px 20px;
+}
+
+/* ------ Room Prompt ------ */
+
+#room-prompt {
+  color: white;
+  position: fixed;
+  top: 25vh;
+  width: 100%;
+  z-index: 1000;
+  background: #000a;
+  border: solid white;
+  border-width: 2px 0 2px 0;
+  padding: 1em;
 }

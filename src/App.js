@@ -5,6 +5,7 @@ import "./App.css";
 // Components
 import ParticipantsContainer from "./components/participants-container";
 import Options from "./components/options/options-container";
+import RoomPrompt from "./components/room-prompt"
 // Socket.io
 import socketIO from 'socket.io-client'
 // Constants
@@ -24,7 +25,7 @@ function App() {
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
-  const [socketRoom, setSocketRoom] = useState('room1')
+  const [socketRoom, setSocketRoom] = useState('')
 
   /* Socket IO */
 
@@ -32,12 +33,6 @@ function App() {
   const reconnectAttempt = attempts => {
       debugLog(`could not connect to: ${endpoint}`)
       debugLog(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
-  }
-
-  // When a new user connects
-  const onUsersConnect = response => {
-      debugLog(response.message)
-      debugLog(`current users: ${response.userCount}`)
   }
 
   // Adds or removes participants from all users
@@ -66,6 +61,7 @@ function App() {
 
   const socketRequestRoomInfo = socket => {
     socket.emit('request room info', socketRoom)
+    socket.emit('change display message', {data: 'A new player has joined...!', room: socketRoom})
   }
 
   // Main connection function
@@ -79,7 +75,6 @@ function App() {
 
     socketRequestRoomInfo(newSocket)
 
-    newSocket.on('user connect', onUsersConnect)
     newSocket.on('reconnecting', reconnectAttempt)
     newSocket.on('reconnect', () => debugLog(`reconnected: ${endpoint}`))
 
@@ -119,13 +114,23 @@ function App() {
     return newSocket
   }
 
+  /* Connect Socket */
+
+  // Connects the socket, disconnects the socket if socket gets updated
   useEffect(() => {
-    // Connects the socket, disconnects the socket if socket gets updated
-    const socket = connectSocket()
+    let socket
+    if (socketRoom) {
+      socket = connectSocket()
+    }
 
     // Cleanup
-    return () => socket.disconnect()
+    return () => {
+      if (socket) socket.disconnect()
+    }
+
   }, [socketRoom])
+
+  /* Render */
 
   return (
     <div className="App">
@@ -143,15 +148,25 @@ function App() {
 
       <div id="bg-container" />
 
-      <ParticipantsContainer {...{
-        participants,
-        setParticipants: socketChangeParticipants,
-        activeParticipant,
-        setActiveParticipant: socketChangeActiveParticipant,
-        displayMessage,
-        setDisplayMessage: socketChangeDisplayMessage,
-        utilizeInitiative
-      }} />
+      {/* Shows the participants if in a room, otherwise prompts to join a room */}
+
+      {socketRoom ? (
+
+        <ParticipantsContainer {...{
+          participants,
+          setParticipants: socketChangeParticipants,
+          activeParticipant,
+          setActiveParticipant: socketChangeActiveParticipant,
+          displayMessage,
+          setDisplayMessage: socketChangeDisplayMessage,
+          utilizeInitiative
+        }} />
+
+      ) : (
+
+        <RoomPrompt {...{setSocketRoom}} />
+
+      )}
 
       <Options {...{
         bg,
