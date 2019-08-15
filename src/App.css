@@ -18,6 +18,13 @@ body {
   min-height: 70vh;
 }
 
+@media (max-width: 500px) {
+  .App {
+    padding-bottom: 100px;
+    padding-top: 35px;
+  }
+}
+
 /* ------General------ */
 
 p,
@@ -196,6 +203,18 @@ button:active {
   position: relative;
 }
 
+@media (max-width: 500px) {
+  #roll-chance-container {
+    position: fixed;
+    bottom: 10vh;
+    left: 0;
+    background: #000f;
+    border: solid white;
+    border-width: 2px 0 2px 0;
+    width: 100vw;
+  }
+}
+
 /* ------Participant Image------ */
 
 .participant-image-frame {
@@ -222,6 +241,14 @@ button:active {
   width: 50%;
   min-width: 300px;
   border-radius: 0 0 20px 20px;
+}
+
+@media (max-width: 500px) {
+  #display-message {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
 }
 
 /* ------ Room Prompt ------ */

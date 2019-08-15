@@ -5,6 +5,14 @@
   max-height: 2em;
 }
 
+@media (max-width: 500px) {
+  #add-participant-button {
+    position: fixed;
+    bottom: 2vh;
+    left: 23%;
+  }
+}
+
 #close-add-participants-container {
   z-index: -1;
 }

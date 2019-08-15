@@ -89,7 +89,7 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
       />
 
       {!imageListIsOpen ? (
-        <div>
+        <div id='roll-chance-container'>
           <RollChance {...{
               participants,
               setChances,
