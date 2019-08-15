@@ -44,13 +44,7 @@ const ParticipantCard = props => {
   };
 
   // Determines whether a participant uses the active border or not
-  const useActiveBorder = () => {
-    if (activeParticipant) {
-      return "participant-card participant-card-active";
-    } else {
-      return "participant-card";
-    }
-  };
+  const isActive = () => activeParticipant ? "participant-card participant-card-active" : "participant-card"
 
   // Sets the participant to delayed
   const delayParticipant = () => {
@@ -63,7 +57,7 @@ const ParticipantCard = props => {
 
   //*------Render------*//
   return (
-    <div className={useActiveBorder()}>
+    <div className={isActive()}>
       <ParticipantImage
         imageURL={participant.image ? participant.image : defaultImage}
         isActive={activeParticipant}
