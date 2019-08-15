@@ -99,6 +99,7 @@ button:hover {
   border-radius: 10px;
   border: solid white;
   border-width: 0 2px 0 2px;
+  outline: none;
 }
 
 .parentheses-border:hover {
@@ -193,7 +194,6 @@ button:active {
   padding-top: 0;
   z-index: 10;
   position: relative;
-  display: grid;
 }
 
 /* ------Participant Image------ */
