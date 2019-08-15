@@ -62,11 +62,18 @@
 @media (max-width: 500px) {
   #add-images-container {
     grid-template-columns: repeat(3, 1fr);
+    min-height: 138px;
+  }
+  #add-images-pagination-buttons {
+    width: 60%;
   }
 }
 
 @media (max-width: 360px) {
   #add-images-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  #add-images-pagination-buttons {
+    width: 70%;
   }
 }
