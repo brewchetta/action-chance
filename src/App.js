@@ -98,9 +98,11 @@ function App() {
     })
 
     newSocket.on('change display message', response => {
-      if (response.room === socketRoom) setDisplayMessage(response.data)
+      if (response.room === socketRoom) {
+        setDisplayMessage(response.data)
+        document.title = response.data
+      }
     })
-    // TODO: change display messages to be room specific
 
     newSocket.on('change initiative use', response => {
       if (response.room === socketRoom) {

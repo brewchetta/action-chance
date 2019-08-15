@@ -33,14 +33,14 @@ const RollChance = props => {
     setDisplayMessage(`${activeParticipant.name}'s turn to act!`);
     setChances(activeParticipant, activeParticipant.chances - 1);
     setActiveParticipant(activeParticipant);
-    document.title = `${activeParticipant.name}'s Turn`;
+    // document.title = `${activeParticipant.name}'s Turn`;
   };
 
   const startNewRound = () => {
     setDisplayMessage("Starting a new round...");
     resetRound();
     setActiveParticipant(null);
-    document.title = `New Round`;
+    // document.title = `New Round`;
   };
 
   const rollForChance = () => {
@@ -51,7 +51,7 @@ const RollChance = props => {
       startNewRound();
     } else {
       setDisplayMessage("Add participants to start a new round!");
-      document.title = `Action Chance!`;
+      // document.title = `Action Chance`;
     }
   };
 
