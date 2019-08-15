@@ -1,18 +1,5 @@
 /* ------Participant Attribute Tag Buttons------ */
 
-.participant-card-buttons {
-  background-color: white;
-  border: solid black 2px;
-  border-radius: 10px;
-  margin: 0 5px 0 5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.participant-card-buttons button {
-  cursor: pointer;
-}
-
 .attribute-button {
   background: none;
   border: none;
@@ -25,4 +12,17 @@
   padding: 0;
   border-radius: 3px;
   color: black;
+}
+
+.attr-add-buttons-container {
+  border: solid black 2px;
+  border-radius: 10px;
+  position: fixed;
+  top: 30vh;
+  left: 20%;
+  width: 60%;
+  margin-right: 20%;
+  z-index: 1;
+  grid-template-columns: repeat(5, 1fr);
+  background: #bbbe;
 }

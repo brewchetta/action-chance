@@ -81,3 +81,22 @@
   margin: 3%;
   background-color: white;
 }
+
+.participant-card-buttons {
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 10px;
+  margin: 0 5px 0 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.participant-card-buttons button {
+  cursor: pointer;
+}
+
+@media (max-width: 920px) {
+  .participant-card .participant-image-frame {
+    float: left;
+  }
+}

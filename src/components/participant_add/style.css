@@ -2,6 +2,7 @@
 
 #add-participant-button {
   cursor: pointer;
+  max-height: 2em;
 }
 
 #close-add-participants-container {

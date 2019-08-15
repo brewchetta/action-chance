@@ -194,7 +194,6 @@ button:active {
   z-index: 10;
   position: relative;
   display: grid;
-  grid-auto-rows: 50px 1fr 50px;
 }
 
 /* ------Participant Image------ */

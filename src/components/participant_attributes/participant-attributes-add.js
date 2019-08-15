@@ -1,20 +1,17 @@
 // React
-import React, { useState } from "react";
+import React from "react";
 // Style
 import './style.css'
 
 /*------Component------*/
-const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
-  //
+const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen, setIsOpen }) => {
 
-  /*------State------*/
-  const [isOpen, setIsOpen] = useState(false);
+
+  /*------Utilities------*/
 
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
-
-  /*------Utilities------*/
 
   // The various attributes that will become buttons
   const attrs = ["Ω","Χ","⇪","⋙","⇓","⊗","≈","☁","☘","☠","☢","☣","♥","♦","♣","♠","♨","♫","⚡","⚠"];
@@ -50,11 +47,15 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd }) => {
 
   return (
     <div className="attr-add">
-      {isOpen ? renderAttrButtons() : null}
-      <br />
-      <button onClick={toggleIsOpen} style={{ background: "none" }}>
-        Tags
-      </button>
+      {isOpen ? (
+        <>
+          <div className='fillscreen' onClick={toggleIsOpen}/>
+          <div className='attr-add-buttons-container'>
+            {renderAttrButtons()}
+          </div>
+        </>
+      )
+      : null}
     </div>
   );
 };

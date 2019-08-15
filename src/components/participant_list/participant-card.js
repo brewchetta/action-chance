@@ -1,5 +1,5 @@
 // React
-import React from "react";
+import React, {useState} from "react";
 // Components
 import ParticipantAttributes from "../participant_attributes/participant-attributes";
 import ParticipantAttrsAdd from "../participant_attributes/participant-attributes-add";
@@ -10,7 +10,10 @@ const defaultImage =
 
 //*------Component------*//
 const ParticipantCard = props => {
-  //
+
+  /* ------ State ------ */
+
+  const [attributesAddIsOpen, setAttributesAddIsOpen] = useState(false)
 
   //*------Props------*//
   const {
@@ -71,10 +74,11 @@ const ParticipantCard = props => {
           <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
           : <div/>}
         {!utilizeInitiative && !participant.delayed && participant.chances ? (
-          <button onClick={delayParticipant}>Delay Turn</button>
+          <button onClick={delayParticipant}>Delay</button>
         ) : (
           <div />
         )}
+        <button onClick={() => setAttributesAddIsOpen(!attributesAddIsOpen)}>Tags</button>
         <button onClick={() => removeParticipant(participant)}>Remove</button>
       </div>
       <br />
@@ -87,6 +91,8 @@ const ParticipantCard = props => {
       <ParticipantAttrsAdd
         participantAttributes={participant.attributes}
         handleAttributeAdd={handleAttributeAdd}
+        isOpen={attributesAddIsOpen}
+        setIsOpen={setAttributesAddIsOpen}
       />
     </div>
   );
