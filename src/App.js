@@ -27,6 +27,9 @@ function App() {
   const [socket, setSocket] = useState(null)
   const [socketRoom, setSocketRoom] = useState('')
 
+  console.log('Socket:', socket)
+  console.log('Socketroom:', socketRoom)
+
   /* Socket IO */
 
   // When attempting a reconnect
@@ -157,7 +160,7 @@ function App() {
 
       {/* Shows the participants if in a room, otherwise prompts to join a room */}
 
-      {socketRoom && socket ? (
+      {socketRoom && socket && socket.connected ? (
 
         <ParticipantsContainer {...{
           participants,
@@ -171,12 +174,12 @@ function App() {
 
       ) : (
 
-        <RoomPrompt {...{setSocketRoom}} />
+        <RoomPrompt {...{setSocketRoom, socketRoom}} />
 
       )}
 
       {/* Only show options if socket has been established */}
-      { socket ?
+      { socket && socket.connected ?
 
         <Options {...{
         bg,

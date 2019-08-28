@@ -264,3 +264,14 @@ button:active {
   border-width: 2px 0 2px 0;
   padding: 1em;
 }
+
+.connection-dot {
+  animation: connection-dot-pulse 1s infinite linear;
+}
+
+@keyframes connection-dot-pulse {
+  0% {opacity: 1;}
+  30% {opacity: 0.2;}
+  50% {opacity: 1;}
+  100% {opacity: 1}
+}

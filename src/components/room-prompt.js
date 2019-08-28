@@ -1,12 +1,23 @@
 // React
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 /* Component */
-const RoomPrompt = ({setSocketRoom}) => {
+const RoomPrompt = ({setSocketRoom, socketRoom}) => {
 
   /* State */
 
   const [input, setInput] = useState('')
+  const [longConnection, setLongConnection] = useState(false)
+
+  // Creates a mesage if the connection is taking too long
+  useEffect(() => {
+    let timeout
+    if (socketRoom && !longConnection) {
+      timeout = setTimeout(() => setLongConnection(true), 7500)
+    }
+
+    return () => clearTimeout(timeout)
+  }, [longConnection, socketRoom])
 
   /* Utilities */
 
@@ -19,10 +30,18 @@ const RoomPrompt = ({setSocketRoom}) => {
     setSocketRoom(input)
   }
 
+  const cDot = delay => {
+    return <span className='connection-dot' style={{animationDelay: `${delay}s`}}>.</span>
+  }
+
   /* Render */
   return (
     <form onSubmit={handleSubmit} id='room-prompt'>
-      <p>Join a game</p>
+      {!socketRoom ?
+        <p>Join a game</p>
+        : !longConnection ?
+        <p>Connecting{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
+        : <p>This is taking longer than normal, check the server status{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>}
       <input onChange={handleChange} type='text' max='15' value={input} />
       <input type='submit' value='Submit'/>
     </form>
