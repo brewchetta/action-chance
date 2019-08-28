@@ -113,6 +113,12 @@ function App() {
       }
     })
 
+    newSocket.on('shutdown', response => {
+      setSocket(null)
+      setSocketRoom(null)
+      alert(response)
+    })
+
     setSocket(newSocket)
 
     // Return socket for useEffect to utilize
