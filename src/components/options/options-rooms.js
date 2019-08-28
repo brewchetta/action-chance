@@ -22,7 +22,7 @@ const OptionsGameplay = ({socketRoom, setSocketRoom}) => {
       <>
 
       <br/>
-      <p style={{fontSize: '0.8em', fontFamily: 'monospace', marginRight: '1em'}}>Current Room: {socketRoom}</p>
+      <p style={{fontSize: '0.9em', fontFamily: 'monospace', marginRight: '0.4em'}}>Current Room: {socketRoom}</p>
 
       <form onSubmit={handleSubmit}>
         <input type='text'

@@ -157,7 +157,7 @@ function App() {
 
       {/* Shows the participants if in a room, otherwise prompts to join a room */}
 
-      {socketRoom ? (
+      {socketRoom && socket ? (
 
         <ParticipantsContainer {...{
           participants,
@@ -175,7 +175,10 @@ function App() {
 
       )}
 
-      <Options {...{
+      {/* Only show options if socket has been established */}
+      { socket ?
+
+        <Options {...{
         bg,
         setBG,
         bgMask,
@@ -185,7 +188,10 @@ function App() {
         setUtilizeInitiative: socketChangeInitiativeUse,
         socketRoom,
         setSocketRoom
-      }}/>
+        }}/>
+
+        : null }
+
     </div>
   );
 }
