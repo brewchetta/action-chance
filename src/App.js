@@ -134,7 +134,6 @@ function App() {
 
   useEffect(() => {
     const activeCard = document.getElementsByClassName('participant-card-active')[0]
-    console.log('firing effect: ', activeCard)
     if (activeCard) activeCard.scrollIntoView()
   })
 
