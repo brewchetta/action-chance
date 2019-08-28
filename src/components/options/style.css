@@ -2,6 +2,7 @@
 
 #options-toggle-open-button {
   padding-top: 2px;
+  cursor: pointer;
 }
 
 #options-container {
