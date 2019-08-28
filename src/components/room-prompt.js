@@ -36,15 +36,27 @@ const RoomPrompt = ({setSocketRoom, socketRoom}) => {
 
   /* Render */
   return (
-    <form onSubmit={handleSubmit} id='room-prompt'>
+    <div id='room-prompt'>
+      {/* If no room, prompts to join, otherwise renders a connecting message depending on how long it's been connecting */}
       {!socketRoom ?
+        <>
+
         <p>Join a game</p>
+
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} type='text' max='15' value={input} />
+          <input type='submit' value='Submit'/>
+        </form>
+
+        </>
+
         : !longConnection ?
+
         <p>Connecting{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
-        : <p>This is taking longer than normal, check the server status{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>}
-      <input onChange={handleChange} type='text' max='15' value={input} />
-      <input type='submit' value='Submit'/>
-    </form>
+
+        : <p>This is taking longer than normal, check the server status{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
+      }
+    </div>
   )
 }
 
