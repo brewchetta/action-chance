@@ -11,7 +11,6 @@ import socketIO from 'socket.io-client'
 // Constants
 import {defaultBGImage, reconnectionDelay, reconnectionAttempts, endpoint, debugLog} from './constants'
 
-
 /* Component */
 
 function App() {
@@ -26,9 +25,6 @@ function App() {
   const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
   const [socketRoom, setSocketRoom] = useState('')
-
-  console.log('Socket:', socket)
-  console.log('Socketroom:', socketRoom)
 
   /* Socket IO */
 
