@@ -13,7 +13,7 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
 
   /*------Setters------*/
 
-  const handleClick = image => {
+  const handleSelectImage = image => {
     setMainImageInput(image);
     setIsOpen(!isOpen);
   };
@@ -24,8 +24,17 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    localStorage.images = JSON.stringify([...getImages(), imageInput]);
-    setImageInput("");
+
+    const img = new Image();
+    img.onload = () => {
+      if (img.width) {
+        localStorage.images = JSON.stringify([...getImages(), imageInput]);
+        handleSelectImage(imageInput)
+        setImageInput("");
+      }
+    }
+
+    img.src = imageInput
   };
 
   const toggleIsOpen = () => {
@@ -51,7 +60,7 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
     return (
       <div
         key={image}
-        onClick={() => handleClick(image)}
+        onClick={() => handleSelectImage(image)}
         className="add-image-div"
       >
         <ParticipantImage
