@@ -27,10 +27,12 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
 
     const img = new Image();
     img.onload = () => {
-      if (img.width) {
+      if (img.width && !getImages().includes(imageInput)) {
         localStorage.images = JSON.stringify([...getImages(), imageInput]);
         handleSelectImage(imageInput)
         setImageInput("");
+      } else if (getImages().includes(imageInput)) {
+        alert('Image already exists')
       }
     }
 
