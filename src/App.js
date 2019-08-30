@@ -112,6 +112,8 @@ function App() {
     newSocket.on('shutdown', response => {
       setSocket(null)
       setSocketRoom(null)
+      setBG(defaultBGImage)
+      setBGMask({ color: "#7D7D7D", intensity: 25 })
       alert(response)
     })
 
