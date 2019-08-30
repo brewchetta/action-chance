@@ -10,6 +10,7 @@ body {
   /* Good, has fantasy without being too fantasy */
   /* font-family: 'Alegreya', serif; */
   font-family: 'Overlock', cursive;
+  padding-top: 2.5em;
   /* font-family: 'Magra', sans-serif; */
 }
 
@@ -233,21 +234,22 @@ button:active {
 /* ------Display Message------ */
 
 #display-message {
+  position: fixed;
+  top: 0;
+  left: 25%;
   background: black;
   color: white;
   padding: 5px;
   margin: auto;
   margin-bottom: 10px;
   width: 50%;
-  min-width: 300px;
   border-radius: 0 0 20px 20px;
+  z-index: 1;
 }
 
 @media (max-width: 500px) {
   #display-message {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+    font-size: 0.8em;
   }
 }
 
