@@ -1,17 +1,8 @@
 body {
   background-color: black;
-
-  /* Cute but doesn't give the sense of action */
-  /* font-family: 'Elsie', cursive; */
-
-  /* A little severe, very hand written */
-  /* font-family: 'Volkhov', serif; */
-
-  /* Good, has fantasy without being too fantasy */
-  /* font-family: 'Alegreya', serif; */
   font-family: 'Overlock', cursive;
   padding-top: 2.5em;
-  /* font-family: 'Magra', sans-serif; */
+  padding-bottom: 2.75em;
 }
 
 .App {
@@ -20,6 +11,11 @@ body {
 }
 
 @media (max-width: 500px) {
+  body {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
   .App {
     padding-bottom: 100px;
     padding-top: 35px;
@@ -204,16 +200,14 @@ button:active {
   position: relative;
 }
 
-@media (max-width: 500px) {
-  #roll-chance-container {
-    position: fixed;
-    bottom: 10vh;
-    left: 0;
-    background: #000f;
-    border: solid white;
-    border-width: 2px 0 2px 0;
-    width: 100vw;
-  }
+#roll-chance-container {
+  position: fixed;
+  bottom: 8vh;
+  left: 0;
+  background: #000f;
+  border: solid white;
+  border-width: 2px 0 2px 0;
+  width: 100vw;
 }
 
 /* ------Participant Image------ */

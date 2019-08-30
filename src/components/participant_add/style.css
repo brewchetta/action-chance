@@ -3,15 +3,18 @@
 #add-participant-button {
   cursor: pointer;
   max-height: 2em;
+  width: 40%;
+  position: fixed;
+  bottom: 2vh;
+  left: 30%;
 }
 
 @media (max-width: 500px) {
   #add-participant-button {
-    position: fixed;
-    bottom: 2vh;
-    left: 23%;
+    left: 20%;
   }
 }
+
 
 #close-add-participants-container {
   z-index: -1;
