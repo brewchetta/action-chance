@@ -78,35 +78,25 @@ function App() {
     newSocket.on('reconnect', () => debugLog(`reconnected: ${endpoint}`))
 
     newSocket.on('change participants', response => {
-      if (response.room === socketRoom) {
-        setParticipants(response.data)
-      }
+      setParticipants(response.data)
     })
 
     newSocket.on('change active participant', response => {
-      if (response.room === socketRoom) {
-        setActiveParticipant(response.data)
-      }
+      setActiveParticipant(response.data)
     })
 
     newSocket.on('change background', response => {
-      if (response.room === socketRoom) {
-        setBG(response.data.image)
-        setBGMask(response.data.mask)
-      }
+      setBG(response.data.image)
+      setBGMask(response.data.mask)
     })
 
     newSocket.on('change display message', response => {
-      if (response.room === socketRoom) {
-        setDisplayMessage(response.data)
-        document.title = response.data
-      }
+      setDisplayMessage(response.data)
+      document.title = response.data
     })
 
     newSocket.on('change initiative use', response => {
-      if (response.room === socketRoom) {
-        setUtilizeInitiative(response.data)
-      }
+      setUtilizeInitiative(response.data)
     })
 
     newSocket.on('shutdown', response => {
