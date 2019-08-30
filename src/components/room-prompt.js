@@ -54,7 +54,7 @@ const RoomPrompt = ({setSocketRoom, socketRoom}) => {
 
         <p>Connecting{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
 
-        : <p>This is taking longer than normal, check the server status{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
+        : <p>This is taking longer than normal{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
       }
     </div>
   )

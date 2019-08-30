@@ -32,6 +32,7 @@ function App() {
   const reconnectAttempt = attempts => {
       debugLog(`could not connect to: ${endpoint}`)
       debugLog(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
+      if (attempts >= 5) setSocketRoom('')
   }
 
   // Adds or removes participants from all users
