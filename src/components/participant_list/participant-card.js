@@ -47,7 +47,15 @@ const ParticipantCard = props => {
   };
 
   // Determines whether a participant uses the active border or not
-  const isActive = () => activeParticipant ? "participant-card participant-card-active" : "participant-card"
+  const isActive = () => {
+    if (activeParticipant) {
+      return "participant-card participant-card-active"
+    } else if (participant.chances <= 0) {
+      return "participant-card participant-card-exhausted"
+    } else {
+      return "participant-card"
+    }
+  }
 
   // Sets the participant to delayed
   const delayParticipant = () => {

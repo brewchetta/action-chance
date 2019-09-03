@@ -71,15 +71,18 @@
   border-radius: 10px;
   margin: 3%;
   padding: 2px;
-  background-color: #bbb;
+  background-color: #ddd;
   position: relative;
   animation: participant-card-appear 0.5s;
   transition: background-color 1s;
 }
 
 .participant-card-active {
-  margin: 3%;
-  background-color: white;
+  background-color: #e66;
+}
+
+.participant-card-exhausted {
+  background: #bbb7;
 }
 
 .participant-card-buttons {
@@ -109,4 +112,5 @@
   border-radius: 0 0 10px 0;
   color: white;
   font-size: 0.8em;
+  cursor: pointer;
 }
