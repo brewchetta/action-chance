@@ -101,10 +101,12 @@ const ParticipantCard = props => {
       <br />
 
       {participant.attributes ? (
-        <ParticipantAttributes
-          attributes={participant.attributes}
-          removeAttribute={removeAttribute}
-        />
+        <div className='participant-attributes-container'>
+          <ParticipantAttributes
+            attributes={participant.attributes}
+            removeAttribute={removeAttribute}
+            />
+        </div>
       ) : null}
 
       <ParticipantAttrsAdd
