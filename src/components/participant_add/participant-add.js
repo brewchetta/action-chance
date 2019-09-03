@@ -56,7 +56,7 @@ const AddParticipants = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const chances = parseInt(initiativeInput) > activeParticipant.initiative ? 0 : 1
+    const chances = activeParticipant && parseInt(initiativeInput) < activeParticipant.initiative ? 0 : 1
 
     if (nameInput.length) {
       setParticipants([
