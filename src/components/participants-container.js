@@ -117,6 +117,8 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
         setParticipants={setParticipants}
         setDisplayMessage={setDisplayMessage}
         setAddPartOpen={setAddPartOpen}
+        utilizeInitiative={utilizeInitiative}
+        activeParticipant={activeParticipant}
         />
       ) : null}
       <button
