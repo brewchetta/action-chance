@@ -56,17 +56,23 @@ const AddParticipants = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // Chances depends on whether there is an active participant and whether they come before or after in initiative
-    const chances = activeParticipant && parseInt(initiativeInput) < activeParticipant.initiative ? 1 : !activeParticipant ? 1 : 0
+    if (!participants.filter(p => p.name === nameInput).length) {
 
-    if (nameInput.length) {
-      setParticipants([
-        ...participants,
-        { name: nameInput, chances, image: imageInput, initiative: parseInt(initiativeInput) }
-      ]);
-      setDisplayMessage(`${nameInput} is ready!`);
-      setNameInput("");
-      setImageInput("");
+      // Chances depends on whether there is an active participant and whether they come before or after in initiative
+      const chances = activeParticipant && parseInt(initiativeInput) < activeParticipant.initiative ? 1 : !activeParticipant ? 1 : 0
+
+      if (nameInput.length) {
+        setParticipants([
+          ...participants,
+          { name: nameInput, chances, image: imageInput, initiative: parseInt(initiativeInput) }
+        ]);
+        setDisplayMessage(`${nameInput} is ready!`);
+        setNameInput("");
+        setImageInput("");
+      }
+
+    } else {
+      alert(`A character already exists with that name!`)
     }
   };
 
