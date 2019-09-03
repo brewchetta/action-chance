@@ -202,12 +202,20 @@ button:active {
 
 #roll-chance-container {
   position: fixed;
-  bottom: 8vh;
+  bottom: 5vh;
   left: 0;
-  background: #000f;
-  border: solid white;
+  /* background: #000f; */
+  /* border: solid white; */
   border-width: 2px 0 2px 0;
   width: 100vw;
+}
+
+#roll-chance-container button {
+  color: white;
+  background: #000a;
+  border: solid white;
+  border-width: 0 2px 0 2px;
+  border-radius: 6px;
 }
 
 /* ------Participant Image------ */
