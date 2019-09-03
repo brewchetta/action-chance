@@ -1,15 +1,20 @@
 // React
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Components
 import ParticipantImage from "../participant-image";
 
 /*------Component------*/
 const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
-  //
 
   /*------State------*/
   const [imageInput, setImageInput] = useState("");
   const [imagePage, setImagePage] = useState(0);
+
+  /*------Effects------*/
+
+  useEffect(() => {
+    window.scroll({left: 0, top: document.body.scrollHeight, behavior: 'smooth'});
+  })
 
   /*------Setters------*/
 
