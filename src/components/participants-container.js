@@ -49,12 +49,10 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
   };
 
   const changeInitiative = (participant, newInitiative) => {
-    console.log('In changeInitiative')
     setParticipants([
       ...participants.filter(p => p !== participant),
       { ...participant, initiative: parseInt(newInitiative)}
     ])
-    console.log('setParticipants fired')
   }
 
   // Sets a participant's attributes
