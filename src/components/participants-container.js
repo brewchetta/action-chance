@@ -48,6 +48,15 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
     ]);
   };
 
+  const changeInitiative = (participant, newInitiative) => {
+    console.log('In changeInitiative')
+    setParticipants([
+      ...participants.filter(p => p !== participant),
+      { ...participant, initiative: parseInt(newInitiative)}
+    ])
+    console.log('setParticipants fired')
+  }
+
   // Sets a participant's attributes
   const changeParticipantAttributes = (participant, newAttributes) => {
     setParticipants([
@@ -78,14 +87,17 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
     <div id="participant-container">
       <h3 id="display-message">{displayMessage}</h3>
       <ParticipantList
-        setChances={setChances}
-        participants={participants}
-        removeParticipant={removeParticipant}
-        changeParticipantAttributes={changeParticipantAttributes}
-        activeParticipant={activeParticipant}
-        changeParticipantDelayed={changeParticipantDelayed}
-        addPartOpen={addPartOpen}
-        utilizeInitiative={utilizeInitiative}
+        {...{
+          setChances,
+          participants,
+          removeParticipant,
+          changeParticipantAttributes,
+          changeParticipantDelayed,
+          activeParticipant,
+          addPartOpen,
+          utilizeInitiative,
+          changeInitiative
+        }}
       />
 
       {!imageListIsOpen ? (

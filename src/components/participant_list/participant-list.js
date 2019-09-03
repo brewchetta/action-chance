@@ -24,7 +24,8 @@ const ParticipantList = props => {
     activeParticipant,
     changeParticipantDelayed,
     addPartOpen,
-    utilizeInitiative
+    utilizeInitiative,
+    changeInitiative
   } = props;
 
   //*------Utilities------*//
@@ -49,7 +50,8 @@ const ParticipantList = props => {
         changeParticipantAttributes,
         activeParticipant: isActive(participant),
         changeParticipantDelayed,
-        utilizeInitiative
+        utilizeInitiative,
+        changeInitiative
       }}
     />
 

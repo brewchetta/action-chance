@@ -23,7 +23,8 @@ const ParticipantCard = props => {
     setChances,
     activeParticipant,
     changeParticipantDelayed,
-    utilizeInitiative
+    utilizeInitiative,
+    changeInitiative
   } = props;
 
   //*------Utilities------*//
@@ -37,6 +38,15 @@ const ParticipantCard = props => {
         ])
       : changeParticipantAttributes(participant, [attr]);
   };
+
+  const handleClickInitiative = () => {
+    const newInitiative = prompt('New Initiative:', participant.initiative)
+    if (parseInt(newInitiative) && parseInt(newInitiative) >= 0 && parseInt(newInitiative) <= 40) {
+      changeInitiative(participant, newInitiative)
+    } else if (newInitiative) {
+      alert(`[${newInitiative}] is invalid`)
+    }
+  }
 
   // Removes attribute from participant
   const removeAttribute = attribute => {
@@ -76,7 +86,7 @@ const ParticipantCard = props => {
       />
 
       {utilizeInitiative ?
-        <p className='participant-card-initiative'>{participant.initiative}</p>
+        <p className='participant-card-initiative' onClick={handleClickInitiative}>{participant.initiative}</p>
         : participant.chances ?
         <p className='participant-card-initiative'>{renderChances('', 1)}</p>
         : null }
