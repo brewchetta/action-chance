@@ -7,7 +7,7 @@ const defaultImgURL =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
 //*------Component------*//
-const ParticipantImage = ({ imageURL, isActive, participantName }) => {
+const ParticipantImage = ({ imageURL, isActive, participantName, floatLeft }) => {
   //
 
   //*------State------*//
@@ -44,7 +44,7 @@ const ParticipantImage = ({ imageURL, isActive, participantName }) => {
   //*------Render------*//
 
   return (
-      <div className='participant-image-container'>
+      <div className='participant-image-container' style={floatLeft ? {float: 'left'} : null}>
 
         {/* Inner image */}
         <img

@@ -227,7 +227,6 @@ button:active {
   overflow: hidden;
   margin: auto;
   position: relative;
-  float: left;
 }
 
 .participant-image-frame {

@@ -83,6 +83,7 @@ const ParticipantCard = props => {
         imageURL={participant.image ? participant.image : defaultImage}
         isActive={activeParticipant}
         participantName={participant.name}
+        floatLeft={true}
       />
 
       {utilizeInitiative ?
