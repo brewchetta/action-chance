@@ -95,8 +95,18 @@
   cursor: pointer;
 }
 
-@media (max-width: 920px) {
-  .participant-card .participant-image-frame {
-    float: left;
-  }
+.participant-card .participant-image-frame {
+  float: left;
+}
+
+.participant-card .participant-card-initiative {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px;
+  margin: 0;
+  background: #000;
+  border-radius: 0 0 10px 0;
+  color: white;
+  font-size: 0.7em;
 }

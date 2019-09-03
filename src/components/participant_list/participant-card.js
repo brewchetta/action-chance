@@ -66,9 +66,17 @@ const ParticipantCard = props => {
         isActive={activeParticipant}
         participantName={participant.name}
       />
+
+      {utilizeInitiative ?
+        <p className='participant-card-initiative'>{participant.initiative}</p>
+        : participant.chances ?
+        <p className='participant-card-initiative'>{renderChances('', 1)}</p>
+        : null }
+
       <p>
-        {participant.name} {utilizeInitiative ? `| Initiative: ${participant.initiative}` : `| Chances: ${renderChances('', 1)}`}
+        {participant.name}
       </p>
+
       <div className="participant-card-buttons">
         {!utilizeInitiative ?
           <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
@@ -81,19 +89,23 @@ const ParticipantCard = props => {
         <button onClick={() => setAttributesAddIsOpen(!attributesAddIsOpen)}>Tags</button>
         <button onClick={() => removeParticipant(participant)}>Remove</button>
       </div>
+
       <br />
+
       {participant.attributes ? (
         <ParticipantAttributes
           attributes={participant.attributes}
           removeAttribute={removeAttribute}
         />
       ) : null}
+
       <ParticipantAttrsAdd
         participantAttributes={participant.attributes}
         handleAttributeAdd={handleAttributeAdd}
         isOpen={attributesAddIsOpen}
         setIsOpen={setAttributesAddIsOpen}
       />
+
     </div>
   );
 };
