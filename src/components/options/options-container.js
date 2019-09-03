@@ -50,7 +50,7 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utiliz
           <OptionsRooms {...{socketRoom, setSocketRoom}} />
 
           {optionsMessage ? <p id="options-message">{optionsMessage}</p> : null}
-          {/* TODO: Style the message so it's smaller and more out of the way */}
+
         </div>
       );
     } else {
