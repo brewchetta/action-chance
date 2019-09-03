@@ -132,7 +132,7 @@ function App() {
 
   useEffect(() => {
     const activeCard = document.getElementsByClassName('participant-card-active')[0]
-    if (activeCard) activeCard.scrollIntoView()
+    if (activeCard) activeCard.scrollIntoView({behavior: "smooth", block: "center"})
   })
 
   /* Render */
