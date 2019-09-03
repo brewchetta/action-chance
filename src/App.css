@@ -220,17 +220,30 @@ button:active {
 
 /* ------Participant Image------ */
 
-.participant-image-frame {
-  border-radius: 100%;
+.participant-image-container {
   height: 100px;
   width: 100px;
-  border: inset 10px;
+  border-radius: 100%;
   overflow: hidden;
   margin: auto;
+  position: relative;
+  float: left;
+}
+
+.participant-image-frame {
+  border-radius: 100%;
+  height: 87px;
+  width: 87px;
+  border: inset 7px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .participant-image {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* ------Display Message------ */

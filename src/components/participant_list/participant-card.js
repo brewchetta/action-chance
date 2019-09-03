@@ -91,7 +91,7 @@ const ParticipantCard = props => {
         <p className='participant-card-initiative'>{renderChances('', 1)}</p>
         : null }
 
-      <p>
+      <p style={{margin: '0.7em'}}>
         {participant.name}
       </p>
 

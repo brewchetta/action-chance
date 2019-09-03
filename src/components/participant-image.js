@@ -44,34 +44,30 @@ const ParticipantImage = ({ imageURL, isActive, participantName }) => {
   //*------Render------*//
 
   return (
-    <>
-      {/* Circular image frame */}
-      <div
-        className={
-          isActive
-            ? "participant-image-frame rotating"
-            : "participant-image-frame"
-        }
-        style={{ borderColor }}
-      >
+      <div className='participant-image-container'>
+
         {/* Inner image */}
         <img
-          className={
-            isActive
-              ? "participant-image rotating-counter"
-              : "participant-image"
-          }
+          className="participant-image"
           alt=""
           src={imageURL ? imageURL : defaultImgURL}
           style={
             isPortrait
-              ? { width: "100px", top: `-${imagePlacement}px` }
-              : { height: "100px", left: `-${imagePlacement}px` }
+            ? { width: "100px", top: `-${imagePlacement}px` }
+            : { height: "100px", left: `-${imagePlacement}px` }
           }
+          />
+
+        {/* Circular image frame */}
+        <div className={
+            isActive
+              ? "participant-image-frame rotating"
+              : "participant-image-frame"
+          }
+          style={{ borderColor }}
         />
-        {/* End frame */}
+
       </div>
-    </>
   );
 };
 
