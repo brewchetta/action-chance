@@ -64,7 +64,7 @@ const RollChance = props => {
         addPartOpen || participants.length === 0 ? "display-hidden" : null
       }
     >
-      Draw a person to act
+      Next
     </button>
   );
 };
