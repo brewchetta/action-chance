@@ -23,9 +23,9 @@ function App() {
   const bg = useSelector(state => state.bg)
   const bgMask = useSelector(state => state.bgMask)
   const displayMessage = useSelector(state => state.displayMessage)
+  const socket = useSelector(state => state.socket)
 
   /* State */
-  const [socket, setSocket] = useState(null)
   const [socketRoom, setSocketRoom] = useState('')
   const [socketPassword, setSocketPassword] = useState('')
 
@@ -111,7 +111,7 @@ function App() {
     })
 
     newSocket.on('shutdown', response => {
-      setSocket(null)
+      dispatch(actions.setSocket(null))
       setSocketRoom(null)
 
       dispatch(actions.setBG(defaultBGImage))
@@ -119,7 +119,7 @@ function App() {
       alert(response)
     })
 
-    setSocket(newSocket)
+    dispatch(actions.setSocket(newSocket))
 
     // Return socket for useEffect to utilize
     return newSocket

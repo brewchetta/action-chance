@@ -4,6 +4,7 @@ export const SET_BG = 'SET_BG'
 export const SET_BG_MASK = 'SET_BG_MASK'
 export const SET_DISPLAY_MESSAGE = 'SET_DISPLAY_MESSAGE'
 export const SET_UTILIZE_INITIATIVE = 'SET_UTILIZE_INITIATIVE'
+export const SET_SOCKET = 'SET_SOCKET'
 
 export function setParticipants(payload) {
   return {type: SET_PARTICIPANTS, payload}
@@ -27,4 +28,8 @@ export function setDisplayMessage(payload) {
 
 export function setUtilizeInitiative(payload) {
   return {type: SET_UTILIZE_INITIATIVE, payload}
+}
+
+export function setSocket(payload) {
+  return {type: SET_SOCKET, payload}
 }

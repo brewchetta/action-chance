@@ -5,6 +5,7 @@ import bgReducer from './bg'
 import bgMaskReducer from './bg_mask'
 import displayMessageReducer from './display_message'
 import utilizeInitiativeReducer from './utilize_initiative'
+import socketReducer from './socket'
 
 export default combineReducers({
   participants: participantsReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   bg: bgReducer,
   bgMask: bgMaskReducer,
   displayMessage: displayMessageReducer,
-  utilizeInitiative: utilizeInitiativeReducer
+  utilizeInitiative: utilizeInitiativeReducer,
+  socket: socketReducer
 })
