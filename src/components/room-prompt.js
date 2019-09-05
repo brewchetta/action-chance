@@ -1,12 +1,14 @@
 // React
 import React, {useState, useEffect} from 'react'
+import {debugLog} from '../constants'
 
 /* Component */
-const RoomPrompt = ({setSocketRoom, socketRoom}) => {
+const RoomPrompt = ({setSocketRoom, socketRoom, setSocketPassword}) => {
 
   /* State */
 
-  const [input, setInput] = useState('')
+  const [roomInput, setRoomInput] = useState('')
+  const [passwordInput, setPasswordInput] = useState('')
   const [longConnection, setLongConnection] = useState(false)
 
   // Creates a mesage if the connection is taking too long
@@ -22,12 +24,25 @@ const RoomPrompt = ({setSocketRoom, socketRoom}) => {
   /* Utilities */
 
   const handleChange = event => {
-    setInput(event.target.value)
+    switch (event.target.name) {
+      case 'roomInput':
+        setRoomInput(event.target.value)
+        break;
+      case 'passwordInput':
+        setPasswordInput(event.target.value)
+        break;
+      default:
+        debugLog('huh?')
+    }
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    setSocketRoom(input)
+    if (roomInput.length > 3 && passwordInput.length > 3) {
+      setSocketRoom(roomInput)
+      setSocketPassword(passwordInput)
+    }
+    //TODO: create error messages for improper length
   }
 
   const cDot = delay => {
@@ -44,7 +59,18 @@ const RoomPrompt = ({setSocketRoom, socketRoom}) => {
         <p>Join a game</p>
 
         <form onSubmit={handleSubmit}>
-          <input onChange={handleChange} type='text' max='15' value={input} />
+          <input onChange={handleChange}
+            name='roomInput'
+            type='text' max='15'
+            value={roomInput}
+            placeholder='room' />
+          <br/>
+          <input onChange={handleChange}
+            name='passwordInput'
+            type='text' max='20'
+            value={passwordInput}
+            placeholder='password' />
+          <br/>
           <input type='submit' value='Submit'/>
         </form>
 

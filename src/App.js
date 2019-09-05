@@ -25,6 +25,7 @@ function App() {
   const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
   const [socketRoom, setSocketRoom] = useState('')
+  const [socketPassword, setSocketPassword] = useState('')
 
   /* Socket IO */
 
@@ -60,8 +61,8 @@ function App() {
   }
 
   const socketRequestRoomInfo = socket => {
-    socket.emit('request room info', socketRoom)
-    socket.emit('change display message', {data: 'A new player has joined...!', room: socketRoom})
+    socket.emit('request room info', {room: socketRoom, password: socketPassword})
+    // socket.emit('change display message', {data: 'A new player has joined...!', room: socketRoom})
   }
 
   // Main connection function
@@ -98,6 +99,13 @@ function App() {
 
     newSocket.on('change initiative use', response => {
       setUtilizeInitiative(response.data)
+    })
+
+    newSocket.on('invalid password', response => {
+      alert(response)
+      setSocketRoom('')
+      setSocketPassword('')
+      newSocket.disconnect()
     })
 
     newSocket.on('shutdown', response => {
@@ -169,7 +177,7 @@ function App() {
 
       ) : (
 
-        <RoomPrompt {...{setSocketRoom, socketRoom}} />
+        <RoomPrompt {...{setSocketRoom, socketRoom, setSocketPassword}} />
 
       )}
 
@@ -185,7 +193,8 @@ function App() {
         utilizeInitiative,
         setUtilizeInitiative: socketChangeInitiativeUse,
         socketRoom,
-        setSocketRoom
+        setSocketRoom,
+        setSocketPassword
         }}/>
 
         : null }

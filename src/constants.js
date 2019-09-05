@@ -8,5 +8,5 @@ export const reconnectionAttempts = 5
 export const endpoint = 'http://localhost:3050'
 
 export const debugLog = message => {
-  if (process.env.NODE_ENV !== 'production') console.log(message)
+  if (process.env.NODE_ENV !== 'production') console.log(`%cDebug: ${message}`, 'color: blue')
 }
