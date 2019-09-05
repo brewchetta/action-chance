@@ -18,19 +18,23 @@ const RoomPrompt = () => {
 
   const [roomInput, setRoomInput] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
-  const [longConnection, setLongConnection] = useState(false)
+  const [isLongConnection, setIsLongConnection] = useState(false)
+
+  /* Utilities */
 
   // Creates a mesage if the connection is taking too long
   useEffect(() => {
     let timeout
-    if (socketRoom.name && !longConnection) {
-      timeout = setTimeout(() => setLongConnection(true), 7500)
+    if (socketRoom.name && !isLongConnection) {
+      timeout = setTimeout(() => setIsLongConnection(true), 7500)
     }
 
     return () => clearTimeout(timeout)
-  }, [longConnection, socketRoom])
+  }, [isLongConnection, socketRoom])
 
-  /* Utilities */
+  useEffect(() => {
+    return setIsLongConnection(false)
+  }, [])
 
   const handleChange = event => {
     switch (event.target.name) {
@@ -84,7 +88,7 @@ const RoomPrompt = () => {
 
         </>
 
-        : !longConnection ?
+      : !isLongConnection ?
 
         <p>Connecting{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
 
