@@ -1,4 +1,8 @@
 import {combineReducers} from 'redux'
-import participantReducer from './ParticipantReducer'
+import participantsReducer from './participants'
+import activeParticipantReducer from './active_participant'
 
-export default combineReducers({participants: participantReducer})
+export default combineReducers({
+  participants: participantsReducer,
+  activeParticipant: activeParticipantReducer
+})

@@ -8,7 +8,7 @@ import RollChance from "./roll-chance";
 import {useSelector} from 'react-redux'
 
 /*------Component------*/
-const ParticipantsContainer = ({setParticipants, activeParticipant, setActiveParticipant, displayMessage, setDisplayMessage, utilizeInitiative}) => {
+const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMessage, setDisplayMessage, utilizeInitiative}) => {
 
   /*------Redux------*/
   const participants = useSelector(state => state.participants)
@@ -94,7 +94,6 @@ const ParticipantsContainer = ({setParticipants, activeParticipant, setActivePar
           removeParticipant,
           changeParticipantAttributes,
           changeParticipantDelayed,
-          activeParticipant,
           addPartOpen,
           utilizeInitiative,
           changeInitiative
@@ -129,7 +128,6 @@ const ParticipantsContainer = ({setParticipants, activeParticipant, setActivePar
         setDisplayMessage={setDisplayMessage}
         setAddPartOpen={setAddPartOpen}
         utilizeInitiative={utilizeInitiative}
-        activeParticipant={activeParticipant}
         />
       ) : null}
       <button

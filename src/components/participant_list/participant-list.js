@@ -18,14 +18,13 @@ const ParticipantList = props => {
 
   /*------Redux------*/
 
-  const participants = useSelector(state => state.participants)
+  const {participants, activeParticipant} = useSelector(state => state)
 
   /*------Props------*/
   const {
     removeParticipant,
     setChances,
     changeParticipantAttributes,
-    activeParticipant,
     changeParticipantDelayed,
     addPartOpen,
     utilizeInitiative,
@@ -52,7 +51,6 @@ const ParticipantList = props => {
         removeParticipant,
         setChances,
         changeParticipantAttributes,
-        activeParticipant: isActive(participant),
         changeParticipantDelayed,
         utilizeInitiative,
         changeInitiative

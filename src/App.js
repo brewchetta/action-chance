@@ -22,7 +22,6 @@ function App() {
   const dispatch = useDispatch()
 
   /* State */
-  const [activeParticipant, setActiveParticipant] = useState(null);
   const [bg, setBG] = useState(defaultBGImage);
   const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });
   const [displayMessage, setDisplayMessage] = useState("|||");
@@ -88,7 +87,7 @@ function App() {
     })
 
     newSocket.on('change active participant', response => {
-      setActiveParticipant(response.data)
+      dispatch(actions.setActiveParticipant(response.data))
     })
 
     newSocket.on('change background', response => {
@@ -171,7 +170,6 @@ function App() {
 
         <ParticipantsContainer {...{
           setParticipants: socketChangeParticipants,
-          activeParticipant,
           setActiveParticipant: socketChangeActiveParticipant,
           displayMessage,
           setDisplayMessage: socketChangeDisplayMessage,

@@ -1,5 +1,7 @@
 // React
 import React, {useState} from "react";
+// Redux
+import {useSelector} from 'react-redux'
 // Components
 import ParticipantAttributes from "../participant_attributes/participant-attributes";
 import ParticipantAttrsAdd from "../participant_attributes/participant-attributes-add";
@@ -8,20 +10,21 @@ import ParticipantImage from "../participant-image";
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
-//*------Component------*//
+/*------Component------*/
 const ParticipantCard = props => {
+
+  const activeParticipant = useSelector(state => state.activeParticipant)
 
   /* ------ State ------ */
 
   const [attributesAddIsOpen, setAttributesAddIsOpen] = useState(false)
 
-  //*------Props------*//
+  /*------Props------*/
   const {
     participant,
     changeParticipantAttributes,
     removeParticipant,
     setChances,
-    activeParticipant,
     changeParticipantDelayed,
     utilizeInitiative,
     changeInitiative
@@ -57,8 +60,8 @@ const ParticipantCard = props => {
   };
 
   // Determines whether a participant uses the active border or not
-  const isActive = () => {
-    if (activeParticipant) {
+  const isActiveCard = () => {
+    if (activeParticipant && activeParticipant.name === participant.name) {
       return "participant-card participant-card-active"
     } else if (participant.chances <= 0) {
       return "participant-card participant-card-exhausted"
@@ -78,10 +81,10 @@ const ParticipantCard = props => {
 
   //*------Render------*//
   return (
-    <div className={isActive()}>
+    <div className={isActiveCard()}>
       <ParticipantImage
         imageURL={participant.image ? participant.image : defaultImage}
-        isActive={activeParticipant}
+        isActive={activeParticipant && activeParticipant.name === participant.name}
         participantName={participant.name}
         floatLeft={true}
       />
