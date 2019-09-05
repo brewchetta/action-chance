@@ -20,11 +20,8 @@ function App() {
 
   // Redux
   const dispatch = useDispatch()
-  const bg = useSelector(state => state.bg)
-  const bgMask = useSelector(state => state.bgMask)
-  const displayMessage = useSelector(state => state.displayMessage)
-  const socket = useSelector(state => state.socket)
-
+  const {bg, bgMask, displayMessage, socket} = useSelector(state => state)
+  
   /* State */
   const [socketRoom, setSocketRoom] = useState('')
   const [socketPassword, setSocketPassword] = useState('')
