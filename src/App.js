@@ -22,9 +22,9 @@ function App() {
   const dispatch = useDispatch()
   const bg = useSelector(state => state.bg)
   const bgMask = useSelector(state => state.bgMask)
+  const displayMessage = useSelector(state => state.displayMessage)
 
   /* State */
-  const [displayMessage, setDisplayMessage] = useState("|||");
   const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
   const [socketRoom, setSocketRoom] = useState('')
@@ -96,7 +96,7 @@ function App() {
     })
 
     newSocket.on('change display message', response => {
-      setDisplayMessage(response.data)
+      dispatch(actions.setDisplayMessage(response.data))
       document.title = response.data
     })
 
