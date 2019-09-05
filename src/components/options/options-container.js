@@ -8,7 +8,7 @@ import OptionsRooms from './options-rooms'
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utilizeInitiative, setUtilizeInitiative, socketRoom, setSocketRoom }) => {
+const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utilizeInitiative, setUtilizeInitiative, socketRoom, setSocketRoom, setSocketPassword }) => {
   /*------State------*/
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
@@ -47,7 +47,7 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utiliz
 
           <br/>
 
-          <OptionsRooms {...{socketRoom, setSocketRoom}} />
+          <OptionsRooms {...{socketRoom, setSocketRoom, setSocketPassword}} />
 
           {optionsMessage ? <p id="options-message">{optionsMessage}</p> : null}
 
