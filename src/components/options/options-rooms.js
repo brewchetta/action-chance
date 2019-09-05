@@ -1,10 +1,23 @@
+// React
 import React, {useState} from 'react'
+// Redux
+import {useDispatch, useSelector} from 'react-redux'
+import {setSocketRoom} from '../../redux/actions'
 
-const OptionsGameplay = ({socketRoom, setSocketRoom, setSocketPassword}) => {
+const OptionsGameplay = () => {
+
+  /* Redux */
+
+  const socketRoom = useSelector(state => state.socketRoom)
+  const dispatch = useDispatch()
+
+  /* State */
 
   const [isOpen, setIsOpen] = useState(false)
   const [roomInput, setRoomInput] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
+
+  /* Utilities */
 
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
@@ -25,8 +38,7 @@ const OptionsGameplay = ({socketRoom, setSocketRoom, setSocketPassword}) => {
   const handleSubmit = event => {
     event.preventDefault()
     if (roomInput.length > 3 && passwordInput.length > 3) {
-      setSocketRoom(roomInput)
-      setSocketPassword(passwordInput)
+      dispatch(setSocketRoom({name: roomInput, password: passwordInput}))
     }
     // TODO: set up error messages for validations
   }
@@ -35,7 +47,7 @@ const OptionsGameplay = ({socketRoom, setSocketRoom, setSocketPassword}) => {
       <>
 
       <br/>
-      <p style={{fontSize: '0.9em', fontFamily: 'monospace', marginRight: '0.4em'}}>Current Room: {socketRoom}</p>
+      <p style={{fontSize: '0.9em', fontFamily: 'monospace', marginRight: '0.4em'}}>Current Room: {socketRoom.name}</p>
 
       <form onSubmit={handleSubmit}>
         <input type='text' name='roomInput'

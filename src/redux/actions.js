@@ -5,6 +5,9 @@ export const SET_BG_MASK = 'SET_BG_MASK'
 export const SET_DISPLAY_MESSAGE = 'SET_DISPLAY_MESSAGE'
 export const SET_UTILIZE_INITIATIVE = 'SET_UTILIZE_INITIATIVE'
 export const SET_SOCKET = 'SET_SOCKET'
+export const SET_SOCKETROOM_NAME = 'SET_SOCKETROOM_NAME'
+export const SET_SOCKETROOM_PASSWORD = 'SET_SOCKETROOM_PASSWORD'
+export const SET_SOCKETROOM = 'SET_SOCKETROOM'
 
 export function setParticipants(payload) {
   return {type: SET_PARTICIPANTS, payload}
@@ -32,4 +35,16 @@ export function setUtilizeInitiative(payload) {
 
 export function setSocket(payload) {
   return {type: SET_SOCKET, payload}
+}
+
+export function setSocketRoomName(payload) {
+  return {type: SET_SOCKETROOM_NAME, payload}
+}
+
+export function setSocketRoomPassword(payload) {
+  return {type: SET_SOCKETROOM_PASSWORD, payload}
+}
+
+export function setSocketRoom(payload) {
+  return {type: SET_SOCKETROOM, payload}
 }

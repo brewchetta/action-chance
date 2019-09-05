@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux'
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({socketChangeBG, socketRoom, setSocketRoom, setSocketPassword }) => {
+const OptionsContainer = ({socketChangeBG}) => {
 
   /*------Redux------*/
 
@@ -48,7 +48,7 @@ const OptionsContainer = ({socketChangeBG, socketRoom, setSocketRoom, setSocketP
 
           <br/>
 
-          <OptionsRooms {...{socketRoom, setSocketRoom, setSocketPassword}} />
+          <OptionsRooms />
 
           {optionsMessage ? <p id="options-message">{optionsMessage}</p> : null}
 

@@ -1,9 +1,18 @@
 // React
 import React, {useState, useEffect} from 'react'
+// Redux
+import {useDispatch, useSelector} from 'react-redux'
+import {setSocketRoom} from '../redux/actions'
+// Constants
 import {debugLog} from '../constants'
 
 /* Component */
-const RoomPrompt = ({setSocketRoom, socketRoom, setSocketPassword}) => {
+const RoomPrompt = () => {
+
+  /* Redux */
+
+  const dispatch = useDispatch()
+  const socketRoom = useSelector(state => state.socketRoom)
 
   /* State */
 
@@ -14,7 +23,7 @@ const RoomPrompt = ({setSocketRoom, socketRoom, setSocketPassword}) => {
   // Creates a mesage if the connection is taking too long
   useEffect(() => {
     let timeout
-    if (socketRoom && !longConnection) {
+    if (socketRoom.name && !longConnection) {
       timeout = setTimeout(() => setLongConnection(true), 7500)
     }
 
@@ -39,8 +48,7 @@ const RoomPrompt = ({setSocketRoom, socketRoom, setSocketPassword}) => {
   const handleSubmit = event => {
     event.preventDefault()
     if (roomInput.length > 3 && passwordInput.length > 3) {
-      setSocketRoom(roomInput)
-      setSocketPassword(passwordInput)
+      dispatch(setSocketRoom({name: roomInput, password: passwordInput}))
     }
     //TODO: create error messages for improper length
   }
@@ -53,7 +61,7 @@ const RoomPrompt = ({setSocketRoom, socketRoom, setSocketPassword}) => {
   return (
     <div id='room-prompt'>
       {/* If no room, prompts to join, otherwise renders a connecting message depending on how long it's been connecting */}
-      {!socketRoom ?
+      {!socketRoom.name ?
         <>
 
         <p>Join a game</p>

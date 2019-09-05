@@ -1,5 +1,5 @@
 // React
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 // Style
 import "./App.css";
 // Components
@@ -20,11 +20,7 @@ function App() {
 
   // Redux
   const dispatch = useDispatch()
-  const {bg, bgMask, displayMessage, socket} = useSelector(state => state)
-  
-  /* State */
-  const [socketRoom, setSocketRoom] = useState('')
-  const [socketPassword, setSocketPassword] = useState('')
+  const {bg, bgMask, displayMessage, socket, socketRoom} = useSelector(state => state)
 
   /* Socket IO */
 
@@ -32,7 +28,7 @@ function App() {
   const reconnectAttempt = attempts => {
       debugLog(`could not connect to: ${endpoint}`)
       debugLog(`reconnection attempt: ${attempts} out of ${reconnectionAttempts}`)
-      if (attempts >= 5) setSocketRoom('')
+      if (attempts >= 5) dispatch(actions.setSocketRoomName(''))
   }
 
   // Adds or removes participants from all users
@@ -60,7 +56,7 @@ function App() {
   }
 
   const socketRequestRoomInfo = socket => {
-    socket.emit('request room info', {room: socketRoom, password: socketPassword})
+    socket.emit('request room info', {room: socketRoom})
     // socket.emit('change display message', {data: 'A new player has joined...!', room: socketRoom})
   }
 
@@ -102,14 +98,13 @@ function App() {
 
     newSocket.on('invalid password', response => {
       alert(response)
-      setSocketRoom('')
-      setSocketPassword('')
+      dispatch(actions.setSocketRoom({name: '', password: ''}))
       newSocket.disconnect()
     })
 
     newSocket.on('shutdown', response => {
       dispatch(actions.setSocket(null))
-      setSocketRoom(null)
+      dispatch(actions.setSocketRoom({name: '', password: ''}))
 
       dispatch(actions.setBG(defaultBGImage))
       dispatch(actions.setBGMask({ color: "#7D7D7D", intensity: 25 }))
@@ -127,7 +122,7 @@ function App() {
   // Connects the socket, disconnects the socket if socket gets updated
   useEffect(() => {
     let socket
-    if (socketRoom) {
+    if (socketRoom.name) {
       socket = connectSocket()
     }
 
@@ -163,7 +158,7 @@ function App() {
 
       {/* Shows the participants if in a room, otherwise prompts to join a room */}
 
-      {socketRoom && socket && socket.connected ? (
+      {socketRoom.name && socket && socket.connected ? (
 
         <ParticipantsContainer {...{
           setParticipants: socketChangeParticipants,
@@ -174,7 +169,7 @@ function App() {
 
       ) : (
 
-        <RoomPrompt {...{setSocketRoom, socketRoom, setSocketPassword}} />
+        <RoomPrompt />
 
       )}
 
@@ -184,9 +179,6 @@ function App() {
         <Options {...{
         socketChangeBG,
         setUtilizeInitiative: socketChangeInitiativeUse,
-        socketRoom,
-        setSocketRoom,
-        setSocketPassword
         }}/>
 
         : null }
