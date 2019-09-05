@@ -1,11 +1,20 @@
 // React
 import React, { useState } from "react";
+// Redux
+import {useSelector, useDispatch} from 'react-redux'
+import * as actions from '../../redux/actions'
 // Components
 import OptionsBGButtons from "./options-bg-buttons";
 
 /*------Component------*/
-const OptionsBG = ({ bg, setBG, bgMask, setBGMask, setOptionsMessage }) => {
-  //
+const OptionsBG = ({ setOptionsMessage }) => {
+
+  /*------Redux------*/
+
+  const bgMask = useSelector(state => state.bgMask)
+  const dispatch = useDispatch()
+  const setBG = newBG => dispatch(actions.setBG(newBG))
+  const setBGMask = newBGMask => dispatch(actions.setBGMask(newBGMask))
 
   /*------State------*/
 

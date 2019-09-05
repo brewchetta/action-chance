@@ -1,6 +1,6 @@
 import { SET_ACTIVE_PARTICIPANT } from './actions'
 
-// participants = []
+// activeParticipant = null
 export default function(state = null, action) {
   switch (action.type) {
     case SET_ACTIVE_PARTICIPANT:

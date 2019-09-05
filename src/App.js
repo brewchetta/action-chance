@@ -11,7 +11,7 @@ import socketIO from 'socket.io-client'
 // Constants
 import {defaultBGImage, reconnectionDelay, reconnectionAttempts, endpoint, debugLog} from './constants'
 // Redux
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import * as actions from './redux/actions'
 
 /* Component */
@@ -20,10 +20,10 @@ function App() {
 
   // Redux
   const dispatch = useDispatch()
+  const bg = useSelector(state => state.bg)
+  const bgMask = useSelector(state => state.bgMask)
 
   /* State */
-  const [bg, setBG] = useState(defaultBGImage);
-  const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });
   const [displayMessage, setDisplayMessage] = useState("|||");
   const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
@@ -91,8 +91,8 @@ function App() {
     })
 
     newSocket.on('change background', response => {
-      setBG(response.data.image)
-      setBGMask(response.data.mask)
+      dispatch(actions.setBG(response.data.image))
+      dispatch(actions.setBGMask(response.data.mask))
     })
 
     newSocket.on('change display message', response => {
@@ -114,8 +114,9 @@ function App() {
     newSocket.on('shutdown', response => {
       setSocket(null)
       setSocketRoom(null)
-      setBG(defaultBGImage)
-      setBGMask({ color: "#7D7D7D", intensity: 25 })
+
+      dispatch(actions.setBG(defaultBGImage))
+      dispatch(actions.setBGMask({ color: "#7D7D7D", intensity: 25 }))
       alert(response)
     })
 
@@ -186,10 +187,6 @@ function App() {
       { socket && socket.connected ?
 
         <Options {...{
-        bg,
-        setBG,
-        bgMask,
-        setBGMask,
         socketChangeBG,
         utilizeInitiative,
         setUtilizeInitiative: socketChangeInitiativeUse,

@@ -4,11 +4,18 @@ import React, { useState } from "react";
 import OptionsBG from "./options-bg";
 import OptionsGameplay from './options-gameplay'
 import OptionsRooms from './options-rooms'
+// Redux
+import {useSelector} from 'react-redux'
 // CSS
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utilizeInitiative, setUtilizeInitiative, socketRoom, setSocketRoom, setSocketPassword }) => {
+const OptionsContainer = ({socketChangeBG, utilizeInitiative, setUtilizeInitiative, socketRoom, setSocketRoom, setSocketPassword }) => {
+
+  /*------Redux------*/
+
+  const {bg, bgMask} = useSelector(state => state)
+
   /*------State------*/
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionsMessage, setOptionsMessage] = useState("");
@@ -33,13 +40,7 @@ const OptionsContainer = ({ bg, setBG, bgMask, setBGMask, socketChangeBG, utiliz
             style={{ zIndex: "-1" }}
           />
 
-          <OptionsBG
-            bg={bg}
-            setBG={setBG}
-            bgMask={bgMask}
-            setBGMask={setBGMask}
-            setOptionsMessage={setOptionsMessage}
-          />
+          <OptionsBG setOptionsMessage={setOptionsMessage} />
 
           <br/>
 
