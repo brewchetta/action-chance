@@ -1,5 +1,7 @@
 // React
 import React from "react";
+//Redux
+import {useSelector} from 'react-redux'
 // Components
 import ParticipantCard from "./participant-card";
 import ParticipantImage from "../participant-image";
@@ -11,13 +13,15 @@ import "./style.css"
 const defaultImage =
   "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
 
-//*------Component------*//
+/*------Component------*/
 const ParticipantList = props => {
-  //
 
-  //*------Props------*//
+  /*------Redux------*/
+
+  const participants = useSelector(state => state.participants)
+
+  /*------Props------*/
   const {
-    participants,
     removeParticipant,
     setChances,
     changeParticipantAttributes,
@@ -28,7 +32,7 @@ const ParticipantList = props => {
     changeInitiative
   } = props;
 
-  //*------Utilities------*//
+  /*------Utilities------*/
 
   // Checks to see whether it's the participant's turn
   const isActive = participant =>

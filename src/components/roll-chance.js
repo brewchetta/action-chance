@@ -1,15 +1,19 @@
 // React
 import React from "react";
+// Redux
+import {useSelector} from 'react-redux'
 // Toolbox
 import { random } from "brews-toolboxjs";
 
 /*------Component------*/
 const RollChance = props => {
-  //
+
+  /*------Redux------*/
+
+  const participants = useSelector(state => state.participants)
 
   /*------Props------*/
   const {
-    participants,
     setChances,
     resetRound,
     setDisplayMessage,

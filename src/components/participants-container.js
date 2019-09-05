@@ -4,10 +4,14 @@ import React, { useState } from "react";
 import AddParticipant from "./participant_add/participant-add";
 import ParticipantList from "./participant_list/participant-list";
 import RollChance from "./roll-chance";
+// Redux
+import {useSelector} from 'react-redux'
 
 /*------Component------*/
-const ParticipantsContainer = ({participants, setParticipants, activeParticipant, setActiveParticipant, displayMessage, setDisplayMessage, utilizeInitiative}) => {
-  //
+const ParticipantsContainer = ({setParticipants, activeParticipant, setActiveParticipant, displayMessage, setDisplayMessage, utilizeInitiative}) => {
+
+  /*------Redux------*/
+  const participants = useSelector(state => state.participants)
 
   /*------State------*/
   const [addPartOpen, setAddPartOpen] = useState(false);
@@ -87,7 +91,6 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
       <ParticipantList
         {...{
           setChances,
-          participants,
           removeParticipant,
           changeParticipantAttributes,
           changeParticipantDelayed,
@@ -101,7 +104,6 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
       {!imageListIsOpen ? (
         <div id='roll-chance-container'>
           <RollChance {...{
-              participants,
               setChances,
               resetRound,
               setDisplayMessage,
@@ -123,7 +125,6 @@ const ParticipantsContainer = ({participants, setParticipants, activeParticipant
         <AddParticipant
         imageListIsOpen={imageListIsOpen}
         setImageListIsOpen={setImageListIsOpen}
-        participants={participants}
         setParticipants={setParticipants}
         setDisplayMessage={setDisplayMessage}
         setAddPartOpen={setAddPartOpen}

@@ -10,14 +10,18 @@ import RoomPrompt from "./components/room-prompt"
 import socketIO from 'socket.io-client'
 // Constants
 import {defaultBGImage, reconnectionDelay, reconnectionAttempts, endpoint, debugLog} from './constants'
+// Redux
+import {useDispatch} from 'react-redux'
+import * as actions from './redux/actions'
 
 /* Component */
 
 function App() {
-  //
+
+  // Redux
+  const dispatch = useDispatch()
 
   /* State */
-  const [participants, setParticipants] = useState([]);
   const [activeParticipant, setActiveParticipant] = useState(null);
   const [bg, setBG] = useState(defaultBGImage);
   const [bgMask, setBGMask] = useState({ color: "#7D7D7D", intensity: 25 });
@@ -80,7 +84,7 @@ function App() {
     newSocket.on('reconnect', () => debugLog(`reconnected: ${endpoint}`))
 
     newSocket.on('change participants', response => {
-      setParticipants(response.data)
+      dispatch(actions.setParticipants(response.data))
     })
 
     newSocket.on('change active participant', response => {
@@ -166,7 +170,6 @@ function App() {
       {socketRoom && socket && socket.connected ? (
 
         <ParticipantsContainer {...{
-          participants,
           setParticipants: socketChangeParticipants,
           activeParticipant,
           setActiveParticipant: socketChangeActiveParticipant,

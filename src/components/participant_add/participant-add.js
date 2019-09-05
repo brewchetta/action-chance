@@ -1,5 +1,7 @@
 // React
 import React, { useState } from "react";
+//Redux
+import {useSelector} from 'react-redux'
 // Components
 import ParticipantImageList from "./participant-add-image-list";
 import ParticipantImage from "../participant-image";
@@ -16,12 +18,14 @@ const capitalize = string => {
 
 /*------component------*/
 const AddParticipants = props => {
-  //
+
+  /*------Redux------*/
+
+  const participants = useSelector(state => state.participants)
 
   /*------Props------*/
 
   const {
-    participants,
     setParticipants,
     setDisplayMessage,
     imageListIsOpen,
