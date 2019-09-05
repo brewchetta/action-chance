@@ -25,7 +25,6 @@ function App() {
   const displayMessage = useSelector(state => state.displayMessage)
 
   /* State */
-  const [utilizeInitiative, setUtilizeInitiative] = useState(1)
   const [socket, setSocket] = useState(null)
   const [socketRoom, setSocketRoom] = useState('')
   const [socketPassword, setSocketPassword] = useState('')
@@ -101,7 +100,7 @@ function App() {
     })
 
     newSocket.on('change initiative use', response => {
-      setUtilizeInitiative(response.data)
+      dispatch(actions.setUtilizeInitiative(response.data))
     })
 
     newSocket.on('invalid password', response => {
@@ -173,8 +172,7 @@ function App() {
           setParticipants: socketChangeParticipants,
           setActiveParticipant: socketChangeActiveParticipant,
           displayMessage,
-          setDisplayMessage: socketChangeDisplayMessage,
-          utilizeInitiative
+          setDisplayMessage: socketChangeDisplayMessage
         }} />
 
       ) : (
@@ -188,7 +186,6 @@ function App() {
 
         <Options {...{
         socketChangeBG,
-        utilizeInitiative,
         setUtilizeInitiative: socketChangeInitiativeUse,
         socketRoom,
         setSocketRoom,

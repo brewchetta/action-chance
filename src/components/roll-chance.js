@@ -11,6 +11,7 @@ const RollChance = props => {
   /*------Redux------*/
 
   const participants = useSelector(state => state.participants)
+  const utilizeInitiative = useSelector(state => state.utilizeInitiative)
 
   /*------Props------*/
   const {
@@ -18,8 +19,7 @@ const RollChance = props => {
     resetRound,
     setDisplayMessage,
     setActiveParticipant,
-    addPartOpen,
-    utilizeInitiative
+    addPartOpen
   } = props;
 
   /*------Utilities------*/

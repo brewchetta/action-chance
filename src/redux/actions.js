@@ -3,6 +3,7 @@ export const SET_ACTIVE_PARTICIPANT = 'SET_ACTIVE_PARTICIPANT'
 export const SET_BG = 'SET_BG'
 export const SET_BG_MASK = 'SET_BG_MASK'
 export const SET_DISPLAY_MESSAGE = 'SET_DISPLAY_MESSAGE'
+export const SET_UTILIZE_INITIATIVE = 'SET_UTILIZE_INITIATIVE'
 
 export function setParticipants(payload) {
   return {type: SET_PARTICIPANTS, payload}
@@ -22,4 +23,8 @@ export function setBGMask(payload) {
 
 export function setDisplayMessage(payload) {
   return {type: SET_DISPLAY_MESSAGE, payload}
+}
+
+export function setUtilizeInitiative(payload) {
+  return {type: SET_UTILIZE_INITIATIVE, payload}
 }

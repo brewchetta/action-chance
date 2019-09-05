@@ -13,9 +13,12 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
-  const activeParticipant = useSelector(state => state.activeParticipant)
+  /*------Redux------*/
 
-  /* ------ State ------ */
+  const activeParticipant = useSelector(state => state.activeParticipant)
+  const utilizeInitiative = useSelector(state => state.utilizeInitiative)
+
+  /*------ State ------*/
 
   const [attributesAddIsOpen, setAttributesAddIsOpen] = useState(false)
 
@@ -26,7 +29,6 @@ const ParticipantCard = props => {
     removeParticipant,
     setChances,
     changeParticipantDelayed,
-    utilizeInitiative,
     changeInitiative
   } = props;
 

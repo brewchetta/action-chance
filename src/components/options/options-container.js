@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux'
 import './style.css'
 
 /*------Component------*/
-const OptionsContainer = ({socketChangeBG, utilizeInitiative, setUtilizeInitiative, socketRoom, setSocketRoom, setSocketPassword }) => {
+const OptionsContainer = ({socketChangeBG, socketRoom, setSocketRoom, setSocketPassword }) => {
 
   /*------Redux------*/
 
@@ -44,7 +44,7 @@ const OptionsContainer = ({socketChangeBG, utilizeInitiative, setUtilizeInitiati
 
           <br/>
 
-          <OptionsGameplay {...{utilizeInitiative, setUtilizeInitiative}} />
+          <OptionsGameplay />
 
           <br/>
 

@@ -1,8 +1,21 @@
+// React
 import React, {useState} from 'react'
+// Redux
+import {useSelector, useDispatch} from 'react-redux'
+import {setUtilizeInitiative} from '../../redux/actions'
 
-const OptionsGameplay = ({utilizeInitiative, setUtilizeInitiative}) => {
+const OptionsGameplay = () => {
+
+  /*------Redux------*/
+
+  const utilizeInitiative = useSelector(state => state.utilizeInitiative)
+  const dispatch = useDispatch()
+
+  /*------State------*/
 
   const [isOpen, setIsOpen] = useState(false)
+
+  /*------Utilities------*/
 
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
@@ -14,12 +27,14 @@ const OptionsGameplay = ({utilizeInitiative, setUtilizeInitiative}) => {
       <br/>
       <button
         style={utilizeInitiative ? {border:'solid green 1px', color: 'green'} : {border: 'solid grey 1px', color: 'grey'}}
-        onClick={() => setUtilizeInitiative(!utilizeInitiative)}>
+        onClick={() => dispatch(setUtilizeInitiative(!utilizeInitiative))}>
         Use Initiative
       </button>
 
       </>
   )
+
+  /*------Render------*/
 
   return (
     <>

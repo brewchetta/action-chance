@@ -21,7 +21,7 @@ const AddParticipants = props => {
 
   /*------Redux------*/
 
-  const {participants, activeParticipant} = useSelector(state => state)
+  const {participants, activeParticipant, utilizeInitiative} = useSelector(state => state)
 
   /*------Props------*/
 
@@ -30,8 +30,7 @@ const AddParticipants = props => {
     setDisplayMessage,
     imageListIsOpen,
     setImageListIsOpen,
-    setAddPartOpen,
-    utilizeInitiative
+    setAddPartOpen
   } = props;
 
   /*------State------*/
