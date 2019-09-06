@@ -74,6 +74,14 @@ function App() {
     newSocket.on('reconnecting', reconnectAttempt)
     newSocket.on('reconnect', () => debugLog(`reconnected: ${endpoint}`))
 
+    newSocket.on('join room', response => {
+      dispatch(actions.setParticipants(response.participants))
+      dispatch(actions.setBG(response.bg.image))
+      dispatch(actions.setBGMask(response.bg.mask))
+      dispatch(actions.setActiveParticipant(response.activeParticipant))
+      dispatch(actions.setUtilizeInitiative(response.initiative))
+    })
+
     newSocket.on('change participants', response => {
       dispatch(actions.setParticipants(response.data))
     })
