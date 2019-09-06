@@ -56,7 +56,7 @@ const OptionsGameplay = () => {
           onChange={handleChange}
           style={{textAlign: 'right'}} />
         <br/>
-        <input type='text' name='passwordInput'
+        <input type='password' name='passwordInput'
           placeholder='password'
           value={passwordInput}
           onChange={handleChange}

@@ -34,7 +34,7 @@ const RoomPrompt = () => {
 
   useEffect(() => {
     return setIsLongConnection(false)
-  }, [])
+  }, [socketRoom])
 
   const handleChange = event => {
     switch (event.target.name) {
@@ -79,7 +79,7 @@ const RoomPrompt = () => {
           <br/>
           <input onChange={handleChange}
             name='passwordInput'
-            type='text' max='20'
+            type='password' max='20'
             value={passwordInput}
             placeholder='password' />
           <br/>
