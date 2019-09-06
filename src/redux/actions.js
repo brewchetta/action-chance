@@ -8,6 +8,7 @@ export const SET_SOCKET = 'SET_SOCKET'
 export const SET_SOCKETROOM_NAME = 'SET_SOCKETROOM_NAME'
 export const SET_SOCKETROOM_PASSWORD = 'SET_SOCKETROOM_PASSWORD'
 export const SET_SOCKETROOM = 'SET_SOCKETROOM'
+export const CLEAR_SOCKETROOM = 'CLEAR_SOCKETROOM'
 
 export function setParticipants(payload) {
   return {type: SET_PARTICIPANTS, payload}
@@ -47,4 +48,8 @@ export function setSocketRoomPassword(payload) {
 
 export function setSocketRoom(payload) {
   return {type: SET_SOCKETROOM, payload}
+}
+
+export function clearSocketRoom() {
+  return {type: CLEAR_SOCKETROOM}
 }

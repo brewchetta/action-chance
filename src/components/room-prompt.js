@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 // Redux
 import {useDispatch, useSelector} from 'react-redux'
-import {setSocketRoom} from '../redux/actions'
+import {setSocketRoom, clearSocketRoom} from '../redux/actions'
 // Constants
 import {debugLog} from '../constants'
 
@@ -49,6 +49,10 @@ const RoomPrompt = () => {
     }
   }
 
+  const handleCancel = () => {
+    dispatch(clearSocketRoom())
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
     if (roomInput.length > 3 && passwordInput.length > 3) {
@@ -92,7 +96,12 @@ const RoomPrompt = () => {
 
         <p>Connecting{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
 
-        : <p>This is taking longer than normal{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
+        : (
+          <>
+            <p>This is taking longer than normal{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
+            <button onClick={handleCancel}>Cancel</button>
+          </>
+        )
       }
     </div>
   )
