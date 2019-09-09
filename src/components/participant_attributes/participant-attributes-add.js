@@ -24,7 +24,9 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen
         key={attr}
         onClick={() => {
           setIsOpen(!isOpen);
-          handleAttributeAdd(attr);
+          if (participantAttributes && participantAttributes.length <= 6) {
+            handleAttributeAdd(attr);
+          }
         }}
       >
         <img src={pngs(attr) ? pngs(attr) : '?'} alt='' />

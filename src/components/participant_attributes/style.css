@@ -7,7 +7,7 @@
   bottom: 0;
   border-radius: 10px 0 0 0;
   margin-bottom: -2px;
-  padding-left: 2px;
+  padding: 3px 0 0 2px;
 }
 
 /* ------Participant Attribute Tag Buttons------ */
@@ -38,4 +38,14 @@
   z-index: 1;
   grid-template-columns: repeat(5, 1fr);
   background: black;
+}
+
+.attribute-button img {
+  width: 1em;
+  transition: transform 0.2s;
+}
+
+.attribute-button img:hover {
+  transform: scale(1.5, 1.5);
+  border-radius: 3px;
 }
