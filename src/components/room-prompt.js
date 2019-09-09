@@ -98,7 +98,7 @@ const RoomPrompt = () => {
 
         : (
           <>
-            <p>This is taking longer than normal{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
+            <p>The beast is sleeping and most be awoken{cDot(0)}{cDot(0.3)}{cDot(0.6)}</p>
             <button onClick={handleCancel}>Cancel</button>
           </>
         )
