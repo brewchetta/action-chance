@@ -36,11 +36,7 @@ You can change a character’s initiative by clicking the initiative in the uppe
 
 ## FAQ
 
-- Q: Why do all of my character's tags look so weird?
-- A: Tags currently use unicode and unicode, unfortunately, look totally different between different browsers (Chrome in particular likes emojis as opposed to proper symbols). I’m looking into better icons so bear with me!
-
-
-- Q: What in the world is this random-initiative option thing?
+- Q: What in the world is this no initiative thing?
 - A: It’s an experimental feature. It determines turn order completely randomly and allows characters the chance to defer their actions until the next round. It’s more just for folks to play around with at this point.
 
 
@@ -52,5 +48,9 @@ You can change a character’s initiative by clicking the initiative in the uppe
 - A: Let me know! See how to contact me in the answer above!
 
 
+- Q: Could you add more tags?
+- A: Yes! I'm not great at making tags but I've used a lot of them from [Game-icons.net](https://game-icons.net/) so if you see any you like let me know.
+
+
 - Q: I'm a dev and I demand to know what this was built with!
-- A: It’s built with ReactJS, Socket.io, MongoDB, and a sprinkling of elbow grease :D
+- A: It’s built with ReactJS, Express, Socket.io, MongoDB, and a sprinkling of elbow grease :D
