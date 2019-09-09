@@ -27,7 +27,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen
           handleAttributeAdd(attr);
         }}
       >
-        {attr}&#xFE0E;
+        {`${attr}&#xFE0E;`}
       </button>
     );
   };

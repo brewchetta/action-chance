@@ -13,7 +13,7 @@ const ParticipantAttributes = ({ attributes, removeAttribute }) => {
       name={a}
       onClick={() => removeAttribute(a)}
     >
-      {a}&#xFE0E;
+      {`${a}&#xFE0E;`}
     </button>
   ));
 };
