@@ -2,6 +2,9 @@
 import React from "react";
 // Style
 import './style.css'
+// Assets
+const pngs = require.context('../../assets/attribute_icons', true, /\.png/)
+const attrs = pngs.keys()
 
 /*------Component------*/
 const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen, setIsOpen }) => {
@@ -12,9 +15,6 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
-
-  // The various attributes that will become buttons
-  const attrs = ["Ω","Χ","⇪","⋙","⇓","⊗","≈","☁","☘","☠","☢","☣","♥","♦","♣","♠","♨","♫","⚡","⚠"];
 
   // Renders an attribute button
   const attrButton = attr => {
@@ -27,7 +27,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen
           handleAttributeAdd(attr);
         }}
       >
-        {`${attr}&#xFE0E;`}
+        <img src={pngs(attr) ? pngs(attr) : '?'} alt='' />
       </button>
     );
   };

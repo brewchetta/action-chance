@@ -6,7 +6,7 @@ export const reconnectionDelay = 2000
 
 export const reconnectionAttempts = 5
 
-export const endpoint = isProduction ? 'https://action-chance-backend.herokuapp.com/' : '10.9.110.165:3050'
+export const endpoint = isProduction ? 'https://action-chance-backend.herokuapp.com/' : '10.9.110.131:3050'
 
 export const debugLog = message => {
   if (isProduction) console.log(`%cDebug: ${message}`, 'color: blue')
