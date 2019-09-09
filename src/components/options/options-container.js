@@ -9,6 +9,8 @@ import {useSelector} from 'react-redux'
 // CSS
 import './style.css'
 
+// TODO: Add help option that creates modal
+
 /*------Component------*/
 const OptionsContainer = ({socketChangeBG}) => {
 

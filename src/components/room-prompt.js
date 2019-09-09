@@ -6,6 +6,8 @@ import {setSocketRoom, clearSocketRoom} from '../redux/actions'
 // Constants
 import {debugLog} from '../constants'
 
+// TODO: Add help option that creates modal
+
 /* Component */
 const RoomPrompt = () => {
 
