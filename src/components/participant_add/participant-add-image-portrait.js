@@ -24,7 +24,7 @@ const ParticipantAddImagePortrait = ({handleSelectImage, getImages}) => {
 
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{cursor: 'pointer'}}>
       <ParticipantImage
         imageURL={'https://image21.net/103/plus_png/plus_png_23.png'}
         isActive={false}
