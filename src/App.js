@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 // Components
 import ParticipantsContainer from "./components/participants-container";
-import Options from "./components/options/options-container";
+import Options from "./components/options";
 import RoomPrompt from "./components/room-prompt"
 // Socket.io
 import socketIO from 'socket.io-client'

@@ -1,8 +1,8 @@
 // React
 import React, { useState } from "react";
 // Components
-import AddParticipant from "./participant_add/participant-add";
-import ParticipantList from "./participant_list/participant-list";
+import AddParticipant from "./participant_add";
+import ParticipantList from "./participant_list";
 import RollChance from "./roll-chance";
 // Redux
 import {useSelector} from 'react-redux'
