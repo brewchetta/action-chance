@@ -62,7 +62,8 @@ export const iconCredits = {
     ],
     sbed: [
       'Fireflake',
-      'Electric'
+      'Electric',
+      'Cancel'
     ],
     Guard13007: [
       'Play button'

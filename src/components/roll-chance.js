@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 import { random } from "brews-toolboxjs";
 // Images
 import PlayButton from '../assets/gui-icons/play-button.png'
+import ResetButton from '../assets/gui-icons/cancel.png'
 
 /*------Component------*/
 const RollChance = props => {
@@ -21,7 +22,8 @@ const RollChance = props => {
     resetRound,
     setDisplayMessage,
     setActiveParticipant,
-    addPartOpen
+    addPartOpen,
+    reset
   } = props;
 
   /*------Utilities------*/
@@ -64,6 +66,15 @@ const RollChance = props => {
   /*------Render------*/
 
   return (
+    <>
+
+    <button
+      onClick={reset}
+      className={addPartOpen || participants.length === 0 ? "display-none" : 'roll-chance-reset-button'}
+      >
+      <img src={ResetButton} alt='Reset' />
+    </button>
+
     <button
       onClick={rollForChance}
       className={
@@ -72,6 +83,8 @@ const RollChance = props => {
     >
       <img src={PlayButton} alt='Next' />
     </button>
+
+    </>
   );
 };
 

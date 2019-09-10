@@ -224,7 +224,6 @@ button:active {
 
 .roll-chance-reset-button {
   float: left;
-  font-size: 1em;
   color: white;
   background: #000a;
   border: solid white;
@@ -250,7 +249,7 @@ button:active {
     border: solid white;
     border-radius: 0 20px 0 0;
     border-width: 2px 2px 0 0;
-    padding: 1em 0.5em 0.5em 0.5em;
+    padding: 1em 1em 0.5em 1em;
   }
 }
 
@@ -327,10 +326,4 @@ button:active {
   30% {opacity: 0.2;}
   50% {opacity: 1;}
   100% {opacity: 1}
-}
-
-/* ------ Room Prompt ------ */
-
-.roll-next-button {
-
 }
