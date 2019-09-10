@@ -34,7 +34,7 @@ const OptionsGameplay = () => {
       <button
         style={addParticipantCard ? {border:'solid green 1px', color: 'green'} : {border: 'solid grey 1px', color: 'grey'}}
         onClick={() => dispatch(toggleAddParticipantCard())}>
-        Extra Character Card
+        Add Character Card
       </button>
 
       </>
