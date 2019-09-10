@@ -112,6 +112,7 @@ const AddParticipants = props => {
         onSubmit={handleSubmit}
         className={imageListIsOpen ? "display-none" : null}
       >
+
         <input
           id="name-input"
           type="text"
@@ -120,6 +121,7 @@ const AddParticipants = props => {
           onChange={handleInput}
           placeholder="name"
         />
+
         {utilizeInitiative ?
           <input
           id="initiative-input"
@@ -132,6 +134,9 @@ const AddParticipants = props => {
           min='0'
           />
         : null}
+
+        <br/>
+
         <input type="submit" value="Add" />
       </form>
     </div>

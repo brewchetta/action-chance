@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 // Components
 import ParticipantImage from "../participant-image";
+import ParticipantAddImagePortrait  from './participant-add-image-portrait'
 
 /*------Component------*/
 const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
@@ -111,10 +112,15 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
           className="fillscreen"
           onClick={toggleIsOpen}
         />
-        {/* Add image button */}
-        {!isOpen ? <button onClick={toggleIsOpen}>Add Image</button> : null}
+
         {/* Images container */}
-        <div id="add-images-container">{renderImages()}</div>
+        <div id="add-images-container">
+          {renderImages()}
+          <ParticipantAddImagePortrait
+            handleSelectImage={handleSelectImage}
+            getImages={getImages} />
+        </div>
+
         <div id="add-images-pagination-buttons">
           <div/>
           {/* Previous Page */}
@@ -152,7 +158,7 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
       </>
     );
   } else {
-    return <div />;
+    return <button onClick={toggleIsOpen}>Choose Portait</button>
   }
 };
 
