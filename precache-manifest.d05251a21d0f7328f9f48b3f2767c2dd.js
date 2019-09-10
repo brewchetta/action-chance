@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c20ad4bd32f4f094d2f9ca7f72572407",
+    "revision": "0c39f13bf6d7704b02fd88e95cbec29c",
     "url": "/action-chance/index.html"
   },
   {
-    "revision": "c1d99580ba405bc14e13",
-    "url": "/action-chance/static/css/main.0865798c.chunk.css"
+    "revision": "4798fa452be9749ed09b",
+    "url": "/action-chance/static/css/main.4c65fcc3.chunk.css"
   },
   {
-    "revision": "64792ab19b4a45e617c3",
-    "url": "/action-chance/static/js/2.bce0eca6.chunk.js"
+    "revision": "8ea35f98bcdc8a125ebb",
+    "url": "/action-chance/static/js/2.791c4838.chunk.js"
   },
   {
-    "revision": "c1d99580ba405bc14e13",
-    "url": "/action-chance/static/js/main.ef0bf53e.chunk.js"
+    "revision": "4798fa452be9749ed09b",
+    "url": "/action-chance/static/js/main.204fef7a.chunk.js"
   },
   {
     "revision": "32e5a9b10e482348a285",
@@ -50,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "89184275369531fd9db30fc4ed634d70",
     "url": "/action-chance/static/media/campfire.89184275.png"
+  },
+  {
+    "revision": "ef6363e66837eaa4531a173f9182dbd7",
+    "url": "/action-chance/static/media/cancel.ef6363e6.png"
   },
   {
     "revision": "3078ba251cd8db48a7b2ac0c6eeb1207",
