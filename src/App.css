@@ -201,12 +201,7 @@ button:active {
 }
 
 #roll-chance-container {
-  /* background: #000f; */
-  /* border: solid white 2px; */
-  /* border-width: 2px 0 2px 0; */
-  width: 100%;
-  float: right;
-  text-align: right;
+  width: 4.5em;
 }
 
 #roll-chance-container img {
@@ -229,6 +224,14 @@ button:active {
   border: solid white;
   border-width: 0 2px 0 2px;
   border-radius: 6px;
+}
+
+.roll-chance-next-button:hover {
+  background: #27b;
+}
+
+.roll-chance-reset-button:hover {
+  background: #d22;
 }
 
 @media (max-width: 500px) {
@@ -286,20 +289,20 @@ button:active {
 #display-message {
   position: fixed;
   top: 0;
-  left: 25%;
+  left: 20%;
   background: black;
   color: white;
   padding: 5px;
   margin: auto;
   margin-bottom: 10px;
-  width: 50%;
+  width: 60%;
   border-radius: 0 0 20px 20px;
   z-index: 1;
 }
 
 @media (max-width: 500px) {
   #display-message {
-    font-size: 0.8em;
+    font-size: 1.1em;
   }
 }
 
