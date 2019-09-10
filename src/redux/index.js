@@ -7,6 +7,7 @@ import displayMessageReducer from './display_message'
 import utilizeInitiativeReducer from './utilize_initiative'
 import socketReducer from './socket'
 import socketRoomReducer from './socketroom'
+import addParticipantCardReducer from './add_participant_card'
 
 export default combineReducers({
   participants: participantsReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   displayMessage: displayMessageReducer,
   utilizeInitiative: utilizeInitiativeReducer,
   socket: socketReducer,
-  socketRoom: socketRoomReducer
+  socketRoom: socketRoomReducer,
+  addParticipantCard: addParticipantCardReducer
 })

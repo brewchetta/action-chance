@@ -2,13 +2,13 @@
 import React, {useState} from 'react'
 // Redux
 import {useSelector, useDispatch} from 'react-redux'
-import {setUtilizeInitiative} from '../../redux/actions'
+import {setUtilizeInitiative, toggleAddParticipantCard} from '../../redux/actions'
 
 const OptionsGameplay = () => {
 
   /*------Redux------*/
 
-  const utilizeInitiative = useSelector(state => state.utilizeInitiative)
+  const {utilizeInitiative, addParticipantCard} = useSelector(state => state)
   const dispatch = useDispatch()
 
   /*------State------*/
@@ -29,6 +29,12 @@ const OptionsGameplay = () => {
         style={utilizeInitiative ? {border:'solid green 1px', color: 'green'} : {border: 'solid grey 1px', color: 'grey'}}
         onClick={() => dispatch(setUtilizeInitiative(!utilizeInitiative))}>
         Use Initiative
+      </button>
+      <br/>
+      <button
+        style={addParticipantCard ? {border:'solid green 1px', color: 'green'} : {border: 'solid grey 1px', color: 'grey'}}
+        onClick={() => dispatch(toggleAddParticipantCard())}>
+        Extra Character Card
       </button>
 
       </>

@@ -9,6 +9,7 @@ export const SET_SOCKETROOM_NAME = 'SET_SOCKETROOM_NAME'
 export const SET_SOCKETROOM_PASSWORD = 'SET_SOCKETROOM_PASSWORD'
 export const SET_SOCKETROOM = 'SET_SOCKETROOM'
 export const CLEAR_SOCKETROOM = 'CLEAR_SOCKETROOM'
+export const TOGGLE_ADD_PARTICIPANT_CARD = 'TOGGLE_ADD_PARTICIPANT_CARD'
 
 export function setParticipants(payload) {
   return {type: SET_PARTICIPANTS, payload}
@@ -52,4 +53,8 @@ export function setSocketRoom(payload) {
 
 export function clearSocketRoom() {
   return {type: CLEAR_SOCKETROOM}
+}
+
+export function toggleAddParticipantCard() {
+  return {type: TOGGLE_ADD_PARTICIPANT_CARD}
 }
