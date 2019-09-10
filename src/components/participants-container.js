@@ -95,6 +95,7 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
           changeParticipantAttributes,
           changeParticipantDelayed,
           addPartOpen,
+          setAddPartOpen,
           changeInitiative
         }}
       />

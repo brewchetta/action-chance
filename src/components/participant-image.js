@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 // Toolbox
 import { stringToColor } from "brews-toolboxjs";
-// Default Image
-const defaultImgURL =
-  "https://dungeonsdragonsblog.files.wordpress.com/2015/10/winterguard-silhouette-new.jpg";
+
+import {defaultImgURL} from '../constants'
 
 //*------Component------*//
 const ParticipantImage = ({ imageURL, isActive, participantName, floatLeft }) => {

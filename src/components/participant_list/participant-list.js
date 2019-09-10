@@ -4,6 +4,7 @@ import React from "react";
 import {useSelector} from 'react-redux'
 // Components
 import ParticipantCard from "./participant-card";
+import ParticipantAddCard from "./participant-add-card"
 import ParticipantImage from "../participant-image";
 // Toolbox
 import { compareAlphabetical } from "brews-toolboxjs";
@@ -27,6 +28,7 @@ const ParticipantList = props => {
     changeParticipantAttributes,
     changeParticipantDelayed,
     addPartOpen,
+    setAddPartOpen,
     changeInitiative
   } = props;
 
@@ -78,12 +80,17 @@ const ParticipantList = props => {
 
   // Renders all participants in either full or image format depending on whether AddParticipant is open
   const renderParticipantList = () => {
-    return [...participants]
-      .sort((a, b) => {
-        if (a.initiative === b.initiative) return compareAlphabetical(a.name, b.name)
-        return b.initiative - a.initiative
-      })
-      .map(!addPartOpen ? renderParticipantCard : renderParticipantImage);
+    return (
+      <>
+        {[...participants]
+        .sort((a, b) => {
+          if (a.initiative === b.initiative) return compareAlphabetical(a.name, b.name)
+          return b.initiative - a.initiative
+        })
+        .map(!addPartOpen ? renderParticipantCard : renderParticipantImage)}
+        {!addPartOpen ? <ParticipantAddCard setAddPartOpen={setAddPartOpen} /> : null}
+      </>
+    )
   };
 
   const listClass = () => {
