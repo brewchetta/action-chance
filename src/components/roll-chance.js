@@ -4,6 +4,8 @@ import React from "react";
 import {useSelector} from 'react-redux'
 // Toolbox
 import { random } from "brews-toolboxjs";
+// Images
+import PlayButton from '../assets/gui-icons/play-button.png'
 
 /*------Component------*/
 const RollChance = props => {
@@ -65,10 +67,10 @@ const RollChance = props => {
     <button
       onClick={rollForChance}
       className={
-        addPartOpen || participants.length === 0 ? "display-hidden" : null
+        addPartOpen || participants.length === 0 ? "display-hidden" : 'roll-chance-next-button'
       }
     >
-      Next
+      <img src={PlayButton} alt='Next' />
     </button>
   );
 };

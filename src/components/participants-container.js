@@ -87,7 +87,9 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
 
   return (
     <div id="participant-container">
+
       <h3 id="display-message">{displayMessage}</h3>
+
       <ParticipantList
         {...{
           setChances,
@@ -102,6 +104,12 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
 
       {!imageListIsOpen ? (
         <div id='roll-chance-container'>
+          <button
+            onClick={reset}
+            className={addPartOpen || participants.length === 0 ? "display-none" : 'roll-chance-reset-button'}
+            >
+            Reset
+          </button>
           <RollChance {...{
               setChances,
               resetRound,
@@ -110,14 +118,6 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
               addPartOpen
             }}
           />
-          <button
-            onClick={reset}
-            className={
-              addPartOpen || participants.length === 0 ? "display-none" : null
-            }
-          >
-            Reset
-          </button>
         </div>
       ) : null}
       {addPartOpen ? (

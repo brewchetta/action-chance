@@ -49,7 +49,8 @@ export const iconCredits = {
       'Shamrock',
       'Perspective dice 6 faces 6',
       'Horseshoe',
-      'Eyelashes'
+      'Eyelashes',
+      'Mona Lisa'
     ],
     Skoll: [
       'Fangs',
@@ -62,6 +63,9 @@ export const iconCredits = {
     sbed: [
       'Fireflake',
       'Electric'
+    ],
+    Guard13007: [
+      'Play button'
     ]
   }
 }

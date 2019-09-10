@@ -201,21 +201,57 @@ button:active {
 }
 
 #roll-chance-container {
-  position: fixed;
-  bottom: 5vh;
-  left: 0;
   /* background: #000f; */
-  /* border: solid white; */
-  border-width: 2px 0 2px 0;
-  width: 100vw;
+  /* border: solid white 2px; */
+  /* border-width: 2px 0 2px 0; */
+  width: 100%;
+  float: right;
+  text-align: right;
 }
 
-#roll-chance-container button {
+#roll-chance-container img {
+  height: 2em;
+}
+
+.roll-chance-next-button {
+  float: right;
   color: white;
   background: #000a;
   border: solid white;
   border-width: 0 2px 0 2px;
   border-radius: 6px;
+}
+
+.roll-chance-reset-button {
+  float: left;
+  font-size: 1em;
+  color: white;
+  background: #000a;
+  border: solid white;
+  border-width: 0 2px 0 2px;
+  border-radius: 6px;
+}
+
+@media (max-width: 500px) {
+  .roll-chance-next-button {
+    position: fixed;
+    bottom: -3px;
+    right: -3px;
+    border: solid white;
+    border-radius: 20px 0 0 0;
+    border-width: 2px 0 0 2px;
+    padding: 1em 0.5em 0.5em 1em;
+  }
+
+  .roll-chance-reset-button {
+    position: fixed;
+    bottom: -3px;
+    left: -3px;
+    border: solid white;
+    border-radius: 0 20px 0 0;
+    border-width: 2px 2px 0 0;
+    padding: 1em 0.5em 0.5em 0.5em;
+  }
 }
 
 /* ------Participant Image------ */
@@ -243,6 +279,7 @@ button:active {
   position: absolute;
   top: 0;
   left: 0;
+  background: white;
 }
 
 /* ------Display Message------ */
@@ -290,4 +327,10 @@ button:active {
   30% {opacity: 0.2;}
   50% {opacity: 1;}
   100% {opacity: 1}
+}
+
+/* ------ Room Prompt ------ */
+
+.roll-next-button {
+
 }
