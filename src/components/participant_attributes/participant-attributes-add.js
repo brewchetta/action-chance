@@ -24,7 +24,7 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen
         key={attr}
         onClick={() => {
           setIsOpen(!isOpen);
-          if (participantAttributes && participantAttributes.length <= 6) {
+          if (!participantAttributes || participantAttributes.length <= 6) {
             handleAttributeAdd(attr);
           }
         }}
