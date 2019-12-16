@@ -72,7 +72,14 @@ function App() {
     socketRequestRoomInfo(newSocket)
 
     newSocket.on('reconnecting', reconnectAttempt)
-    newSocket.on('reconnect', () => debugLog(`reconnected: ${endpoint}`))
+    newSocket.on('reconnect', () => {
+      const oldSocketRoom = socketRoom
+      dispatch(actions.setSocketRoom({name: '', password: ''}))
+      setTimeout(() => {
+        dispatch(actions.setSocketRoom({name: oldSocketRoom.name, password: oldSocketRoom.password}))
+      }, 200)
+      debugLog(`reconnected: ${endpoint}`)
+    })
 
     newSocket.on('join room', response => {
       dispatch(actions.setParticipants(response.participants))
