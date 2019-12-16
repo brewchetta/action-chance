@@ -83,24 +83,29 @@ function App() {
     })
 
     newSocket.on('change participants', response => {
+      debugLog('New participants')
       dispatch(actions.setParticipants(response.data))
     })
 
     newSocket.on('change active participant', response => {
+      debugLog('Active participant changed')
       dispatch(actions.setActiveParticipant(response.data))
     })
 
     newSocket.on('change background', response => {
+      debugLog('Background changed')
       dispatch(actions.setBG(response.data.image))
       dispatch(actions.setBGMask(response.data.mask))
     })
 
     newSocket.on('change display message', response => {
+      debugLog(`New display message: ${response.data}`)
       dispatch(actions.setDisplayMessage(response.data))
       document.title = response.data
     })
 
     newSocket.on('change initiative use', response => {
+      debugLog(`Initiative use: ${response.data}`)
       dispatch(actions.setUtilizeInitiative(response.data))
     })
 
