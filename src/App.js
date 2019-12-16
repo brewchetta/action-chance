@@ -77,7 +77,7 @@ function App() {
       dispatch(actions.setSocketRoom({name: '', password: ''}))
       setTimeout(() => {
         dispatch(actions.setSocketRoom({name: oldSocketRoom.name, password: oldSocketRoom.password}))
-      }, 200)
+      }, 50)
       debugLog(`reconnected: ${endpoint}`)
     })
 
