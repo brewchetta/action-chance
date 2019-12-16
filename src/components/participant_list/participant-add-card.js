@@ -12,7 +12,7 @@ const ParticipantAddCard = ({setAddPartOpen}) => {
         onClick={setAddPartOpen}
         style={{cursor: 'pointer'}}>
         <ParticipantImage
-          imageURL={'https://image21.net/103/plus_png/plus_png_23.png'}
+          imageURL={'http://pluspng.com/img-png/free-png-plus-sign-plus-icon-512.png'}
           isActive={false}
           participantName={''}
           floatLeft={false}
