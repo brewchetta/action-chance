@@ -56,9 +56,14 @@ const RoomPrompt = () => {
   }
 
   const handleSubmit = event => {
+    debugLog(passwordInput)
     event.preventDefault()
     if (roomInput.length > 3 && passwordInput.length > 3) {
       dispatch(setSocketRoom({name: roomInput, password: passwordInput}))
+    } else {
+      // TODO: Use refs
+      setPasswordInput(document.getElementById('passwordInput').value)
+      setRoomInput(document.getElementById('roomInput').value)
     }
     //TODO: create error messages for improper length
   }
@@ -76,15 +81,17 @@ const RoomPrompt = () => {
 
         <p>Join a game</p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <input onChange={handleChange}
             name='roomInput'
+            id='roomInput'
             type='text' max='15'
             value={roomInput}
             placeholder='room' />
           <br/>
           <input onChange={handleChange}
             name='passwordInput'
+            id='passwordInput'
             type='password' max='20'
             value={passwordInput}
             placeholder='password' />
