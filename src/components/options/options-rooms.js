@@ -26,7 +26,7 @@ const OptionsGameplay = () => {
   const handleChange = event => {
     switch (event.target.name) {
       case 'roomInput':
-        setRoomInput(event.target.value)
+        setRoomInput(event.target.value.toLowerCase())
         break;
       case 'passwordInput':
         setPasswordInput(event.target.value)
@@ -38,7 +38,7 @@ const OptionsGameplay = () => {
   const handleSubmit = event => {
     event.preventDefault()
     if (roomInput.length > 3 && passwordInput.length > 3) {
-      dispatch(setSocketRoom({name: roomInput, password: passwordInput}))
+      dispatch(setSocketRoom({name: roomInput.toLowerCase(), password: passwordInput}))
     }
     // TODO: set up error messages for validations
   }
