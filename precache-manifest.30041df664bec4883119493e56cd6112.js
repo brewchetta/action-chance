@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0aee396d066fa7b25c9531ba5940fa49",
+    "revision": "dbb694619fae73bd1cf279f0a0769710",
     "url": "/action-chance/index.html"
   },
   {
-    "revision": "580aeada4232412a8e83",
+    "revision": "69979423a32cecdcecaa",
     "url": "/action-chance/static/css/main.4c65fcc3.chunk.css"
   },
   {
-    "revision": "45b8e44dc83599b127cf",
-    "url": "/action-chance/static/js/2.8df1d136.chunk.js"
+    "revision": "f4f773200388e591e2aa",
+    "url": "/action-chance/static/js/2.0749b0d4.chunk.js"
   },
   {
-    "revision": "580aeada4232412a8e83",
-    "url": "/action-chance/static/js/main.f0927d95.chunk.js"
+    "revision": "69979423a32cecdcecaa",
+    "url": "/action-chance/static/js/main.a2212aa6.chunk.js"
   },
   {
     "revision": "32e5a9b10e482348a285",
