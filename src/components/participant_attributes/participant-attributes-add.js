@@ -53,8 +53,8 @@ const ParticipantAttrsAdd = ({ participantAttributes, handleAttributeAdd, isOpen
         <>
           <div className='fillscreen' onClick={toggleIsOpen}/>
           <div className='attr-add-buttons-container'>
+            <p style={{color: 'white', padding: '0', margin: '0', fontSize: '0.7em', marginBottom: '0.3em'}}>Add Tag</p>
             {renderAttrButtons()}
-            <p style={{color: 'white', padding: '0', margin: '0', fontSize: '0.5em'}}>Icons by Lorc, Delapouite, Skoll, Carl Olsen, and sbed at Game-icons.net</p>
           </div>
         </>
       )

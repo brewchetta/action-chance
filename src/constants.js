@@ -17,3 +17,6 @@ export const debugLog = message => {
 }
 
 debugLog(`Production mode is currently ${isProduction}`)
+
+// Credits
+console.log('%cIcons by Lorc, Delapouite, Skoll, Carl Olsen, and sbed at Game-icons.net', 'color: #783D20; background: pink')
