@@ -116,14 +116,13 @@ const ParticipantCard = props => {
 
       <br />
 
-      {participant.attributes ? (
-        <div className='participant-attributes-container'>
-          <ParticipantAttributes
-            attributes={participant.attributes}
-            removeAttribute={removeAttribute}
-            />
-        </div>
-      ) : null}
+      <div className='participant-attributes-container'>
+        <ParticipantAttributes
+          attributes={participant.attributes ? participant.attributes : []}
+          removeAttribute={removeAttribute}
+          setAttributesAddIsOpen={setAttributesAddIsOpen}
+          />
+      </div>
 
       <ParticipantAttrsAdd
         participantAttributes={participant.attributes}
