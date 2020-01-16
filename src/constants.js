@@ -12,8 +12,8 @@ export const reconnectionAttempts = 5
 export const endpoint = isProduction ? 'https://action-chance-backend.herokuapp.com/' : 'localhost:3050/'
 
 export const debugLog = message => {
-  if (!isProduction && window.innerHeight > 600) console.log(`%cDebug: ${message}`, 'color: blue')
-  if (!isProduction && window.innerHeight <= 600) alert(`Debug: ${message}`, 'color: blue')
+  if (!isProduction && window.innerWidth > 400) console.log(`%cDebug: ${message}`, 'color: blue')
+  if (!isProduction && window.innerWidth <= 400) alert(`Debug: ${message}`, 'color: blue')
 }
 
 debugLog(`Production mode is currently ${isProduction}`)
