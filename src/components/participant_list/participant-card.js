@@ -13,6 +13,8 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
+  const canRemoveParticipant = false
+
   /*------Redux------*/
 
   const activeParticipant = useSelector(state => state.activeParticipant)
@@ -97,22 +99,23 @@ const ParticipantCard = props => {
         <p className='participant-card-initiative'>{renderChances('', 1)}</p>
         : null }
 
-      <p style={{margin: '0.7em'}}>
+      <p className='participant-card-name'>
         {participant.name}
       </p>
 
-      <div className="participant-card-buttons">
+      { canRemoveParticipant || !utilizeInitiative ?
+        <div className="participant-card-buttons">
         {!utilizeInitiative ?
           <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
           : <div/>}
-        {!utilizeInitiative && !participant.delayed && participant.chances ? (
-          <button onClick={delayParticipant}>Delay</button>
-        ) : (
-          <div />
-        )}
-        <button onClick={() => setAttributesAddIsOpen(!attributesAddIsOpen)}>Tags</button>
-        <button onClick={() => removeParticipant(participant)}>Remove</button>
-      </div>
+          {!utilizeInitiative && !participant.delayed && participant.chances ? (
+            <button onClick={delayParticipant}>Delay</button>
+          ) : (
+            <div />
+          )}
+          { canRemoveParticipant ? <button onClick={() => removeParticipant(participant)}>Remove</button> : null }
+          </div>
+        : null}
 
       <br />
 

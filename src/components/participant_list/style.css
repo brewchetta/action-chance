@@ -71,7 +71,7 @@
   border-radius: 10px;
   margin: 3%;
   padding: 2px;
-  background-color: #ddd;
+  background-color: #dddb;
   position: relative;
   animation: participant-card-appear 0.5s;
   transition: background-color 1s;
@@ -113,4 +113,12 @@
   color: white;
   font-size: 0.9em;
   cursor: pointer;
+}
+
+.participant-card-name {
+  margin: 0.7em;
+  font-size: 1.2em;
+  background: #333;
+  border-radius: 5px;
+  color: white;
 }
