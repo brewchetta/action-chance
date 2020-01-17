@@ -32,8 +32,8 @@ const ParticipantCard = props => {
     participant,
     changeParticipantAttributes,
     removeParticipant,
-    setChances,
-    changeParticipantDelayed,
+    // setChances,
+    // changeParticipantDelayed,
     changeInitiative,
     changeParticipantName
   } = props;
@@ -88,9 +88,9 @@ const ParticipantCard = props => {
   }
 
   // Sets the participant to delayed
-  const delayParticipant = () => {
-    changeParticipantDelayed(participant, true);
-  };
+  // const delayParticipant = () => {
+  //   changeParticipantDelayed(participant, true);
+  // };
 
   const renderChances = (string,i) => {
     return i > participant.chances ? string : string + "⚔" + renderChances(string, i + 1)
