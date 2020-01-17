@@ -13,6 +13,8 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
+  console.log(props.participant)
+
   // const canRemoveParticipants = false
   const {canRemoveParticipants} = useSelector(state => state)
 
