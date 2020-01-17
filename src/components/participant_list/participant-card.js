@@ -105,26 +105,12 @@ const ParticipantCard = props => {
         {participant.name}
       </p>
 
-      { /* canRemoveParticipants || !utilizeInitiative ?
-        <div className="participant-card-buttons">
-        {!utilizeInitiative ?
-          <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
-          : <div/>}
-          {!utilizeInitiative && !participant.delayed && participant.chances ? (
-            <button onClick={delayParticipant}>Delay</button>
-          ) : (
-            <div />
-          )}
-          { canRemoveParticipants ? <button onClick={() => removeParticipant(participant)}>Remove</button> : null }
-          </div>
-        : null */}
-
-        { canRemoveParticipants ?
-          <button
-          onClick={() => removeParticipant(participant)}
-          className='remove-participant-button'
-          >X</button> 
-          : null}
+      { canRemoveParticipants ?
+        <button
+        onClick={() => removeParticipant(participant)}
+        className='remove-participant-button'
+        >X</button>
+        : null}
 
       <br />
 
