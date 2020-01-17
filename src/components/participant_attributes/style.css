@@ -49,8 +49,9 @@
   font-size: 0.7em;
   transition: color 0s;
   position: relative;
-  top: -0.7em;
+  top: -0.6em;
   margin-left: 0.4em;
+  font-weight: bold;
 }
 
 .attribute-button img:hover {
