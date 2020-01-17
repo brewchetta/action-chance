@@ -20,17 +20,19 @@ const ParticipantAttributes = ({ attributes, removeAttribute, setAttributesAddIs
         <img src={pngs(attr) ? pngs(attr) : '?'} alt='' />
       </button>
     ))
-    // Push the add attribute button to the end of the list
-    attrs.push(
+    // Push the add attribute button to the end of the list if there aren't more than 8 attributes
+    if (attrs.length < 8) {
+      attrs.push(
         <button
         className="attribute-button"
         key={-1}
         name={"add-attribute"}
         onClick={() => setAttributesAddIsOpen(true)}
-      >
+        >
         <img src={'http://pluspng.com/img-png/free-png-plus-sign-plus-icon-512.png'} style={{filter: "invert(1)"}} alt='stuff' />
-      </button>
-    )
+        </button>
+      )
+    }
 
     if (!attributes.length) {
       attrs.unshift(
