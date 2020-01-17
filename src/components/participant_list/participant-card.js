@@ -15,7 +15,6 @@ const ParticipantCard = props => {
 
   // const canRemoveParticipants = false
   const {canRemoveParticipants} = useSelector(state => state)
-  console.log(canRemoveParticipants)
 
   /*------Redux------*/
 
