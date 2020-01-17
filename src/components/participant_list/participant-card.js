@@ -13,7 +13,9 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
-  const canRemoveParticipant = false
+  // const canRemoveParticipants = false
+  const {canRemoveParticipants} = useSelector(state => state)
+  console.log(canRemoveParticipants)
 
   /*------Redux------*/
 
@@ -103,7 +105,7 @@ const ParticipantCard = props => {
         {participant.name}
       </p>
 
-      { canRemoveParticipant || !utilizeInitiative ?
+      { canRemoveParticipants || !utilizeInitiative ?
         <div className="participant-card-buttons">
         {!utilizeInitiative ?
           <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
@@ -113,7 +115,7 @@ const ParticipantCard = props => {
           ) : (
             <div />
           )}
-          { canRemoveParticipant ? <button onClick={() => removeParticipant(participant)}>Remove</button> : null }
+          { canRemoveParticipants ? <button onClick={() => removeParticipant(participant)}>Remove</button> : null }
           </div>
         : null}
 

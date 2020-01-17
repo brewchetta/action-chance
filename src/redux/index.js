@@ -8,6 +8,7 @@ import utilizeInitiativeReducer from './utilize_initiative'
 import socketReducer from './socket'
 import socketRoomReducer from './socketroom'
 import addParticipantCardReducer from './add_participant_card'
+import canRemoveParticipantsReducer from './can_remove_participants'
 
 export default combineReducers({
   participants: participantsReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   utilizeInitiative: utilizeInitiativeReducer,
   socket: socketReducer,
   socketRoom: socketRoomReducer,
-  addParticipantCard: addParticipantCardReducer
+  addParticipantCard: addParticipantCardReducer,
+  canRemoveParticipants: canRemoveParticipantsReducer
 })

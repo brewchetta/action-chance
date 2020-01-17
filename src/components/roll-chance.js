@@ -1,18 +1,20 @@
 // React
 import React from "react";
 // Redux
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {toggleCanRemoveParticipants} from '../redux/actions'
 // Toolbox
 import { random } from "brews-toolboxjs";
 // Images
 import PlayButton from '../assets/gui-icons/play-button.png'
-import ResetButton from '../assets/gui-icons/cancel.png'
+import RemoveParticipantsButton from '../assets/gui-icons/cancel.png'
 
 /*------Component------*/
 const RollChance = props => {
 
   /*------Redux------*/
 
+  const dispatch = useDispatch()
   const participants = useSelector(state => state.participants)
   const utilizeInitiative = useSelector(state => state.utilizeInitiative)
 
@@ -69,10 +71,10 @@ const RollChance = props => {
     <>
 
     <button
-      onClick={reset}
-      className={addPartOpen || participants.length === 0 ? "display-none" : 'roll-chance-reset-button'}
+      onClick={() => dispatch(toggleCanRemoveParticipants())}
+      className={addPartOpen || participants.length === 0 ? "display-none" : 'roll-chance-remove-participants-button'}
       >
-      <img src={ResetButton} alt='Reset' />
+      <img src={RemoveParticipantsButton} alt='Remove Participants' />
     </button>
 
     <button
