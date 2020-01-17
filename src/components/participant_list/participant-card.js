@@ -34,7 +34,8 @@ const ParticipantCard = props => {
     removeParticipant,
     setChances,
     changeParticipantDelayed,
-    changeInitiative
+    changeInitiative,
+    changeParticipantName
   } = props;
 
   //*------Utilities------*//
@@ -55,6 +56,15 @@ const ParticipantCard = props => {
       changeInitiative(participant, newInitiative)
     } else if (newInitiative) {
       alert(`[${newInitiative}] is invalid`)
+    }
+  }
+
+  const handleClickName = () => {
+    const newName = prompt('Name:', participant.name)
+    if (newName.length > 0 && newName.length < 20) {
+      changeParticipantName(participant, newName)
+    } else {
+      alert(`[${newName}] is invalid`)
     }
   }
 
@@ -102,7 +112,7 @@ const ParticipantCard = props => {
         <p className='participant-card-initiative'>{renderChances('', 1)}</p>
         : null }
 
-      <p className='participant-card-name'>
+      <p className='participant-card-name' onClick={handleClickName}>
         {participant.name}
       </p>
 

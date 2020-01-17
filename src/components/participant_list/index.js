@@ -29,7 +29,8 @@ const ParticipantList = props => {
     changeParticipantDelayed,
     addPartOpen,
     setAddPartOpen,
-    changeInitiative
+    changeInitiative,
+    changeParticipantName
   } = props;
 
   /*------Utilities------*/
@@ -53,7 +54,8 @@ const ParticipantList = props => {
         setChances,
         changeParticipantAttributes,
         changeParticipantDelayed,
-        changeInitiative
+        changeInitiative,
+        changeParticipantName
       }}
     />
 
