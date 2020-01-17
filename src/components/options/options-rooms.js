@@ -43,6 +43,10 @@ const OptionsGameplay = () => {
     // TODO: set up error messages for validations
   }
 
+  const handleReturnHome = () => {
+    dispatch(setSocketRoom({name: '', password: ''}))
+  }
+
   const renderToggleButton = () => (
       <>
 
@@ -66,13 +70,17 @@ const OptionsGameplay = () => {
         <input type='submit' value='Select Room'/>
       </form>
 
+      <br/>
+
+      <button onClick={handleReturnHome}>Return to Home</button>
+
       </>
   )
 
   return (
     <>
     <button onClick={handleToggleOpen} id="options-button">
-      Connection {isOpen ? '▲' : '▼'}
+      Rooms {isOpen ? '▲' : '▼'}
     </button>
     {isOpen ? renderToggleButton() : null}
     </>
