@@ -75,7 +75,7 @@
   position: relative;
   animation: participant-card-appear 0.5s;
   transition: background-color 1s;
-  box-shadow: 3px 3px #0009;
+  box-shadow: 4px 4px #0005;
 }
 
 .participant-card-active {
