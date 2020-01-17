@@ -32,6 +32,19 @@ const ParticipantAttributes = ({ attributes, removeAttribute, setAttributesAddIs
       </button>
     )
 
+    if (!attributes.length) {
+      attrs.unshift(
+        <button
+        className="attribute-button"
+        style={{fontSize: "1.1em"}}
+        key={0}
+        name={"add-attribute-text"}
+        onClick={() => setAttributesAddIsOpen(true)}>
+          <span>Status</span>
+        </button>
+      )
+    }
+
     return attrs
   }
 

@@ -119,7 +119,12 @@ const ParticipantCard = props => {
           </div>
         : null */}
 
-        { canRemoveParticipants ? <button className='remove-participant-button'>X</button> : null}
+        { canRemoveParticipants ?
+          <button
+          onClick={() => removeParticipant(participant)}
+          className='remove-participant-button'
+          >X</button> 
+          : null}
 
       <br />
 
