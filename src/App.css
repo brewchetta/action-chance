@@ -218,7 +218,7 @@ button:active {
   border-radius: 6px;
 }
 
-.roll-chance-reset-button {
+.roll-chance-remove-participants-button {
   float: left;
   color: white;
   background: #000a;
@@ -231,7 +231,7 @@ button:active {
   background: #27b;
 }
 
-.roll-chance-reset-button:hover {
+.roll-chance-remove-participants-button:hover {
   background: #d22;
 }
 
@@ -246,7 +246,7 @@ button:active {
     padding: 1em 0.5em 0.5em 1em;
   }
 
-  .roll-chance-reset-button {
+  .roll-chance-remove-participants-button {
     position: fixed;
     bottom: -3px;
     left: -3px;

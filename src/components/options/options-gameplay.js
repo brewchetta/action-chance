@@ -25,12 +25,11 @@ const OptionsGameplay = () => {
       <>
 
       <br/>
-      <button
+      {/* <button
         style={utilizeInitiative ? {border:'solid green 1px', color: 'green'} : {border: 'solid grey 1px', color: 'grey'}}
         onClick={() => dispatch(setUtilizeInitiative(!utilizeInitiative))}>
         Use Initiative
-      </button>
-      <br/>
+      </button> */}
       <button
         style={addParticipantCard ? {border:'solid green 1px', color: 'green'} : {border: 'solid grey 1px', color: 'grey'}}
         onClick={() => dispatch(toggleAddParticipantCard())}>

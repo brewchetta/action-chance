@@ -13,6 +13,10 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
+  // const canRemoveParticipants = false
+  const {canRemoveParticipants} = useSelector(state => state)
+  console.log(canRemoveParticipants)
+
   /*------Redux------*/
 
   const activeParticipant = useSelector(state => state.activeParticipant)
@@ -97,33 +101,35 @@ const ParticipantCard = props => {
         <p className='participant-card-initiative'>{renderChances('', 1)}</p>
         : null }
 
-      <p style={{margin: '0.7em'}}>
+      <p className='participant-card-name'>
         {participant.name}
       </p>
 
-      <div className="participant-card-buttons">
+      { /* canRemoveParticipants || !utilizeInitiative ?
+        <div className="participant-card-buttons">
         {!utilizeInitiative ?
           <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
           : <div/>}
-        {!utilizeInitiative && !participant.delayed && participant.chances ? (
-          <button onClick={delayParticipant}>Delay</button>
-        ) : (
-          <div />
-        )}
-        <button onClick={() => setAttributesAddIsOpen(!attributesAddIsOpen)}>Tags</button>
-        <button onClick={() => removeParticipant(participant)}>Remove</button>
-      </div>
+          {!utilizeInitiative && !participant.delayed && participant.chances ? (
+            <button onClick={delayParticipant}>Delay</button>
+          ) : (
+            <div />
+          )}
+          { canRemoveParticipants ? <button onClick={() => removeParticipant(participant)}>Remove</button> : null }
+          </div>
+        : null */}
+
+        { canRemoveParticipants ? <button className='remove-participant-button'>X</button> : null}
 
       <br />
 
-      {participant.attributes ? (
-        <div className='participant-attributes-container'>
-          <ParticipantAttributes
-            attributes={participant.attributes}
-            removeAttribute={removeAttribute}
-            />
-        </div>
-      ) : null}
+      <div className='participant-attributes-container'>
+        <ParticipantAttributes
+          attributes={participant.attributes ? participant.attributes : []}
+          removeAttribute={removeAttribute}
+          setAttributesAddIsOpen={setAttributesAddIsOpen}
+          />
+      </div>
 
       <ParticipantAttrsAdd
         participantAttributes={participant.attributes}
