@@ -61,9 +61,9 @@ const ParticipantCard = props => {
 
   const handleClickName = () => {
     const newName = prompt('Name:', participant.name)
-    if (newName.length > 0 && newName.length < 20) {
+    if (newName && newName.length < 20) {
       changeParticipantName(participant, newName)
-    } else {
+    } else if (newName !== null) {
       alert(`[${newName}] is invalid`)
     }
   }
