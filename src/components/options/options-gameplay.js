@@ -2,13 +2,13 @@
 import React, {useState} from 'react'
 // Redux
 import {useSelector, useDispatch} from 'react-redux'
-import {setUtilizeInitiative, toggleAddParticipantCard} from '../../redux/actions'
+import {toggleAddParticipantCard} from '../../redux/actions'
 
 const OptionsGameplay = () => {
 
   /*------Redux------*/
 
-  const {utilizeInitiative, addParticipantCard} = useSelector(state => state)
+  const {addParticipantCard} = useSelector(state => state)
   const dispatch = useDispatch()
 
   /*------State------*/

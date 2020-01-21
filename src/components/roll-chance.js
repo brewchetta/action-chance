@@ -25,7 +25,7 @@ const RollChance = props => {
     setDisplayMessage,
     setActiveParticipant,
     addPartOpen,
-    reset
+    // reset
   } = props;
 
   /*------Utilities------*/

@@ -26,6 +26,13 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
     );
   };
 
+  const changeParticipantName = (participant, name) => {
+    setParticipants([
+      ...participants.filter(p => p !== participant),
+      { ...participant, name }
+    ])
+  }
+
   // Resets the round and resets certain participant statuses
   const resetRound = () => {
     setParticipants(
@@ -98,7 +105,8 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
           changeParticipantDelayed,
           addPartOpen,
           setAddPartOpen,
-          changeInitiative
+          changeInitiative,
+          changeParticipantName
         }}
       />
 

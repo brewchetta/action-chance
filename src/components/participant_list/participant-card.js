@@ -13,9 +13,10 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
+  console.log(props.participant)
+
   // const canRemoveParticipants = false
   const {canRemoveParticipants} = useSelector(state => state)
-  console.log(canRemoveParticipants)
 
   /*------Redux------*/
 
@@ -31,9 +32,10 @@ const ParticipantCard = props => {
     participant,
     changeParticipantAttributes,
     removeParticipant,
-    setChances,
-    changeParticipantDelayed,
-    changeInitiative
+    // setChances,
+    // changeParticipantDelayed,
+    changeInitiative,
+    changeParticipantName
   } = props;
 
   //*------Utilities------*//
@@ -57,6 +59,15 @@ const ParticipantCard = props => {
     }
   }
 
+  const handleClickName = () => {
+    const newName = prompt('Name:', participant.name)
+    if (newName.length > 0 && newName.length < 20) {
+      changeParticipantName(participant, newName)
+    } else {
+      alert(`[${newName}] is invalid`)
+    }
+  }
+
   // Removes attribute from participant
   const removeAttribute = attribute => {
     changeParticipantAttributes(
@@ -77,9 +88,9 @@ const ParticipantCard = props => {
   }
 
   // Sets the participant to delayed
-  const delayParticipant = () => {
-    changeParticipantDelayed(participant, true);
-  };
+  // const delayParticipant = () => {
+  //   changeParticipantDelayed(participant, true);
+  // };
 
   const renderChances = (string,i) => {
     return i > participant.chances ? string : string + "⚔" + renderChances(string, i + 1)
@@ -101,25 +112,16 @@ const ParticipantCard = props => {
         <p className='participant-card-initiative'>{renderChances('', 1)}</p>
         : null }
 
-      <p className='participant-card-name'>
+      <p className='participant-card-name' onClick={handleClickName}>
         {participant.name}
       </p>
 
-      { /* canRemoveParticipants || !utilizeInitiative ?
-        <div className="participant-card-buttons">
-        {!utilizeInitiative ?
-          <button onClick={() => setChances(participant, participant.chances + 1)}>Add Chance</button>
-          : <div/>}
-          {!utilizeInitiative && !participant.delayed && participant.chances ? (
-            <button onClick={delayParticipant}>Delay</button>
-          ) : (
-            <div />
-          )}
-          { canRemoveParticipants ? <button onClick={() => removeParticipant(participant)}>Remove</button> : null }
-          </div>
-        : null */}
-
-        { canRemoveParticipants ? <button className='remove-participant-button'>X</button> : null}
+      { canRemoveParticipants ?
+        <button
+        onClick={() => removeParticipant(participant)}
+        className='remove-participant-button'
+        >X</button>
+        : null}
 
       <br />
 

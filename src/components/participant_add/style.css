@@ -8,7 +8,9 @@
   bottom: -1vh;
   left: 30%;
   border-radius: 20px 20px 0 0;
-  font-size: 1.3em;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 0.5em;
 }
 
 @media (max-width: 500px) {
