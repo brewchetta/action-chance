@@ -1,5 +1,6 @@
 export const SET_PARTICIPANTS = 'SET_PARTICIPANTS'
 export const SET_ACTIVE_PARTICIPANT = 'SET_ACTIVE_PARTICIPANT'
+export const SET_PARTICIPANT_TO_EDIT = 'SET_PARTICIPANT_TO_EDIT'
 export const SET_BG = 'SET_BG'
 export const SET_BG_MASK = 'SET_BG_MASK'
 export const SET_DISPLAY_MESSAGE = 'SET_DISPLAY_MESSAGE'
@@ -18,6 +19,10 @@ export function setParticipants(payload) {
 
 export function setActiveParticipant(payload) {
   return {type: SET_ACTIVE_PARTICIPANT, payload}
+}
+
+export function setParticipantToEdit(payload) {
+  return {type: SET_PARTICIPANT_TO_EDIT, payload}
 }
 
 export function setBG(payload) {
