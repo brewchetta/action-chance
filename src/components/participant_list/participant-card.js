@@ -64,7 +64,7 @@ const ParticipantCard = props => {
     if (newName && newName.length < 20) {
       changeParticipantName(participant, newName)
     } else if (newName !== null) {
-      alert(`[${newName}] is invalid`)
+      alert(`Name must be between 0 and 20 characters`)
     }
   }
 

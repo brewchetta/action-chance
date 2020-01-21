@@ -122,6 +122,7 @@
   background: #333;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 
 .remove-participant-button {
