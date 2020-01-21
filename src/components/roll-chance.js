@@ -13,10 +13,8 @@ import RemoveParticipantsButton from '../assets/gui-icons/cancel.png'
 const RollChance = props => {
 
   /*------Redux------*/
-
+  const {participants, utilizeInitiative, addParticipantIsOpen} = useSelector(state => state)
   const dispatch = useDispatch()
-  const participants = useSelector(state => state.participants)
-  const utilizeInitiative = useSelector(state => state.utilizeInitiative)
 
   /*------Props------*/
   const {
@@ -24,7 +22,6 @@ const RollChance = props => {
     resetRound,
     setDisplayMessage,
     setActiveParticipant,
-    addPartOpen,
     // reset
   } = props;
 
@@ -72,7 +69,7 @@ const RollChance = props => {
 
     <button
       onClick={() => dispatch(toggleCanRemoveParticipants())}
-      className={addPartOpen || participants.length === 0 ? "display-none" : 'roll-chance-remove-participants-button'}
+      className={addParticipantIsOpen || participants.length === 0 ? "display-none" : 'roll-chance-remove-participants-button'}
       >
       <img src={RemoveParticipantsButton} alt='Remove Participants' />
     </button>
@@ -80,7 +77,7 @@ const RollChance = props => {
     <button
       onClick={rollForChance}
       className={
-        addPartOpen || participants.length === 0 ? "display-hidden" : 'roll-chance-next-button'
+        addParticipantIsOpen || participants.length === 0 ? "display-hidden" : 'roll-chance-next-button'
       }
     >
       <img src={PlayButton} alt='Next' />

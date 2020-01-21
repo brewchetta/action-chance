@@ -1,7 +1,8 @@
 // React
 import React, {useState} from "react";
 // Redux
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {setParticipantToEdit} from '../../redux/actions'
 // Components
 import ParticipantAttributes from "../participant_attributes/participant-attributes";
 import ParticipantAttrsAdd from "../participant_attributes/participant-attributes-add";
@@ -13,8 +14,6 @@ const defaultImage =
 /*------Component------*/
 const ParticipantCard = props => {
 
-  console.log(props.participant)
-
   // const canRemoveParticipants = false
   const {canRemoveParticipants} = useSelector(state => state)
 
@@ -22,6 +21,7 @@ const ParticipantCard = props => {
 
   const activeParticipant = useSelector(state => state.activeParticipant)
   const utilizeInitiative = useSelector(state => state.utilizeInitiative)
+  const dispatch = useDispatch()
 
   /*------ State ------*/
 
@@ -68,6 +68,11 @@ const ParticipantCard = props => {
     }
   }
 
+  const handleClickEdit = () => {
+    console.log('editing', participant)
+    dispatch(setParticipantToEdit(participant))
+  }
+
   // Removes attribute from participant
   const removeAttribute = attribute => {
     changeParticipantAttributes(
@@ -99,12 +104,15 @@ const ParticipantCard = props => {
   //*------Render------*//
   return (
     <div className={isActiveCard()}>
-      <ParticipantImage
-        imageURL={participant.image ? participant.image : defaultImage}
-        isActive={activeParticipant && activeParticipant.name === participant.name}
-        participantName={participant.name}
-        floatLeft={true}
-      />
+
+      <div onClick={handleClickEdit}>
+        <ParticipantImage
+          imageURL={participant.image ? participant.image : defaultImage}
+          isActive={activeParticipant && activeParticipant.name === participant.name}
+          participantName={participant.name}
+          floatLeft={true}
+        />
+      </div>
 
       {utilizeInitiative ?
         <p className='participant-card-initiative' onClick={handleClickInitiative}>{participant.initiative}</p>

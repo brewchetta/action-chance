@@ -1,21 +1,21 @@
 // React
-import React, { useState } from "react";
+import React from "react";
 // Components
 import AddParticipant from "./participant_add";
 import ParticipantList from "./participant_list";
 import RollChance from "./roll-chance";
 // Redux
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {setAddParticipantIsOpen, setImageListIsOpen} from '../redux/actions'
 
 /*------Component------*/
 const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMessage, setDisplayMessage}) => {
 
   /*------Redux------*/
   const participants = useSelector(state => state.participants)
-
-  /*------State------*/
-  const [addPartOpen, setAddPartOpen] = useState(false);
-  const [imageListIsOpen, setImageListIsOpen] = useState(false);
+  const addParticipantIsOpen = useSelector(state => state.addParticipantIsOpen)
+  const imageListIsOpen = useSelector(state => state.imageListIsOpen)
+  const dispatch = useDispatch()
 
   /*------Setters------*/
 
@@ -86,8 +86,8 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
   // or opens the add participant window depending on state
   const setAddPartAndImageOpen = () => {
     imageListIsOpen ?
-    setImageListIsOpen(!imageListIsOpen) :
-    setAddPartOpen(!addPartOpen)
+    dispatch(setImageListIsOpen(!imageListIsOpen)) :
+    dispatch(setAddParticipantIsOpen(!addParticipantIsOpen))
   }
 
   /*------Render------*/
@@ -103,8 +103,6 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
           removeParticipant,
           changeParticipantAttributes,
           changeParticipantDelayed,
-          addPartOpen,
-          setAddPartOpen,
           changeInitiative,
           changeParticipantName
         }}
@@ -117,19 +115,15 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
               resetRound,
               setDisplayMessage,
               setActiveParticipant,
-              addPartOpen,
               reset
             }}
           />
         </div>
       ) : null}
-      {addPartOpen ? (
+      {addParticipantIsOpen ? (
         <AddParticipant
-        imageListIsOpen={imageListIsOpen}
-        setImageListIsOpen={setImageListIsOpen}
         setParticipants={setParticipants}
         setDisplayMessage={setDisplayMessage}
-        setAddPartOpen={setAddPartOpen}
         />
       ) : null}
       <button
@@ -137,7 +131,7 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
         className="parentheses-border"
         onClick={setAddPartAndImageOpen}
       >
-        {!addPartOpen ? "Add a participant" : "Back"}
+        {!addParticipantIsOpen ? "Add a participant" : "Back"}
       </button>
     </div>
   );

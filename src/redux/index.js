@@ -10,6 +10,8 @@ import socketReducer from './socket'
 import socketRoomReducer from './socketroom'
 import addParticipantCardReducer from './add_participant_card'
 import canRemoveParticipantsReducer from './can_remove_participants'
+import addParticipantIsOpenReducer from './add_participant_is_open'
+import imageListIsOpenReducer from './image_list_is_open'
 
 export default combineReducers({
   participants: participantsReducer,
@@ -22,5 +24,7 @@ export default combineReducers({
   socket: socketReducer,
   socketRoom: socketRoomReducer,
   addParticipantCard: addParticipantCardReducer,
-  canRemoveParticipants: canRemoveParticipantsReducer
+  canRemoveParticipants: canRemoveParticipantsReducer,
+  addParticipantIsOpen: addParticipantIsOpenReducer,
+  imageListIsOpen: imageListIsOpenReducer
 })

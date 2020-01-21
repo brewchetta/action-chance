@@ -12,6 +12,8 @@ export const SET_SOCKETROOM = 'SET_SOCKETROOM'
 export const CLEAR_SOCKETROOM = 'CLEAR_SOCKETROOM'
 export const TOGGLE_ADD_PARTICIPANT_CARD = 'TOGGLE_ADD_PARTICIPANT_CARD'
 export const TOGGLE_CAN_REMOVE_PARTICIPANTS = 'TOGGLE_CAN_REMOVE_PARTICIPANTS'
+export const SET_ADD_PARTICIPANT_IS_OPEN = 'SET_ADD_PARTICIPANT_IS_OPEN'
+export const SET_IMAGE_LIST_IS_OPEN = 'SET_IMAGE_LIST_IS_OPEN'
 
 export function setParticipants(payload) {
   return {type: SET_PARTICIPANTS, payload}
@@ -67,4 +69,12 @@ export function toggleAddParticipantCard() {
 
 export function toggleCanRemoveParticipants() {
   return {type: TOGGLE_CAN_REMOVE_PARTICIPANTS}
+}
+
+export function setAddParticipantIsOpen(payload) {
+  return {type: SET_ADD_PARTICIPANT_IS_OPEN, payload}
+}
+
+export function setImageListIsOpen(payload) {
+  return {type: SET_IMAGE_LIST_IS_OPEN, payload}
 }

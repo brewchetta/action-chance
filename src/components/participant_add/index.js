@@ -1,7 +1,8 @@
 // React
 import React, { useState } from "react";
 //Redux
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {setAddParticipantIsOpen} from '../../redux/actions'
 // Components
 import ParticipantImageList from "./participant-add-image-list";
 import ParticipantImage from "../participant-image";
@@ -22,6 +23,7 @@ const AddParticipants = props => {
   /*------Redux------*/
 
   const {participants, activeParticipant, utilizeInitiative} = useSelector(state => state)
+  const dispatch = useDispatch()
 
   /*------Props------*/
 
@@ -29,8 +31,7 @@ const AddParticipants = props => {
     setParticipants,
     setDisplayMessage,
     imageListIsOpen,
-    setImageListIsOpen,
-    setAddPartOpen
+    setImageListIsOpen
   } = props;
 
   /*------State------*/
@@ -79,7 +80,7 @@ const AddParticipants = props => {
   };
 
   const toggleIsOpen = () => {
-    setAddPartOpen(false)
+    dispatch(setAddParticipantIsOpen(false))
   }
 
   /*------Render------*/

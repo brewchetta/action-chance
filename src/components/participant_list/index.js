@@ -19,7 +19,7 @@ const ParticipantList = props => {
 
   /*------Redux------*/
 
-  const {participants, activeParticipant} = useSelector(state => state)
+  const {participants, activeParticipant, addParticipantIsOpen} = useSelector(state => state)
 
   /*------Props------*/
   const {
@@ -27,8 +27,6 @@ const ParticipantList = props => {
     setChances,
     changeParticipantAttributes,
     changeParticipantDelayed,
-    addPartOpen,
-    setAddPartOpen,
     changeInitiative,
     changeParticipantName
   } = props;
@@ -89,14 +87,14 @@ const ParticipantList = props => {
           if (a.initiative === b.initiative) return compareAlphabetical(a.name, b.name)
           return b.initiative - a.initiative
         })
-        .map(!addPartOpen ? renderParticipantCard : renderParticipantImage)}
-        {!addPartOpen ? <ParticipantAddCard setAddPartOpen={setAddPartOpen} /> : null}
+        .map(!addParticipantIsOpen ? renderParticipantCard : renderParticipantImage)}
+        {!addParticipantIsOpen ? <ParticipantAddCard /> : null}
       </>
     )
   };
 
   const listClass = () => {
-    return !addPartOpen ? "participant-list" : "participant-list-reduced";
+    return !addParticipantIsOpen ? "participant-list" : "participant-list-reduced";
   };
 
   //*------Render------*//
