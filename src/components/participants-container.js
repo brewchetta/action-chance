@@ -12,9 +12,7 @@ import {setAddParticipantIsOpen, setImageListIsOpen} from '../redux/actions'
 const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMessage, setDisplayMessage}) => {
 
   /*------Redux------*/
-  const participants = useSelector(state => state.participants)
-  const addParticipantIsOpen = useSelector(state => state.addParticipantIsOpen)
-  const imageListIsOpen = useSelector(state => state.imageListIsOpen)
+  const {participants, addParticipantIsOpen, imageListIsOpen} = useSelector(state => state)
   const dispatch = useDispatch()
 
   /*------Setters------*/

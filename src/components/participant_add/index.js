@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 //Redux
 import {useSelector, useDispatch} from 'react-redux'
-import {setAddParticipantIsOpen} from '../../redux/actions'
+import {setAddParticipantIsOpen, setImageListIsOpen} from '../../redux/actions'
 // Components
 import ParticipantImageList from "./participant-add-image-list";
 import ParticipantImage from "../participant-image";
@@ -22,16 +22,14 @@ const AddParticipants = props => {
 
   /*------Redux------*/
 
-  const {participants, activeParticipant, utilizeInitiative} = useSelector(state => state)
+  const {participants, activeParticipant, utilizeInitiative, imageListIsOpen} = useSelector(state => state)
   const dispatch = useDispatch()
 
   /*------Props------*/
 
   const {
     setParticipants,
-    setDisplayMessage,
-    imageListIsOpen,
-    setImageListIsOpen
+    setDisplayMessage
   } = props;
 
   /*------State------*/
@@ -95,7 +93,7 @@ const AddParticipants = props => {
       {!imageListIsOpen ? (
         <div
           style={{ cursor: "pointer" }}
-          onClick={() => setImageListIsOpen(!imageListIsOpen)}
+          onClick={() => dispatch(setImageListIsOpen(!imageListIsOpen))}
         >
           <ParticipantImage
             imageURL={imageInput}
@@ -107,7 +105,6 @@ const AddParticipants = props => {
       <ParticipantImageList
         setMainImageInput={setImageInput}
         isOpen={imageListIsOpen}
-        setIsOpen={setImageListIsOpen}
       />
       <form
         onSubmit={handleSubmit}
