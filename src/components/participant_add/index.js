@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 //Redux
 import {useSelector, useDispatch} from 'react-redux'
-import {setAddParticipantIsOpen, setImageListIsOpen} from '../../redux/actions'
+import {setAddParticipantIsOpen, setImageListIsOpen, setParticipantToEdit} from '../../redux/actions'
 // Components
 import ParticipantImageList from "./participant-add-image-list";
 import ParticipantImage from "../participant-image";
@@ -46,7 +46,7 @@ const AddParticipants = props => {
       setNameInput(participantToEdit.name)
       setImageInput(participantToEdit.image)
     }
-  }, [])
+  }, [participantToEdit])
 
   /*------Setters------*/
 
@@ -82,10 +82,15 @@ const AddParticipants = props => {
   }
 
   const editParticipant = () => {
+    // Create new participant list
     const newParticipants = participants.filter(p => p !== participantToEdit)
-    // setDisplayMessage(`${nameInput} is ready!`);
-    // setNameInput("");
-    // setImageInput("");
+    // Add newly edited participant
+    newParticipants.push({...participantToEdit, name: nameInput, image: imageInput, initiative: initiativeInput})
+    // Set everything
+    setParticipants(newParticipants)
+    setDisplayMessage(`${nameInput} is ready!`);
+    dispatch(setAddParticipantIsOpen(false))
+    dispatch(setParticipantToEdit(null))
   }
 
   const handleSubmit = event => {
@@ -165,7 +170,7 @@ const AddParticipants = props => {
 
         <br/>
 
-        <input type="submit" value="Add" />
+        <input type="submit" value={participantToEdit ? `Edit ${participantToEdit.name}` : "Add"} />
       </form>
     </div>
   );

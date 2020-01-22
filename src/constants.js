@@ -9,7 +9,7 @@ export const reconnectionDelay = 2000
 
 export const reconnectionAttempts = 5
 
-export const endpoint = isProduction ? 'https://action-chance-backend.herokuapp.com/' : '10.9.111.118:3050/'
+export const endpoint = isProduction ? 'https://action-chance-backend.herokuapp.com/' : 'localhost:3050/'
 
 export const debugLog = message => {
   if (!isProduction && window.innerWidth > 400) console.log(`%cDebug: ${message}`, 'color: blue')
