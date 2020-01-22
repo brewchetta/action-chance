@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 // Redux
 import {useSelector, useDispatch} from 'react-redux'
-import {setParticipantToEdit} from '../../redux/actions'
+import {setParticipantToEdit, setAddParticipantIsOpen} from '../../redux/actions'
 // Components
 import ParticipantAttributes from "../participant_attributes/participant-attributes";
 import ParticipantAttrsAdd from "../participant_attributes/participant-attributes-add";
@@ -69,8 +69,8 @@ const ParticipantCard = props => {
   }
 
   const handleClickEdit = () => {
-    console.log('editing', participant)
     dispatch(setParticipantToEdit(participant))
+    dispatch(setAddParticipantIsOpen(true))
   }
 
   // Removes attribute from participant

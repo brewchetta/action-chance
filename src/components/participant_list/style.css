@@ -101,6 +101,7 @@
 
 .participant-card .participant-image-frame {
   float: left;
+  cursor: pointer;
 }
 
 .participant-card .participant-card-initiative {
