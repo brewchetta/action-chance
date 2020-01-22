@@ -1,5 +1,8 @@
 // React
 import React, { useState, useEffect } from "react";
+// Redux
+import {useDispatch} from 'react-redux'
+import {setImageListIsOpen} from '../../redux/actions'
 // Components
 import ParticipantImage from "../participant-image";
 import ParticipantAddImagePortrait  from './participant-add-image-portrait'
@@ -11,6 +14,10 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
   const [imageInput, setImageInput] = useState("");
   const [imagePage, setImagePage] = useState(0);
 
+  /*------State------*/
+
+  const dispatch = useDispatch()
+
   /*------Effects------*/
 
   useEffect(() => {
@@ -21,7 +28,7 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
 
   const handleSelectImage = image => {
     setMainImageInput(image);
-    setIsOpen(!isOpen);
+    dispatch(setImageListIsOpen(false));
   };
 
   const handleInput = event => {
@@ -39,6 +46,8 @@ const ParticipantImageList = ({ setMainImageInput, isOpen, setIsOpen }) => {
         setImageInput("");
       } else if (getImages().includes(imageInput)) {
         alert('Image already exists')
+      } else {
+        alert('Invalid image')
       }
     }
 

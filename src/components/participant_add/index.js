@@ -22,7 +22,7 @@ const AddParticipants = props => {
 
   /*------Redux------*/
 
-  const {participants, activeParticipant, utilizeInitiative, imageListIsOpen, participantToEdit} = useSelector(state => state)
+  const {participants, activeParticipant, imageListIsOpen, participantToEdit} = useSelector(state => state)
   const dispatch = useDispatch()
 
   /*------Props------*/
@@ -45,6 +45,7 @@ const AddParticipants = props => {
       console.log(participantToEdit)
       setNameInput(participantToEdit.name)
       setImageInput(participantToEdit.image)
+      setInitiativeInput(participantToEdit.initiative)
     }
   }, [participantToEdit])
 
