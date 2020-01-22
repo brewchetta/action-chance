@@ -6,7 +6,7 @@ import ParticipantList from "./participant_list";
 import RollChance from "./roll-chance";
 // Redux
 import {useSelector, useDispatch} from 'react-redux'
-import {setAddParticipantIsOpen, setImageListIsOpen} from '../redux/actions'
+import {setAddParticipantIsOpen, setImageListIsOpen, setParticipantToEdit} from '../redux/actions'
 
 /*------Component------*/
 const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMessage, setDisplayMessage}) => {
@@ -83,9 +83,12 @@ const ParticipantsContainer = ({setParticipants, setActiveParticipant, displayMe
   // Either closes the add participant image, closes the add participant window,
   // or opens the add participant window depending on state
   const setAddPartAndImageOpen = () => {
-    imageListIsOpen ?
-    dispatch(setImageListIsOpen(!imageListIsOpen)) :
-    dispatch(setAddParticipantIsOpen(!addParticipantIsOpen))
+    if (imageListIsOpen) {
+      dispatch(setImageListIsOpen(!imageListIsOpen))
+    } else {
+      dispatch(setAddParticipantIsOpen(!addParticipantIsOpen))
+      dispatch(setParticipantToEdit(null))
+    }
   }
 
   /*------Render------*/

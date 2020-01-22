@@ -42,7 +42,6 @@ const AddParticipants = props => {
 
   useEffect(() => {
     if (participantToEdit) {
-      console.log(participantToEdit)
       setNameInput(participantToEdit.name)
       setImageInput(participantToEdit.image)
       setInitiativeInput(participantToEdit.initiative)
@@ -107,6 +106,7 @@ const AddParticipants = props => {
 
   const toggleIsOpen = () => {
     dispatch(setAddParticipantIsOpen(false))
+    dispatch(setParticipantToEdit(null))
   }
 
   /*------Render------*/
