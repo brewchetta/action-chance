@@ -1,5 +1,5 @@
 // React
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //Redux
 import {useSelector, useDispatch} from 'react-redux'
 import {setAddParticipantIsOpen, setImageListIsOpen} from '../../redux/actions'
@@ -22,7 +22,7 @@ const AddParticipants = props => {
 
   /*------Redux------*/
 
-  const {participants, activeParticipant, utilizeInitiative, imageListIsOpen} = useSelector(state => state)
+  const {participants, activeParticipant, utilizeInitiative, imageListIsOpen, participantToEdit} = useSelector(state => state)
   const dispatch = useDispatch()
 
   /*------Props------*/
@@ -40,6 +40,14 @@ const AddParticipants = props => {
   );
   const [initiativeInput, setInitiativeInput] = useState(10)
 
+  useEffect(() => {
+    if (participantToEdit) {
+      console.log(participantToEdit)
+      setNameInput(participantToEdit.name)
+      setImageInput(participantToEdit.image)
+    }
+  }, [])
+
   /*------Setters------*/
 
   const handleInput = event => {
@@ -55,25 +63,39 @@ const AddParticipants = props => {
     }
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  const addParticipant = () => {
     if (!participants.filter(p => p.name === nameInput).length) {
-
       // Chances depends on whether there is an active participant and whether they come before or after in initiative
       const chances = activeParticipant && parseInt(initiativeInput) < activeParticipant.initiative ? 1 : !activeParticipant ? 1 : 0
-
-      if (nameInput.length) {
-        setParticipants([
-          ...participants,
-          { name: nameInput, chances, image: imageInput, initiative: parseInt(initiativeInput) }
-        ]);
-        setDisplayMessage(`${nameInput} is ready!`);
-        setNameInput("");
-        setImageInput("");
-      }
+      // Add the participant and reset
+      setParticipants([
+        ...participants,
+        { name: nameInput, chances, image: imageInput, initiative: parseInt(initiativeInput) }
+      ]);
+      setDisplayMessage(`${nameInput} is ready!`);
+      setNameInput("");
+      setImageInput("");
 
     } else {
       alert(`A character already exists with that name!`)
+    }
+  }
+
+  const editParticipant = () => {
+    const newParticipants = participants.filter(p => p !== participantToEdit)
+    // setDisplayMessage(`${nameInput} is ready!`);
+    // setNameInput("");
+    // setImageInput("");
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    // Fire this if adding a participant
+    if (nameInput.length && !participantToEdit) {
+        addParticipant()
+    // Fire this if editing a participant
+    } else if (nameInput.length) {
+        editParticipant()
     }
   };
 
@@ -85,11 +107,15 @@ const AddParticipants = props => {
 
   return (
     <div id="participant-add-container">
+
+      {/* Background mask to click out of this screen */}
       <div
         id="close-add-participants-container"
         className="fillscreen"
         onClick={toggleIsOpen}
       />
+
+      {/* Form below renders if image list isn't open */}
       {!imageListIsOpen ? (
         <div
           style={{ cursor: "pointer" }}
@@ -106,11 +132,14 @@ const AddParticipants = props => {
         setMainImageInput={setImageInput}
         isOpen={imageListIsOpen}
       />
+
+      {/* Participant Form */}
       <form
         onSubmit={handleSubmit}
         className={imageListIsOpen ? "display-none" : null}
       >
 
+        {/* Name */}
         <input
           id="name-input"
           type="text"
@@ -119,19 +148,20 @@ const AddParticipants = props => {
           onChange={handleInput}
           placeholder="name"
         />
+        <br/>
 
-        {utilizeInitiative ?
-          <input
-          id="initiative-input"
-          type="number"
-          name="initiative-input"
-          value={initiativeInput}
-          onChange={handleInput}
-          style={{width: '3em'}}
-          max='40'
-          min='0'
-          />
-        : null}
+        {/* Initiative */}
+        <label>Initiative: </label>
+        <input
+        id="initiative-input"
+        type="number"
+        name="initiative-input"
+        value={initiativeInput}
+        onChange={handleInput}
+        style={{width: '3em'}}
+        max='40'
+        min='0'
+        />
 
         <br/>
 
